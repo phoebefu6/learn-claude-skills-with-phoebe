@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 7 · Lead, ops &amp; edge - learn claude skills with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-claude-skills-with-phoebe</a> / Session 7 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Claude Skills with Phoebe · Session 7 of 8</div>
+    <h1>Lead, ops &amp; <span class="accent">edge</span></h1>
+    <p class="sub">The skills leaders and power users reach for: a panel to think with, career and people work, and the biggest ops token-saver of all - automating the workflow itself so a behavior happens without being re-prompted.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Easiest</span>
+      <span class="chip audience">Leaders + power users</span>
+      <span class="chip audience">lead / gov / emrg / prod / move tracks</span>
+      <span class="chip time">45 min live + self-study depth</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-24 · Concepts (live cards)</span>
+      <span class="a3" style="flex:4">24-42 · Three demos</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Why this session exists</h2>
+    </div>
+    <p class="lede">This session is for the person deciding, not just doing. Five tracks share it - <strong>lead</strong> (strategy, pmo, time/team-management, interview-prep, leadership-ai, performance-management), <strong>gov</strong> (governance-101, data-governance, ai-governance, gdpr, pdpa), <strong>emrg</strong> (blockchain, crypto, web3, cyber-security, quant-trading, quantum), <strong>prod</strong> (reading, pkm, notion, obsidian, automation, ai-productivity), and <strong>move</strong> (meditation, yoga, taichi, tcm, kpop-dance, drum). The through-line is leverage: think with a panel before deciding, handle people and careers well, and automate the workflow itself - the single biggest ops token-saver, because a behavior you configure once stops costing a re-prompt every time.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">token-saver skills marked ⚡</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A decision ritual that gives you several distinct expert lenses before you commit, a clean map of the career and people skills, and the highest-leverage ops habit there is: turning a repeated instruction into a hook or an allowlist so it fires automatically. One honest note up front - the <strong>move</strong> track (yoga, tcm, drum) has the lowest dev-skill leverage. It mostly rides the Core Stack plus the content skills from Session 6, and we say that plainly rather than padding it.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: THINK WITH A PANEL ============ -->
+  <section class="section" id="think-panel">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · lead track - decision quality</span>
+      <h2>Think with a panel <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">The most expensive leadership mistake is a confident decision made from one angle. Two skills widen the aperture: <strong>core-mentor-room</strong> gives you a roundtable of named mentors, each with a distinct lens, before you decide; <strong>deep-research</strong> pulls the facts you'd otherwise guess at - regulation deltas, an emerging-tech landscape - as a cited report.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A decision at the center with several distinct mentor lenses around it">
+        <style>
+          .tpHubW { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .tpHubI { font: 700 13px Inter, sans-serif; fill: #211712; }
+          .tpHubX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .tpHubN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+          .tpHubA { stroke: #C9BCB2; stroke-width: 2.5; fill: none; }
+        </style>
+        <circle cx="440" cy="120" r="58" fill="#7A3520"/>
+        <text class="tpHubW" x="440" y="116" text-anchor="middle">your</text>
+        <text class="tpHubW" x="440" y="136" text-anchor="middle">decision</text>
+        <line class="tpHubA" x1="382" y1="120" x2="215" y2="60"/>
+        <line class="tpHubA" x1="382" y1="120" x2="215" y2="180"/>
+        <line class="tpHubA" x1="498" y1="120" x2="665" y2="60"/>
+        <line class="tpHubA" x1="498" y1="120" x2="665" y2="180"/>
+        <rect x="30" y="38" width="185" height="44" rx="10" fill="#B5502E"/>
+        <text class="tpHubW" x="50" y="58">strategy lens</text>
+        <text class="tpHubX" x="50" y="74" fill="#F5DAC8">market + moat</text>
+        <rect x="30" y="158" width="185" height="44" rx="10" fill="#CC785C"/>
+        <text class="tpHubI" x="50" y="178">people lens</text>
+        <text class="tpHubX" x="50" y="194">team + morale</text>
+        <rect x="665" y="38" width="185" height="44" rx="10" fill="#CC785C"/>
+        <text class="tpHubI" x="685" y="58">risk lens</text>
+        <text class="tpHubX" x="685" y="74">governance + edge</text>
+        <rect x="665" y="158" width="185" height="44" rx="10" fill="#B5502E"/>
+        <text class="tpHubW" x="685" y="178">calm lens</text>
+        <text class="tpHubX" x="685" y="194" fill="#F5DAC8">presence first</text>
+        <rect x="20" y="228" width="840" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="242" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="tpHubN" x="58" y="254">Pick 5-8 mentors per topic - you want distinct lenses, not 22 people agreeing.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - one decision, a few distinct lenses instead of a single angle</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>core-mentor-room - a roundtable before you commit<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>core-mentor-room</strong> convenes a 22-person panel of named mentors - builders, CEOs, data leaders, and coaches - each speaking in character from their known positions. For any given topic you select the 5-8 most relevant, always spanning categories, so you get genuinely different lenses rather than one voice repeated.</p>
+        <ul>
+          <li><strong>When to reach for it</strong> - any real decision with trade-offs: an architecture call, a career move, a stakeholder problem, a team-morale issue.</li>
+          <li><strong>What it gives you</strong> - consensus points and productive disagreements, then a concrete recommendation.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Convene the mentor room on this decision: [your real decision]. Pick the 5-8 most relevant mentors, give me each distinct lens in two sentences, then the consensus, the disagreement, and one recommended next step.</div>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>Facing "do I take the bigger role or the better team," a panel of five surfaced the one factor the excitement was hiding - a two-year identity cost the strategy lens named and the calm lens confirmed. The decision changed because the angle did.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>deep-research - facts before opinions<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>deep-research</strong> fans out across many sources, fetches them, verifies claims adversarially, and returns a cited synthesis. It's the offload move applied to research: a helper spends its own budget reading, and you get the conclusion.</p>
+        <ul>
+          <li><strong>When to reach for it</strong> - gov regulation deltas ("what changed in the EU AI Act this quarter"), an emerging-tech landscape (crypto, web3, quantum) you need to understand, not just skim.</li>
+          <li><strong>Before you invoke</strong> - if the question is fuzzy, it asks 2-3 clarifiers first, so the report answers what you actually need.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: CAREER + PEOPLE ============ -->
+  <section class="section" id="career-people">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · lead track - career + people</span>
+      <h2>Career + people <span class="tag concept">4 min live</span></h2>
+    </div>
+    <p class="lede">Leadership work includes your own path and the people around you. The <strong>proficiently</strong> pack and <strong>resume-builder-harvard</strong> cover the job-search arc end to end - each skill maps to one role in that arc.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The job-search arc, one skill per role<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Role in the arc</th><th>Skill</th></tr></thead>
+          <tbody>
+            <tr><td>Find the right openings</td><td>proficiently:job-search</td></tr>
+            <tr><td>Apply cleanly and at scale</td><td>proficiently:apply</td></tr>
+            <tr><td>Fit a resume to one JD</td><td>proficiently:tailor-resume</td></tr>
+            <tr><td>Map who you should reach</td><td>proficiently:network-scan</td></tr>
+            <tr><td>Build the resume itself</td><td>resume-builder-harvard</td></tr>
+          </tbody>
+        </table>
+        <p><strong>When to reach for which</strong>: starting from scratch → resume-builder-harvard; already have a resume and a target job → tailor-resume; ready to go wide → job-search + apply; want warm intros → network-scan.</p>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Here's my resume and one job description. Use tailor-resume to fit the resume to this JD: keep every fact true, surface the matching experience, and flag any real gap I should address rather than hide.</div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Honest resumes beat optimized ones<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Tailoring means surfacing the experience that matches - not inventing it. These skills reorder and sharpen what's true; they flag gaps for you to address honestly. An ATS-optimized fabrication fails the first real interview. The token angle is minor here; the integrity angle is the point.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: AUTOMATE THE WORKFLOW ============ -->
+  <section class="section" id="automate">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · prod track - the biggest ops token-saver</span>
+      <h2>Automate the workflow itself <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Here is the highest-leverage move in the whole course. A behavior you re-prompt every time costs tokens every time. A behavior you <em>configure once</em> - a hook, a schedule, an allowlist - fires automatically and costs nothing to re-request. This is automation applied to your own workflow, not just your tasks.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A trigger firing a hook that runs an action, with no re-prompt needed">
+        <style>
+          .auFlowW { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .auFlowI { font: 700 15px Inter, sans-serif; fill: #211712; }
+          .auFlowX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .auFlowN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+          .auFlowA { stroke: #C9BCB2; stroke-width: 2.5; fill: none; marker-end: url(#auFlowAh); }
+        </style>
+        <defs>
+          <marker id="auFlowAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <rect x="20" y="46" width="240" height="58" rx="12" fill="#7A3520"/>
+        <text class="auFlowW" x="42" y="72">trigger</text>
+        <text class="auFlowX" x="42" y="92" fill="#F0C9B3">event happens</text>
+        <rect x="320" y="46" width="240" height="58" rx="12" fill="#B5502E"/>
+        <text class="auFlowW" x="342" y="72">hook fires</text>
+        <text class="auFlowX" x="342" y="92" fill="#F5DAC8">harness runs it</text>
+        <rect x="620" y="46" width="240" height="58" rx="12" fill="#CC785C"/>
+        <text class="auFlowI" x="642" y="72">action runs</text>
+        <text class="auFlowX" x="642" y="92">no re-prompt</text>
+        <line class="auFlowA" x1="260" y1="75" x2="318" y2="75"/>
+        <line class="auFlowA" x1="560" y1="75" x2="618" y2="75"/>
+        <text class="auFlowX" x="20" y="140">You configured this once. It now happens on its own, every time.</text>
+        <rect x="20" y="164" width="840" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="178" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="auFlowN" x="58" y="190">⚡ The re-prompt you never send is the cheapest token of all - configuration beats repetition.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - trigger fires a hook, the action runs, no re-prompt each time</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>update-config - behaviors that fire automatically ⚡<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>update-config</strong> edits your <code>settings.json</code> to make the harness do something automatically - a <strong>hook</strong>. The key insight: an automated behavior ("whenever I finish a task, run the linter") can't live in memory or a preference, because Claude doesn't run those - the harness runs hooks. So a recurring instruction becomes configuration instead of a sentence you repeat.</p>
+        <ul>
+          <li><strong>When to reach for it</strong> - any "from now on, whenever X, do Y" request; permissions; env vars.</li>
+          <li><strong>Token effect</strong> ⚡ - the behavior stops being re-requested every session. Configure once, save forever.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>A team kept typing "convert uploaded files to markdown first." Turned into a PostToolUse hook, it now just happens on every upload - the instruction went from a per-session sentence to zero-cost configuration.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>schedule &amp; loop - recurring runs<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>schedule</strong> - create recurring cloud agents (routines) on a cron schedule, or a one-time future run. Reach for it when a task should happen at a time whether or not you're there - a daily digest, a Monday report.</li>
+          <li><strong>loop</strong> - run a prompt or slash command on an interval within a session ("check the deploy every 5 minutes"). For polling and repeated checks, not one-offs.</li>
+        </ul>
+        <p>Both remove the "remind me to run this again" overhead - the work initiates itself.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>fewer-permission-prompts - cut the round-trips ⚡<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>fewer-permission-prompts</strong> scans your transcripts for the read-only commands you approve constantly, then writes a prioritized allowlist into project settings. Each avoided prompt is a round-trip you don't pay for.</p>
+        <ul>
+          <li><strong>When to reach for it</strong> - once a workflow is stable and you're clicking "allow" on the same safe commands repeatedly.</li>
+          <li><strong>Token effect</strong> ⚡ - fewer approval round-trips = fewer turns = fewer tokens, and a smoother session.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>Allowlist safe things only</strong>
+          Auto-approve read-only and clearly reversible commands. Keep the prompt on anything destructive, financial, or public-facing - the goal is fewer round-trips, never fewer guardrails.
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 4: EDGE TRACKS ============ -->
+  <section class="section" id="edge">
+    <div class="section-kicker">
+      <span class="klabel">Part 4 · gov + emrg tracks - handled safely</span>
+      <h2>Edge tracks, handled safely <span class="tag concept">3 min live</span></h2>
+    </div>
+    <p class="lede">The gov and emrg tracks touch regulated and high-stakes ground. The skills here research and explain - they do not act on your behalf where acting could harm you. That boundary is a feature, not a limitation.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>security-review &amp; deep-research for the edge<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>security-review</strong> - for the gov and cyber-security tracks: reviews code and config for vulnerabilities. The gov track as a whole is a data-privacy discipline - PDPA, GDPR, governance - and this is its technical arm.</li>
+          <li><strong>deep-research</strong> - for crypto, web3, and quantum: builds you a cited landscape of a fast-moving field so you understand it rather than react to hype.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The crypto + quant guardrail<span class="mini">1 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <div class="callout tip">
+          <strong>Research and explain only - never execute or advise</strong>
+          For crypto and quant-trading, Claude does <strong>not</strong> execute trades or transfers, and does <strong>not</strong> give personalized investment or financial advice. It researches the space, explains how things work, and points you to a licensed professional for decisions about your money. This is a hard boundary, and it protects you.
+        </div>
+        <p>Treat the emrg track as a learning track, not a trading desk. Understanding the landscape is the goal; the transaction stays with you and your advisor.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The move track - said plainly<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The <strong>move</strong> track (meditation, yoga, taichi, tcm, kpop-dance, drum) has the lowest dev-skill leverage of any track in the course, and that's fine to say. It mostly rides the Core Stack for organizing notes and plans, plus the Session 6 content skills for making a practice guide or a class poster. There's no dedicated automation payoff here - use it to structure and share what you learn, and don't expect a workflow revolution.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 3</span>
+      <h2>Run the mentor room on a real decision <span class="tag demo">★ 6 min · follow along</span></h2>
+    </div>
+    <p class="lede">Bring one decision you're actually sitting on and read three genuinely different lenses on it. The value is in the disagreement.</p>
+    <div class="prompt-box good"><span class="label">★ Mentor room trigger</span>Convene the mentor room on this: [a real decision you're weighing].
+
+Pick the 5-8 most relevant mentors across categories. Give me each lens in two sentences, then tell me where they agree, where they disagree, and the one next step you'd recommend.</div>
+    <div class="steps">
+      <div class="step"><p>Write the decision in one sentence, including the trade-off you feel.</p></div>
+      <div class="step"><p>Run the trigger. Read the lens that <em>disagrees</em> with your gut most carefully.</p></div>
+      <div class="step"><p>Note the factor a mentor named that you hadn't weighed. That's the whole return on the exercise.</p></div>
+      <div class="step"><p>Take the recommended next step - or consciously reject it, now that you've seen the angles.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 3</span>
+      <h2>Write a hook with update-config <span class="tag demo">★ 7 min · build your own</span></h2>
+    </div>
+    <p class="lede">Turn one thing you keep asking for into a behavior that fires on its own. This is configuration replacing repetition - the biggest ops token-saver, made real.</p>
+    <div class="steps">
+      <div class="step"><p>Find a "from now on, whenever X, do Y" you've said more than twice.</p></div>
+      <div class="step"><p>Invoke <code>update-config</code> and describe it. It writes the hook into <code>settings.json</code>.</p></div>
+      <div class="step"><p>Trigger the event and watch the action fire with no prompt from you.</p></div>
+      <div class="step"><p>Notice you'll never re-request it again - the instruction is now zero-cost configuration.</p></div>
+    </div>
+    <div class="prompt-box good"><span class="label">Hook prompt</span>Use update-config to set this up as a hook: whenever [event - e.g. I finish editing a file], automatically [action - e.g. run the formatter]. Show me the settings.json change before you apply it, and confirm it's the harness running this, not you.</div>
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p>Phoebe's daily content build runs unattended on a schedule with an auto-approve hook - no confirm gate, no morning re-prompt. The whole routine fires itself because the behavior was configured once instead of requested daily.</p>
+    </div>
+  </section>
+
+  <!-- ============ DEMO 3 ============ -->
+  <section class="section" id="demo-3">
+    <div class="section-kicker">
+      <span class="klabel">Demo 3 of 3</span>
+      <h2>Add a fewer-permission-prompts allowlist <span class="tag demo">★ 5 min · build your own</span></h2>
+    </div>
+    <p class="lede">Feel the round-trips drop. Let Claude read your own history and propose an allowlist of the safe commands you keep approving.</p>
+    <div class="steps">
+      <div class="step"><p>Work normally for a bit so there's a transcript of the commands you routinely approve.</p></div>
+      <div class="step"><p>Invoke <code>fewer-permission-prompts</code>. It scans and proposes a prioritized allowlist.</p></div>
+      <div class="step"><p>Review it - keep read-only and reversible commands, strip anything destructive or public-facing.</p></div>
+      <div class="step"><p>Apply it and keep working. Notice how many fewer times you're stopped for approval.</p></div>
+    </div>
+    <div class="prompt-box good"><span class="label">★ Try it now</span>Run fewer-permission-prompts: scan my recent transcripts, find the read-only commands I keep approving, and propose an allowlist for project settings. Show me the list so I can remove anything that shouldn't be auto-approved.</div>
+  </section>
+
+  <!-- ============ TRY IT YOURSELF ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-60 min total</span></h2>
+    </div>
+    <ul>
+      <li>Run the mentor room on one real decision. Write down the single factor a lens named that you hadn't weighed.</li>
+      <li>Configure one hook with update-config for a behavior you keep re-requesting. Confirm it fires on its own.</li>
+      <li>Build a fewer-permission-prompts allowlist and work for an hour. Count how many approval prompts disappeared.</li>
+      <li>Pick one edge-track topic (gov or emrg) and run deep-research for a cited landscape - notice it never gives you a trade to place.</li>
+      <li><strong>Leads:</strong> ask your team which recurring instruction they re-type most. Turn the top one into a shared hook. That's the ops win, banked.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCE MATERIAL ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Where these skills come from</h2>
+    </div>
+    <p class="lede">This session draws on the mentor roundtable protocol, the automation and config skills that run Phoebe's own workflow, and deep-research for the edge tracks - covered at the concept level, with the full research depth living in the skill.</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">core-mentor-room (22-mentor roundtable)</span><span class="note">Part 1 + Demo 1: distinct lenses before a decision</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Automation + config skills (update-config, schedule, loop, fewer-permission-prompts)</span><span class="note">Part 3 + Demos 2-3: automate the workflow itself</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">deep-research</span><span class="note">Parts 1 + 4: cited landscapes for gov and emerging-tech; full depth in the skill</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · Why is a hook (via update-config) a token-saving move?</p>
+      <button class="qopt" type="button">A · Hooks compress the conversation</button>
+      <button class="qopt" type="button">B · Hooks make Claude respond faster</button>
+      <button class="qopt" type="button">C · The behavior fires automatically, so you never re-prompt it again</button>
+      <p class="qwhy">The harness runs the hook. A configured-once behavior stops costing a re-request every session - the cheapest token is the one you never send.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">2 · You ask about a crypto or quant-trading decision. What will Claude do?</p>
+      <button class="qopt" type="button">A · Place the trade if you confirm the details</button>
+      <button class="qopt" type="button">B · Research and explain only - no trades, no personalized financial advice</button>
+      <button class="qopt" type="button">C · Give you a specific buy/sell recommendation</button>
+      <p class="qwhy">It's a hard boundary: research and explanation, yes; executing trades or personalized investment advice, no. Decisions about your money stay with you and a licensed professional.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · What does core-mentor-room give you that a single answer can't?</p>
+      <button class="qopt" type="button">A · Several distinct expert lenses, including productive disagreement</button>
+      <button class="qopt" type="button">B · A faster response</button>
+      <button class="qopt" type="button">C · Fewer tokens per turn</button>
+      <p class="qwhy">The value is the diversity of angles - the lens that disagrees with your gut and names the factor you hadn't weighed.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 7 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>core-mentor-room</b><span>Roundtable of named mentors. Pick 5-8 per topic for distinct lenses before a decision.</span></div>
+      <div class="cheat-item"><b>proficiently</b><span>Job-search arc: job-search · apply · tailor-resume · network-scan. Surface truth, flag gaps.</span></div>
+      <div class="cheat-item"><b>resume-builder-harvard</b><span>Build the resume from scratch. Pair with tailor-resume to fit one JD.</span></div>
+      <div class="cheat-item"><b>update-config ⚡</b><span>Turn "from now on, whenever X" into a hook. Harness runs it - no re-prompt, ever.</span></div>
+      <div class="cheat-item"><b>schedule / loop</b><span>schedule = cron cloud routines · loop = interval within a session. Work initiates itself.</span></div>
+      <div class="cheat-item"><b>fewer-permission-prompts ⚡</b><span>Allowlist safe read-only commands. Fewer round-trips = fewer tokens. Never allowlist destructive.</span></div>
+      <div class="cheat-item"><b>security-review</b><span>Code + config vuln review for gov and cyber. Gov track = data-privacy discipline.</span></div>
+      <div class="cheat-item"><b>Edge guardrail</b><span>Crypto/quant: research and explain only. No trades, no personalized financial advice.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Session 7 of 8 · learn-claude-skills-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="06-content-viz-comm.html">← Prev: Content, viz &amp; comm</a> &nbsp;·&nbsp; <a href="08-build-your-own-skill.html">Next: Build your own skill →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

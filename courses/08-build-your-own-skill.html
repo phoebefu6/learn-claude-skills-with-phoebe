@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 8 · Build your own skill - learn claude skills with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-claude-skills-with-phoebe</a> / Session 8 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Claude Skills with Phoebe · Session 8 of 8</div>
+    <h1>Build your own <span class="accent">skill</span></h1>
+    <p class="sub">The capstone. Take one job you keep re-explaining to Claude and package it as a token-lean skill of your own - closing the loop that opened in Session 1.</p>
+    <div class="chip-row">
+      <span class="chip level">🔴 Capstone</span>
+      <span class="chip audience">Everyone who wants leverage</span>
+      <span class="chip audience">meta</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-24 · Concepts (live cards)</span>
+      <span class="a3" style="flex:4">24-42 · Three demos</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Why this session exists</h2>
+    </div>
+    <p class="lede">Seven sessions in, you've used other people's skills. Now you build one. This is the capstone because it turns the whole course into leverage you own: pick a job you keep re-explaining to Claude, and package it once as a skill that fires on its own trigger and spends the fewest tokens doing it. Everything from Session 1 comes back here - the anatomy of a <code>SKILL.md</code>, progressive disclosure, and the idea that a good <strong>description</strong> is a token contract. By the end you have one working skill, not a diagram of one.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">2 official Anthropic courses covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      One real, working, token-lean skill of your own - a thin <code>SKILL.md</code> with a sharp description that triggers on the right phrasing, its heavy detail parked in reference files that load only on demand. Plus the five-move token-budget playbook that ties every earlier session together, so the leverage keeps compounding after class ends.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: SKILL-AUTHORING SKILLS ============ -->
+  <section class="section" id="authoring">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers "Agent Skills with Anthropic" + "Introduction to Agent Skills"</span>
+      <h2>The skill-authoring skills <span class="tag concept">7 min live</span></h2>
+    </div>
+    <p class="lede">There are skills whose whole job is building other skills. Two carry this session: <code>anthropic-skills:skill-creator</code> scaffolds, edits, and evals a skill and tunes its description so it triggers accurately, and <code>superpowers:writing-skills</code> supplies the authoring discipline - tight, testable, one job per skill. Learn these two and skill-writing stops being guesswork.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The skill creation loop: draft SKILL.md, test triggering, refine description, then ship">
+        <style>
+          .scH { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .scI { font: 700 15px Inter, sans-serif; fill: #211712; }
+          .scT { font: 700 16px Inter, sans-serif; fill: #211712; }
+          .scX { font: 400 13px Inter, sans-serif; fill: #6E5D53; }
+          .scN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+          .scA { stroke: #C9BCB2; stroke-width: 2.5; fill: none; marker-end: url(#scAh); }
+        </style>
+        <defs>
+          <marker id="scAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <text class="scT" x="20" y="30">The skill-creation loop</text>
+        <rect x="20" y="48" width="180" height="54" rx="12" fill="#7A3520"/>
+        <text class="scH" x="42" y="72">1 · draft</text>
+        <text class="scX" x="42" y="92" fill="#F0C9B3">write SKILL.md</text>
+        <rect x="245" y="48" width="180" height="54" rx="12" fill="#B5502E"/>
+        <text class="scH" x="267" y="72">2 · test trigger</text>
+        <text class="scX" x="267" y="92" fill="#F5DAC8">does it fire?</text>
+        <rect x="470" y="48" width="200" height="54" rx="12" fill="#CC785C"/>
+        <text class="scI" x="492" y="72">3 · refine desc</text>
+        <text class="scX" x="492" y="92">tune the trigger</text>
+        <rect x="715" y="48" width="145" height="54" rx="12" fill="#E3A008"/>
+        <text class="scI" x="740" y="72">4 · ship</text>
+        <text class="scX" x="740" y="92">install it</text>
+        <line class="scA" x1="200" y1="75" x2="243" y2="75"/>
+        <line class="scA" x1="425" y1="75" x2="468" y2="75"/>
+        <line class="scA" x1="670" y1="75" x2="713" y2="75"/>
+        <path class="scA" d="M560,102 C560,150 335,150 335,104"/>
+        <text class="scX" x="360" y="145">fires wrong or not at all? tune and re-test</text>
+        <text class="scX" x="20" y="192">skill-creator scaffolds the files and runs the eval.</text>
+        <text class="scX" x="20" y="214">writing-skills keeps it tight: one job, testable, no bloat.</text>
+        <rect x="20" y="242" width="840" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="256" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="scN" x="58" y="268">The eval is a trigger test: right phrasing must fire it, wrong phrasing must not.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the draft, test, refine, ship loop behind every good skill</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>skill-creator - scaffold, edit, eval, tune<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><code>anthropic-skills:skill-creator</code> is the workhorse. Point it at a job and it creates the folder, writes a starter <code>SKILL.md</code> with front matter, and - the part people skip - runs an <strong>eval</strong> on the description to check triggering accuracy.</p>
+        <ul>
+          <li><strong>Create</strong> - scaffolds the skill folder and a first-draft body from your description of the job.</li>
+          <li><strong>Edit</strong> - improves an existing skill without you hand-editing markdown.</li>
+          <li><strong>Eval</strong> - tests that the skill fires on tasks that should match and stays quiet on those that shouldn't.</li>
+          <li><strong>Tune the description</strong> - the single highest-leverage edit, because the description is all Claude reads to decide whether to open the skill.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Use skill-creator to scaffold a skill for a job I repeat: [name the job in one line]. Draft the description, then tell me what phrasing would and wouldn't trigger it.</div>
+        <div class="callout tip">
+          <strong>Why the eval matters</strong>
+          A skill that never fires is worse than no skill - it's dead weight you forget you own. The eval catches a too-narrow or too-vague description before you ship, when it's cheap to fix.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>writing-skills - the authoring discipline<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><code>superpowers:writing-skills</code> is less a tool than a set of rules for what a good skill looks like. It exists because the easy failure mode is a bloated skill that tries to do five jobs and triggers on none of them clearly.</p>
+        <ul>
+          <li><strong>One job</strong> - a skill does a single thing well. Two jobs means two skills.</li>
+          <li><strong>Tight</strong> - the body is instructions, not an essay. Depth goes in reference files, not the always-scanned part.</li>
+          <li><strong>Testable</strong> - you can state plainly what "working" means, so you can eval it.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>An early draft of a data skill tried to cover profiling, charting, and a scorecard in one body. It triggered inconsistently and the body was huge. Split into three single-job skills with sharp descriptions, each fired reliably and each body dropped to under a screen. Same coverage, far cleaner triggering, fewer tokens.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The description is the whole trigger<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>This is worth internalizing before you write a line. Claude decides whether to open your skill from the name and description alone - the body is invisible until that decision is made. So the description does two jobs at once:</p>
+        <ul>
+          <li><strong>It is the trigger</strong> - pack it with the words a matching task would actually contain ("use when the user wants to...", plus the phrasings, synonyms, and file types).</li>
+          <li><strong>It is the token contract</strong> - it alone decides when the expensive body loads. A precise description means the body loads exactly when useful and never otherwise.</li>
+        </ul>
+        <p>Get the description right and the rest of the skill is easy. Get it wrong and the best body in the world never runs.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: PHOEBE'S FACTORIES ============ -->
+  <section class="section" id="factories">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · from a working skill to a published one</span>
+      <h2>Phoebe's factories <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Once you can author a skill, two of Phoebe's own skills turn it into a repeatable pipeline. <code>phoebe-skills-builder</code> builds, sanitizes, and publishes showcase skills to GitHub; <code>skill-build-partner</code> is the data-skill factory that runs a fixed six-step pipeline end to end. Both exist so that "I built a skill" becomes "I ship skills on a line".</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The factory pipeline: idea, build, sanitize, publish to GitHub">
+        <style>
+          .pfH { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .pfI { font: 700 15px Inter, sans-serif; fill: #211712; }
+          .pfT { font: 700 16px Inter, sans-serif; fill: #211712; }
+          .pfX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .pfL { font: 400 12px Inter, sans-serif; fill: #F0C9B3; }
+          .pfN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+          .pfA { stroke: #C9BCB2; stroke-width: 2.5; fill: none; marker-end: url(#pfAh); }
+        </style>
+        <defs>
+          <marker id="pfAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <text class="pfT" x="20" y="30">Idea to published skill</text>
+        <rect x="20" y="52" width="185" height="58" rx="12" fill="#7A3520"/>
+        <text class="pfH" x="42" y="78">1 · idea</text>
+        <text class="pfL" x="42" y="98">a job worth reusing</text>
+        <rect x="248" y="52" width="185" height="58" rx="12" fill="#B5502E"/>
+        <text class="pfH" x="270" y="78">2 · build</text>
+        <text class="pfL" x="270" y="98" fill="#F5DAC8">author + eval</text>
+        <rect x="476" y="52" width="185" height="58" rx="12" fill="#CC785C"/>
+        <text class="pfI" x="498" y="78">3 · sanitize</text>
+        <text class="pfX" x="498" y="98">strip anything private</text>
+        <rect x="704" y="52" width="156" height="58" rx="12" fill="#E3A008"/>
+        <text class="pfI" x="726" y="78">4 · publish</text>
+        <text class="pfX" x="726" y="98">GitHub showcase</text>
+        <line class="pfA" x1="205" y1="81" x2="246" y2="81"/>
+        <line class="pfA" x1="433" y1="81" x2="474" y2="81"/>
+        <line class="pfA" x1="661" y1="81" x2="702" y2="81"/>
+        <text class="pfX" x="20" y="152">phoebe-skills-builder runs build, sanitize, publish - one at a time, with approval.</text>
+        <text class="pfX" x="20" y="174">skill-build-partner is the data-skill version: a fixed six-step pipeline.</text>
+        <text class="pfX" x="20" y="196">Sanitize is not optional - a public skill must carry no client or private detail.</text>
+        <rect x="20" y="222" width="840" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="236" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="pfN" x="58" y="248">A factory means the loop is repeatable: the tenth skill costs far less effort than the first.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - idea, build, sanitize, publish - the factory loop</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>phoebe-skills-builder - build, sanitize, publish<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><code>phoebe-skills-builder</code> is the co-pilot for turning a private skill into a public showcase one. It brainstorms the idea, co-builds a clean public-ready skill, then <strong>sanitizes</strong> - the step that keeps client names, internal paths, and proprietary logic out of anything that goes public.</p>
+        <ul>
+          <li><strong>Build</strong> - shapes the skill with lots of questions, so the description and scope are sharp.</li>
+          <li><strong>Sanitize</strong> - scrubs proprietary detail before publish. Non-negotiable for a public repo.</li>
+          <li><strong>Publish</strong> - one skill at a time, with explicit approval, to the public showcase repo.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>Publish deliberately</strong>
+          Never bulk-publish. Each skill is a curated showcase piece, approved on its own. The public repo is a portfolio, not a dumping ground.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>skill-build-partner - the data-skill factory<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><code>skill-build-partner</code> is the specialist factory for data and applied-AI skills. It runs a fixed <strong>six-step pipeline</strong> and emits real executed artifacts - not just a <code>SKILL.md</code> but a runnable example that proves the skill works.</p>
+        <ul>
+          <li>Designs the skill against a four-layer roadmap: infrastructure, data analytics, data science, gen AI.</li>
+          <li>Produces one of four artifact types - python plus charts, an ERD/DDL/contract, an HTML exec scorecard, or a runnable agent.</li>
+          <li>Publishes each as an installable skill plus a visual step-by-step page on the public data-skills site.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>A "how to EDA with python" idea went through the six steps and came out as an installable skill with a real profiling run, saved charts, and a published walkthrough page. The pipeline made the artifact reproducible instead of a one-off notebook that rots.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Which factory for which job<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>A general workflow skill</strong> (a report format, a review checklist, a routing helper) - <code>phoebe-skills-builder</code>.</li>
+          <li><strong>A data or applied-AI skill</strong> that needs a runnable artifact and a visual walkthrough - <code>skill-build-partner</code>.</li>
+          <li><strong>Just scaffolding one skill fast</strong>, no publish pipeline - <code>skill-creator</code> from Part 1 is enough.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: TOKEN-LEAN ============ -->
+  <section class="section" id="token-lean">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · the payoff of the whole course</span>
+      <h2>Write it token-lean <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">This is where everything pays off. The whole course argued that the cheapest token is the one you never load - now you apply it to your own skill. The move is <strong>progressive disclosure</strong>: a thin <code>SKILL.md</code> holding just a name, a sharp description, and a short body, with all the heavy detail moved into reference files that load only when a step reaches for them.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A thin SKILL.md on top with heavy reference files below, loaded only when a step needs them">
+        <style>
+          .tlH { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .tlI { font: 700 14px Inter, sans-serif; fill: #211712; }
+          .tlT { font: 700 16px Inter, sans-serif; fill: #211712; }
+          .tlX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .tlL { font: 400 12px Inter, sans-serif; fill: #F0C9B3; }
+          .tlN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+          .tlA { stroke: #C9BCB2; stroke-width: 2; fill: none; stroke-dasharray: 5 4; marker-end: url(#tlAh); }
+        </style>
+        <defs>
+          <marker id="tlAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <text class="tlT" x="20" y="30">Thin on top, heavy below</text>
+        <rect x="20" y="46" width="500" height="72" rx="12" fill="#7A3520"/>
+        <text class="tlH" x="42" y="72">SKILL.md - always scanned</text>
+        <text class="tlL" x="42" y="94">name · sharp description · short body</text>
+        <text class="tlL" x="42" y="110">stays cheap, always in context</text>
+        <text class="tlX" x="545" y="88">the description decides</text>
+        <text class="tlX" x="545" y="106">when everything below loads</text>
+        <rect x="20" y="164" width="255" height="66" rx="12" fill="#E4A886"/>
+        <text class="tlI" x="40" y="192">reference-a.md</text>
+        <text class="tlX" x="40" y="212">the long how-to detail</text>
+        <rect x="312" y="164" width="255" height="66" rx="12" fill="#F0C9B3"/>
+        <text class="tlI" x="332" y="192">templates + examples</text>
+        <text class="tlX" x="332" y="212">loaded only if a step asks</text>
+        <rect x="604" y="164" width="256" height="66" rx="12" fill="#F5DAC8"/>
+        <text class="tlI" x="624" y="192">scripts</text>
+        <text class="tlX" x="624" y="212">run on demand, not read</text>
+        <line class="tlA" x1="140" y1="118" x2="140" y2="162"/>
+        <line class="tlA" x1="435" y1="118" x2="435" y2="162"/>
+        <line class="tlA" x1="720" y1="118" x2="720" y2="162"/>
+        <rect x="20" y="250" width="840" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="264" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="tlN" x="58" y="276">Dashed lines = loaded on demand. The body stays a screen; depth lives one hop away.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - a thin SKILL.md over heavy references loaded only when needed</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Keep the body under a screen<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The body is the part that loads every time the skill fires. If it's long, you pay for the long version on every use - even the steps that only need a fraction of it. So keep it short and point outward:</p>
+        <ul>
+          <li><strong>Body = the spine</strong> - the sequence of steps and the decisions, in plain instructions.</li>
+          <li><strong>References = the flesh</strong> - the long tables, the edge cases, the templates, each in its own file the body names.</li>
+          <li><strong>Load on demand</strong> - Claude reads a reference file only when a step it's on actually points there.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>A skill's body held a 40-row lookup table it needed maybe one time in five. Moved to <code>references/lookup.md</code>, the body dropped to a screen and the table now loads only on the runs that use it. Four out of five invocations got cheaper for free.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The description is your token contract<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Come back to this one more time, because it's the payoff sentence of the whole course: <strong>a good description is the token contract</strong>. It's the one line that decides when the body - and everything the body pulls in - actually loads.</p>
+        <ul>
+          <li>Too vague - the skill fires on unrelated tasks, loading its body when you don't want it. Wasted tokens.</li>
+          <li>Too narrow - it never fires, and the leverage you built sits unused. Wasted effort.</li>
+          <li>Just right - it fires exactly when useful, so the body's cost lands only where it earns its keep.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Here is my skill's description: [paste it]. Test it against 3 tasks that should trigger it and 3 that shouldn't. Where does it misfire, and how would you tighten the wording?</div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>How references get loaded<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The body names its reference files by path - "for the full checklist see <code>references/checklist.md</code>". Claude follows that path only when it reaches the step that needs it. That's the same three-level progressive disclosure from Session 1, applied inside your own skill: name and description always, body when it fires, references only when a step reaches for them. Building your skill this way is not a nice-to-have - it's the difference between a skill that's cheap to keep installed and one that quietly taxes every session it touches.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 4: TOKEN-BUDGET PLAYBOOK ============ -->
+  <section class="section" id="playbook">
+    <div class="section-kicker">
+      <span class="klabel">Part 4 · the course in five habits</span>
+      <h2>The token-budget playbook <span class="tag concept">3 min live</span></h2>
+    </div>
+    <p class="lede">Five habits carry everything you've learned. Each one traces back to a session, so the whole course collapses into a checklist you can run on any task - not just when you're building a skill.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Five habits, and where each was taught<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Run these in order on any real task. Together they are what "minimum token consumption" actually means in practice.</p>
+        <table class="clean">
+          <thead><tr><th>Habit</th><th>What it means</th><th>Taught in</th></tr></thead>
+          <tbody>
+            <tr><td>Measure</td><td>Notice what's filling your context before you optimize</td><td>Session 1 · context = budget</td></tr>
+            <tr><td>Don't load</td><td>Progressive disclosure - keep detail on disk until needed</td><td>Session 1 + this session</td></tr>
+            <tr><td>Offload</td><td>Send heavy reading to a subagent with its own budget</td><td>Session 1 · OFFLOAD</td></tr>
+            <tr><td>Compress</td><td>Return conclusions, not raw dumps (caveman)</td><td>Session 1 · COMPRESS</td></tr>
+            <tr><td>Reuse</td><td>Cache stable context - Projects + prompt caching</td><td>across the course</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <strong>The one habit that funds the rest</strong>
+          Measure first. You can't offload or compress what you haven't noticed is expensive. Reading your own context as a budget is the reflex that makes every other move fire at the right moment.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Your skill is where all five land<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A well-built skill runs the whole playbook for you automatically. Its thin body <em>doesn't load</em> detail you don't need. It can dispatch a subagent to <em>offload</em> heavy work. Its output can be <em>compressed</em>. And installed once, it's <em>reused</em> across every project without re-explaining. That's why the capstone is building a skill: it's the playbook made permanent.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 3</span>
+      <h2>Scaffold a SKILL.md for a job you repeat <span class="tag demo">★ 6 min · follow along</span></h2>
+    </div>
+    <p class="lede">Start from a job you actually keep re-explaining. Let skill-creator turn it into a real folder with a first-draft <code>SKILL.md</code> - the fastest way from idea to something you can run.</p>
+    <div class="prompt-box good"><span class="label">★ Scaffold prompt</span>Use skill-creator to scaffold a new skill for this recurring job: [describe it in one line - what you keep asking Claude to do].
+
+Draft the name, the description, and a short body. Keep the body under a screen and tell me what depth you'd move into reference files.</div>
+    <div class="steps">
+      <div class="step"><p>Pick a job you've explained to Claude more than twice - a format, a checklist, a routine analysis.</p></div>
+      <div class="step"><p>Run the scaffold prompt. Read the draft description out loud - would a matching task contain those words?</p></div>
+      <div class="step"><p>Confirm the folder and <code>SKILL.md</code> exist. Notice how little is in the body so far.</p></div>
+      <div class="step"><p>Name the depth you'll move out of the body - that's Demo 3's job.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 3</span>
+      <h2>Tune the description until it triggers right <span class="tag demo">★ 7 min · build your own</span></h2>
+    </div>
+    <p class="lede">The description is the trigger and the token contract. This demo is the eval: prove it fires on the right phrasing and stays quiet on the wrong phrasing.</p>
+    <div class="prompt-box good"><span class="label">Trigger-test prompt</span>Here is my skill's description: [paste it].
+
+Run a trigger test: list 3 tasks that SHOULD fire this skill and 3 that should NOT. For each, say whether the current description would fire and why. Then propose a tightened description that gets all 6 right.</div>
+    <div class="steps">
+      <div class="step"><p>Paste your draft description into the trigger-test prompt.</p></div>
+      <div class="step"><p>Look for the misfires - a "should" that wouldn't fire, or a "shouldn't" that would.</p></div>
+      <div class="step"><p>Adopt the tightened description. Add the real phrasings and file types a matching task would use.</p></div>
+      <div class="step"><p>Re-run the test until all six land correctly. Now the description is doing its two jobs at once.</p></div>
+    </div>
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p>A skill for "decode a metric term into a carousel" wouldn't fire on "explain what churn rate means" - the description said "carousel" but not "explain" or "what does X mean". Adding those phrasings fixed it without touching the body. The trigger, not the instructions, was the bug.</p>
+    </div>
+  </section>
+
+  <!-- ============ DEMO 3 ============ -->
+  <section class="section" id="demo-3">
+    <div class="section-kicker">
+      <span class="klabel">Demo 3 of 3</span>
+      <h2>Move the bulk into a reference file <span class="tag demo">★ 5 min · build your own</span></h2>
+    </div>
+    <p class="lede">The payoff move: take the heavy detail out of the body and park it in a reference file, then watch the body stay cheap until a step actually needs the depth.</p>
+    <div class="prompt-box good"><span class="label">Thin-out prompt</span>My skill's body has grown long. Move the heavy detail - the long tables, edge cases, and templates - into files under references/, and leave the body as a short spine that names those files by path.
+
+Show me the new body and confirm each reference loads only when its step is reached.</div>
+    <div class="steps">
+      <div class="step"><p>Identify what in the body is depth, not spine - anything you don't need on every run.</p></div>
+      <div class="step"><p>Run the thin-out prompt. The body should shrink to the sequence of steps plus paths to references.</p></div>
+      <div class="step"><p>Invoke the skill on a task that doesn't need the depth. Notice the reference file never loaded.</p></div>
+      <div class="step"><p>Invoke it on a task that does. Now the reference loads - on demand, exactly once, only when earned.</p></div>
+    </div>
+    <div class="callout tip">
+      <strong>You just shipped a token-lean skill</strong>
+      Thin body, sharp description, depth in references that load on demand. That's the whole course in one artifact you own - and it keeps paying every time the skill fires.
+    </div>
+  </section>
+
+  <!-- ============ TRY IT YOURSELF ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - ship one real skill <span class="tag exercise">◐ 45-90 min total</span></h2>
+    </div>
+    <ul>
+      <li>Ship one real skill for a job you genuinely repeat. Working beats perfect - you can refine it later.</li>
+      <li>Give it a sharp description: pack in the phrasings and file types a matching task would contain, then trigger-test it on 3 should-fire and 3 should-not tasks.</li>
+      <li>Keep the body under a screen. If it's longer, you have depth that belongs in a reference file.</li>
+      <li>Put the depth in <code>references/</code> and confirm each file loads only when its step is reached.</li>
+      <li>Run the five-move playbook once on a normal task - measure, don't-load, offload, compress, reuse - and note which move saved the most.</li>
+      <li><strong>Leads:</strong> have each person ship one skill for a job their whole team repeats. A shared skill is training that installs once and pays forever.</li>
+      <li>Optional, for the certificate: the official courses below are free - this page covers their working content, but certificates come from Anthropic.</li>
+    </ul>
+  </section>
+
+  <!-- ============ OFFICIAL COURSES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official courses covered</h2>
+    </div>
+    <p class="lede">This capstone teaches the working content of Anthropic's skill-authoring material - creating, editing, evaluating, and tuning a skill for accurate triggering. What stays exclusive to the originals: video walkthroughs, graded labs, and certificates.</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Agent Skills with Anthropic (DeepLearning.AI)</span><span class="note">Part 1: skill-creator, the eval loop, tuning the description as the trigger</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Introduction to Agent Skills (Anthropic Academy)</span><span class="note">Parts 1 + 3 + demos: author, configure, thin out, and invoke your own skill</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · A skill you built never seems to fire. The most likely fix is...</p>
+      <button class="qopt" type="button">A · Make the body longer and more detailed</button>
+      <button class="qopt" type="button">B · Reinstall it in a different folder</button>
+      <button class="qopt" type="button">C · Tighten the description - it's the trigger, and it's too narrow or vague</button>
+      <p class="qwhy">Claude decides whether to open a skill from name + description alone. If it won't fire, the trigger wording is the bug, not the body.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">2 · Your skill's body has grown to three screens. The token-lean move is...</p>
+      <button class="qopt" type="button">A · Leave it - a bigger body means a smarter skill</button>
+      <button class="qopt" type="button">B · Move the depth into reference files the body names, keeping the body a short spine</button>
+      <button class="qopt" type="button">C · Delete half the instructions to make it fit</button>
+      <p class="qwhy">Progressive disclosure inside your own skill: a thin body loads every time, references load only when a step reaches for them.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · In "measure, don't-load, offload, compress, reuse", which comes first and why?</p>
+      <button class="qopt" type="button">A · Measure - you can't optimize context you haven't noticed is expensive</button>
+      <button class="qopt" type="button">B · Compress - always shrink output before anything else</button>
+      <button class="qopt" type="button">C · Reuse - caching solves every token problem on its own</button>
+      <p class="qwhy">Measure funds the rest. Reading your context as a budget is the reflex that tells you when to offload or compress.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 8 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>skill-creator</b><span>Scaffold, edit, and eval a skill; tune the description for accurate triggering.</span></div>
+      <div class="cheat-item"><b>writing-skills</b><span>Authoring discipline: one job, tight body, testable. Depth goes in references.</span></div>
+      <div class="cheat-item"><b>phoebe-skills-builder</b><span>Build, sanitize, publish showcase skills to GitHub - one at a time, with approval.</span></div>
+      <div class="cheat-item"><b>skill-build-partner</b><span>The data-skill factory: a fixed six-step pipeline that emits real runnable artifacts.</span></div>
+      <div class="cheat-item"><b>Thin your own skill</b><span>Progressive disclosure: short body, depth in references that load on demand.</span></div>
+      <div class="cheat-item"><b>5-move playbook</b><span>Measure · don't-load · offload · compress · reuse. The whole course in a checklist.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Session 8 of 8 · learn-claude-skills-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="07-lead-ops-edge.html">← Lead, ops &amp; edge</a> &nbsp;·&nbsp; <a href="../00-matrix.html">Next: The 17x10 matrix →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

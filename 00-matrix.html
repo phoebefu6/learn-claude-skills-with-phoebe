@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reference · The 17x10 matrix - learn claude skills with phoebe</title>
+<link rel="stylesheet" href="assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="index.html">learn-claude-skills-with-phoebe</a> / Reference · 17x10 matrix</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Claude Skills with Phoebe · Reference</div>
+    <h1>The 17x10 <span class="accent">matrix</span></h1>
+    <p class="sub">Top skills for every one of Phoebe's 17 course tracks, plus the Core Stack they all inherit.</p>
+    <div class="chip-row">
+      <span class="chip level">📊 Reference</span>
+      <span class="chip audience">All 17 tracks</span>
+      <span class="chip audience">Skill picker</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">How to read this page</span>
+      <h2>The browsable skill index</h2>
+    </div>
+    <p class="lede">This is the index you skim when you're about to start real work and want the right specialist, not a guess. The <strong>Core Stack</strong> from Session 1 applies everywhere - it's the base layer under all 17 tracks. Each track below then lists its own top picks that sit <em>on top of</em> that base. Find your track, read its short table, and reach for the named skill instead of improvising. Every pick names what it does, when to use it, and its token effect - because a skill you pick on purpose spends fewer tokens than a workflow you rebuild from scratch.</p>
+    <div class="legend">
+      <span class="pill peach">💰 saves tokens</span>
+      <span class="pill solid">🎯 prevents rework</span>
+      <span class="pill inkpill">⚡ quality / speed multiplier</span>
+    </div>
+    <div class="callout tip">
+      <strong>The Core Stack is inherited, not repeated</strong>
+      Every track assumes you're already running the Core 8 - grill, route, offload, compress, verify, taste-gate. The per-track picks below are what you add on top for that specific kind of work. When in doubt, start from the Core Stack and add the track's first two picks.
+    </div>
+  </section>
+
+  <!-- ============ CORE STACK ============ -->
+  <section class="section" id="core-stack">
+    <div class="section-kicker">
+      <span class="klabel">Base layer</span>
+      <h2>Core Stack (inherited by all 17)</h2>
+    </div>
+    <p class="lede">The eight from Session 1. These fire on nearly every task regardless of track - the plan, offload, compress, ship loop that keeps any session lean.</p>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>What it does (and token effect)</th></tr></thead>
+      <tbody>
+        <tr><td>grilling</td><td>🎯 Grills your scope before a line is built - kills the rework loop, the biggest token sink there is</td></tr>
+        <tr><td>superpowers:brainstorming</td><td>Shapes a fuzzy idea into a clear spec before you build</td></tr>
+        <tr><td>using-superpowers</td><td>Routes you to the right skill instead of improvising a job one already does</td></tr>
+        <tr><td>subagent-driven-development + dispatching-parallel-agents</td><td>💰 Offloads heavy work to fresh-context helpers so your main window stays lean</td></tr>
+        <tr><td>Explore + deep-research</td><td>💰 Returns conclusions and cited answers, not raw file or page dumps</td></tr>
+        <tr><td>caveman cavecrew-investigator + caveman-compress</td><td>💰 Compressed locate and terse output - roughly 60% fewer tokens</td></tr>
+        <tr><td>verification-before-completion</td><td>🎯 Blocks the false "done" - a real check before anyone says finished</td></tr>
+        <tr><td>impeccable</td><td>⚡ The anti-slop taste gate on anything visual, within your locked brand</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TRACK 1 ============ -->
+  <section class="section" id="track-ai">
+    <div class="section-kicker">
+      <span class="klabel">Track 01</span>
+      <h2>ai - claude, prompting, rag, evals, langchain, mcp</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>claude-api</td><td>Model ids, pricing, params before any LLM call</td><td>🎯 right model + caching, no guessing</td></tr>
+        <tr><td>prompt-master</td><td>Craft and refine prompts systematically</td><td>⚡ better output per token</td></tr>
+        <tr><td>anthropic-skills:skill-creator</td><td>Scaffold and eval a new skill</td><td>🎯 accurate triggering</td></tr>
+        <tr><td>superpowers:writing-skills</td><td>Authoring discipline for skills</td><td>💰 thin bodies, load on demand</td></tr>
+        <tr><td>superpowers:test-driven-development</td><td>Prove a RAG / eval pipeline with tests</td><td>🎯 no false pass</td></tr>
+        <tr><td>artifact-capabilities</td><td>Live or stateful artifact pages</td><td>⚡ runtime power static HTML lacks</td></tr>
+        <tr><td>notebooklm</td><td>Ground answers in your own sources</td><td>💰 conclusions from a corpus</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TRACK 2 ============ -->
+  <section class="section" id="track-aiap">
+    <div class="section-kicker">
+      <span class="klabel">Track 02</span>
+      <h2>aiap - AI apps: writing, office, ppt, coding, qa, media, digital-human</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>anthropic-skills docx / pptx / xlsx / pdf</td><td>Read and write real Office and PDF files</td><td>🎯 real files, not guesses</td></tr>
+        <tr><td>PowerPoint MCP</td><td>Build and edit decks programmatically</td><td>⚡ native .pptx output</td></tr>
+        <tr><td>Word MCP</td><td>Build and edit Word docs</td><td>⚡ native .docx output</td></tr>
+        <tr><td>elite-powerpoint-designer</td><td>Designed generic decks</td><td>⚡ craft on slides</td></tr>
+        <tr><td>humanizer-zh</td><td>De-robotize Chinese copy</td><td>⚡ natural voice</td></tr>
+        <tr><td>proof</td><td>Proofread every new doc</td><td>🎯 catches errors before ship</td></tr>
+        <tr><td>remotion-video-skill</td><td>Programmatic video</td><td>⚡ code-driven media</td></tr>
+        <tr><td>midjourney-cc-skill</td><td>MJ prompts and iteration</td><td>⚡ better images per attempt</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TRACK 3 ============ -->
+  <section class="section" id="track-aidm">
+    <div class="section-kicker">
+      <span class="klabel">Track 03</span>
+      <h2>aidm - AI in domains x12</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>phoebe-data-schema-to-insights</td><td>Schema to contract to insight</td><td>💰 offline scan, lean output</td></tr>
+        <tr><td>marketing-skills pack</td><td>Domain marketing playbooks</td><td>🎯 proven patterns, not improvised</td></tr>
+        <tr><td>dataviz</td><td>Any chart, one design system</td><td>⚡ accessible, consistent charts</td></tr>
+        <tr><td>content-multiplexer</td><td>One topic to 4 platform drafts</td><td>💰 one idea, reused</td></tr>
+        <tr><td>phoebe-design-partner</td><td>Supervises all visual output</td><td>⚡ editorial-bold, on-brand</td></tr>
+        <tr><td>resume-builder-harvard</td><td>Resume / CV tailored to a JD</td><td>🎯 ATS-ready, targeted</td></tr>
+        <tr><td>marketing-skills:analytics</td><td>Marketing metrics and analysis</td><td>🎯 measure what matters</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TRACK 4 ============ -->
+  <section class="section" id="track-data">
+    <div class="section-kicker">
+      <span class="klabel">Track 04</span>
+      <h2>data - product, literacy, sql, bi, python-data, dataops</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>skill-build-partner</td><td>Build a how-to-X data skill</td><td>💰 reusable artifact, not a one-off</td></tr>
+        <tr><td>phoebe-data-schema-to-insights</td><td>Schema to insight pipeline</td><td>💰 lean scan</td></tr>
+        <tr><td>dataviz</td><td>Charts and dashboards</td><td>⚡ one visual system</td></tr>
+        <tr><td>core-workspace-skills</td><td>Routes data and analytics tasks</td><td>🎯 right specialist</td></tr>
+        <tr><td>app-script-partner</td><td>Turns Sheets into visual tabs</td><td>⚡ in-place solutions</td></tr>
+        <tr><td>data-infra tools (DrawDB, OpenMetadata, Great Expectations)</td><td>ERD, catalog, and quality checks</td><td>🎯 governed data foundation</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TRACK 5 ============ -->
+  <section class="section" id="track-gov">
+    <div class="section-kicker">
+      <span class="klabel">Track 05</span>
+      <h2>gov - gov-101, data-gov, ai-gov, gdpr, pdpa</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>security-review</td><td>Audit code and config for risk</td><td>🎯 catch exposure early</td></tr>
+        <tr><td>proof</td><td>Proof every policy doc</td><td>🎯 precise wording</td></tr>
+        <tr><td>core-workspace-skills</td><td>Routes governance tasks</td><td>🎯 right method</td></tr>
+        <tr><td>Great Expectations</td><td>Codify data quality rules</td><td>🎯 enforce contracts</td></tr>
+        <tr><td>DataHub / OpenMetadata lineage</td><td>Track lineage and catalog</td><td>⚡ auditable provenance</td></tr>
+        <tr><td>deep-research</td><td>Cited regulatory research</td><td>💰 verified conclusions</td></tr>
+      </tbody>
+    </table>
+    <div class="callout tip">
+      <strong>Guardrail - privacy discipline</strong>
+      Never place personal or sensitive data in URLs or query strings, and keep the most privacy-preserving default on any consent choice. Governance work is where discipline, not speed, is the point.
+    </div>
+  </section>
+
+  <!-- ============ TRACK 6 ============ -->
+  <section class="section" id="track-prog">
+    <div class="section-kicker">
+      <span class="klabel">Track 06</span>
+      <h2>prog - github, html, python, builders</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>superpowers:test-driven-development</td><td>Write the test first</td><td>🎯 no false done</td></tr>
+        <tr><td>superpowers:systematic-debugging</td><td>Root-cause, not guess-and-check</td><td>🎯 fix once</td></tr>
+        <tr><td>superpowers:using-git-worktrees</td><td>Parallel branches cleanly</td><td>⚡ isolated work</td></tr>
+        <tr><td>superpowers:requesting-code-review</td><td>Structured review before merge</td><td>🎯 catch it early</td></tr>
+        <tr><td>caveman cavecrew-reviewer</td><td>One line per finding, no padding</td><td>💰 ~60% fewer tokens</td></tr>
+        <tr><td>build-deploy-html</td><td>Audit, inline, and host HTML</td><td>⚡ shipped and hardened</td></tr>
+        <tr><td>run</td><td>Launch the app to see it work</td><td>🎯 verify in the real app</td></tr>
+        <tr><td>review / security-review</td><td>Code and security audit</td><td>🎯 quality + safety gate</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TRACK 7 ============ -->
+  <section class="section" id="track-docs">
+    <div class="section-kicker">
+      <span class="klabel">Track 07</span>
+      <h2>docs - markdown, mermaid, tech-writing</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>proof</td><td>Proof every markdown doc</td><td>🎯 error-free by default</td></tr>
+        <tr><td>humanizer-zh</td><td>Natural Chinese prose</td><td>⚡ human voice</td></tr>
+        <tr><td>anthropic-skills:docx</td><td>Export to Word</td><td>⚡ native docs</td></tr>
+        <tr><td>dataviz</td><td>Diagrams and charts inline</td><td>⚡ one visual system</td></tr>
+        <tr><td>superpowers:writing-skills</td><td>Tight, testable writing</td><td>💰 lean structure</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TRACK 8 ============ -->
+  <section class="section" id="track-lead">
+    <div class="section-kicker">
+      <span class="klabel">Track 08</span>
+      <h2>lead - strategy, pmo, time, team, interview, leadership-ai, perf</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>core-mentor-room</td><td>22-mentor roundtable on any call</td><td>⚡ multi-lens decisions</td></tr>
+        <tr><td>proficiently pack</td><td>Job search and apply flow</td><td>🎯 structured pipeline</td></tr>
+        <tr><td>kit-make-resume / kit-make-cl</td><td>Resume and cover letter</td><td>🎯 tailored to the JD</td></tr>
+        <tr><td>deep-research</td><td>Cited strategy research</td><td>💰 conclusions, not dumps</td></tr>
+        <tr><td>superpowers:writing-plans</td><td>Plan before you build</td><td>🎯 get it right once</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TRACK 9 ============ -->
+  <section class="section" id="track-biz">
+    <div class="section-kicker">
+      <span class="klabel">Track 09</span>
+      <h2>biz - econ, finance, value-investing, marketing, branding, solopreneur</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>marketing-skills (pricing, marketing-plan, launch, offers)</td><td>Go-to-market playbooks</td><td>🎯 proven frameworks</td></tr>
+        <tr><td>li-top-voice-engine</td><td>LinkedIn content system</td><td>⚡ consistent KOL output</td></tr>
+        <tr><td>phoebe-website</td><td>Personal founder site</td><td>⚡ live, on-brand</td></tr>
+        <tr><td>content-multiplexer</td><td>One idea to many channels</td><td>💰 reuse across platforms</td></tr>
+        <tr><td>deep-research</td><td>Market and competitor research</td><td>💰 verified conclusions</td></tr>
+      </tbody>
+    </table>
+    <div class="callout tip">
+      <strong>Guardrail - no personalized investment advice</strong>
+      These skills help you research and market. They do not give personalized investment or financial advice - route any "what should I buy" question to a licensed advisor.
+    </div>
+  </section>
+
+  <!-- ============ TRACK 10 ============ -->
+  <section class="section" id="track-comm">
+    <div class="section-kicker">
+      <span class="klabel">Track 10</span>
+      <h2>comm - communication, biz-english, speaking, negotiation, facilitation, corporate-training, course-design</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>course-builder</td><td>Full courseware sites</td><td>⚡ complete learning arc</td></tr>
+        <tr><td>deck-partner</td><td>Brand-learning slides</td><td>⚡ on-brand decks</td></tr>
+        <tr><td>proof</td><td>Proof all copy</td><td>🎯 error-free</td></tr>
+        <tr><td>humanizer-zh</td><td>Natural Chinese</td><td>⚡ human voice</td></tr>
+        <tr><td>core-mentor-room</td><td>Multi-lens facilitation</td><td>⚡ richer discussion</td></tr>
+        <tr><td>marketing-skills:copywriting</td><td>Persuasive copy</td><td>⚡ sharper messaging</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TRACK 11 ============ -->
+  <section class="section" id="track-ds">
+    <div class="section-kicker">
+      <span class="klabel">Track 11</span>
+      <h2>ds - stats, ml, classification, feature-eng, eval, ensemble, unsupervised, deep-learning, experimentation</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>skill-build-partner</td><td>Build a data-science how-to skill</td><td>💰 reusable artifact</td></tr>
+        <tr><td>phoebe-data-skills</td><td>Public data-skill shelf</td><td>⚡ showcase-ready</td></tr>
+        <tr><td>dataviz</td><td>Model charts and results</td><td>⚡ one visual system</td></tr>
+        <tr><td>NotebookEdit</td><td>Edit Jupyter cells cleanly</td><td>🎯 reproducible notebooks</td></tr>
+        <tr><td>superpowers:test-driven-development</td><td>Test the pipeline</td><td>🎯 no false pass</td></tr>
+        <tr><td>deep-research</td><td>Method and paper research</td><td>💰 cited conclusions</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TRACK 12 ============ -->
+  <section class="section" id="track-deng">
+    <div class="section-kicker">
+      <span class="klabel">Track 12</span>
+      <h2>deng - data-modeling, warehouse, engineering</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>DrawDB (ERD)</td><td>Design schemas visually</td><td>⚡ clear data models</td></tr>
+        <tr><td>phoebe-data-schema-to-insights</td><td>Schema to contract to insight</td><td>💰 lean scan</td></tr>
+        <tr><td>core-workspace-skills</td><td>Routes engineering tasks</td><td>🎯 right method</td></tr>
+        <tr><td>Great Expectations</td><td>Data quality checks</td><td>🎯 enforce contracts</td></tr>
+        <tr><td>app-script-partner</td><td>Sheets automation</td><td>⚡ in-place tooling</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TRACK 13 ============ -->
+  <section class="section" id="track-sys">
+    <div class="section-kicker">
+      <span class="klabel">Track 13</span>
+      <h2>sys - system-design, product-design</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>core-mentor-room</td><td>Multi-lens design debate</td><td>⚡ better tradeoffs</td></tr>
+        <tr><td>phoebe-design-partner</td><td>Supervises UI and visual output</td><td>⚡ on-brand craft</td></tr>
+        <tr><td>superpowers:writing-plans</td><td>Plan the system first</td><td>🎯 right once</td></tr>
+        <tr><td>ui-ux-pro-max</td><td>UI/UX intelligence</td><td>⚡ patterns + palettes</td></tr>
+        <tr><td>deep-research</td><td>Prior-art research</td><td>💰 cited conclusions</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TRACK 14 ============ -->
+  <section class="section" id="track-emrg">
+    <div class="section-kicker">
+      <span class="klabel">Track 14</span>
+      <h2>emrg - blockchain, crypto, web3, cyber, quant, quantum</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>deep-research</td><td>Verify fast-moving claims</td><td>💰 cited conclusions</td></tr>
+        <tr><td>security-review</td><td>Audit for exposure</td><td>🎯 catch risk early</td></tr>
+        <tr><td>caveman cavecrew-investigator</td><td>Locate code, compressed</td><td>💰 ~60% fewer tokens</td></tr>
+        <tr><td>core-mentor-room</td><td>Multi-lens on the hype</td><td>⚡ balanced view</td></tr>
+      </tbody>
+    </table>
+    <div class="callout tip">
+      <strong>Guardrail - no trade execution, no financial advice</strong>
+      Research and analyze freely, but never execute a trade or transfer, and never give personalized investment advice. These are prohibited actions - hand them back to the user.
+    </div>
+  </section>
+
+  <!-- ============ TRACK 15 ============ -->
+  <section class="section" id="track-prod">
+    <div class="section-kicker">
+      <span class="klabel">Track 15</span>
+      <h2>prod - reading, pkm, notion, obsidian, automation, ai-productivity</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>update-config (hooks)</td><td>Automate recurring behaviors</td><td>⚡ the harness does it for you</td></tr>
+        <tr><td>schedule + loop</td><td>Recurring and scheduled agents</td><td>⚡ runs unattended</td></tr>
+        <tr><td>fewer-permission-prompts</td><td>Allowlist common read-only calls</td><td>💰 fewer interruptions</td></tr>
+        <tr><td>app-script-partner</td><td>Sheets automation</td><td>⚡ in-place tooling</td></tr>
+        <tr><td>content-multiplexer</td><td>One idea to many drafts</td><td>💰 reuse</td></tr>
+        <tr><td>caveman-compress</td><td>Terse output by default</td><td>💰 fewer tokens</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TRACK 16 ============ -->
+  <section class="section" id="track-viz">
+    <div class="section-kicker">
+      <span class="klabel">Track 16</span>
+      <h2>viz - mind-mapping, dataviz, sketchnoting, visual-storytelling, ai-illustration</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>dataviz</td><td>Charts and diagrams</td><td>⚡ one visual system</td></tr>
+        <tr><td>sketch-studio + sketch-engine + sketch-cheatsheet</td><td>Gallery ideas plus style DNA</td><td>⚡ repeatable art pipeline</td></tr>
+        <tr><td>midjourney-cc-skill</td><td>MJ prompts and iteration</td><td>⚡ better images</td></tr>
+        <tr><td>visual-image-prompt</td><td>Nano Banana / GPT image prompts</td><td>⚡ ready-to-use prompts</td></tr>
+        <tr><td>phoebe-design-partner</td><td>Visual supervisor</td><td>⚡ on-brand</td></tr>
+        <tr><td>impeccable</td><td>Anti-slop taste gate</td><td>⚡ final craft check</td></tr>
+        <tr><td>beautiful-stuff</td><td>Capture and spark inspiration</td><td>⚡ the muse layer</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TRACK 17 ============ -->
+  <section class="section" id="track-move">
+    <div class="section-kicker">
+      <span class="klabel">Track 17</span>
+      <h2>move - meditation, yoga x3, taichi, tcm, kpop-dance, drum</h2>
+    </div>
+    <table class="clean">
+      <thead><tr><th>Skill</th><th>Why</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>course-builder</td><td>Build the theory course site</td><td>⚡ complete arc</td></tr>
+        <tr><td>deep-research</td><td>Ground claims honestly</td><td>💰 cited, "traditionally said to"</td></tr>
+        <tr><td>proof</td><td>Proof the material</td><td>🎯 accurate wording</td></tr>
+        <tr><td>humanizer-zh</td><td>Natural prose</td><td>⚡ human voice</td></tr>
+        <tr><td>remotion-video-skill</td><td>Practice videos</td><td>⚡ code-driven media</td></tr>
+        <tr><td>notebooklm</td><td>Ground in your sources</td><td>💰 corpus answers</td></tr>
+      </tbody>
+    </table>
+    <div class="callout tip">
+      <strong>Honest note</strong>
+      This track has the lowest dev-skill leverage of the seventeen - it's mostly the Core Stack plus content skills. The value here is careful, honest content, not a specialist toolchain.
+    </div>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Token-saver MVPs <span>· the five that pay everywhere</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>cavecrew-investigator + caveman-compress</b><span>Compressed locate and terse output - roughly 60% fewer tokens. 💰</span></div>
+      <div class="cheat-item"><b>subagent-driven-development</b><span>Send heavy reading to a fresh-context helper; your main window stays lean. 💰</span></div>
+      <div class="cheat-item"><b>Explore / deep-research</b><span>Get conclusions and cited answers back, never raw file or page dumps. 💰</span></div>
+      <div class="cheat-item"><b>fewer-permission-prompts</b><span>Allowlist common read-only calls so the loop isn't interrupted. 💰</span></div>
+      <div class="cheat-item"><b>grilling</b><span>Kill the rework loop before it starts - the biggest free saving there is. 🎯</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Reference · learn-claude-skills-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="index.html">← All sessions</a> &nbsp;·&nbsp; <a href="courses/01-core-stack.html">Start: Session 1 →</a></span>
+  </footer>
+
+</main>
+
+<script src="assets/app.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 4 · AI &amp; agents - learn claude skills with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-claude-skills-with-phoebe</a> / Session 4 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Claude Skills with Phoebe · Session 4 of 8</div>
+    <h1>AI &amp; <span class="accent">agents</span></h1>
+    <p class="sub">The skills that turn Claude into an AI engineer: prompt construction, the literal token-cost reference, office-document generation, and skills that build skills - each with its token effect made explicit.</p>
+    <div class="chip-row">
+      <span class="chip level">🟠 Advancing</span>
+      <span class="chip audience">AI builders</span>
+      <span class="chip audience">ai/aiap tracks</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-24 · Concepts (live cards)</span>
+      <span class="a3" style="flex:4">24-42 · Three demos</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>From using Claude to engineering with Claude</h2>
+    </div>
+    <p class="lede">Sessions 1-3 taught the stack and the data work. Now we cross into <strong>building with the model itself</strong>: writing prompts that hold up, knowing exactly what each call costs, making Claude produce real Word and PowerPoint files, and creating new skills on demand. This is the <code>ai</code> and <code>aiap</code> territory of the hub. The through-line stays the same as every session: for each skill we name what it does, <em>when</em> you reach for it, and its token effect - because at AI-app scale, token discipline is the difference between a demo and a product.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">3 official Anthropic resources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A repeatable way to construct and measure prompts, the one reference skill that holds all the token-cost knowledge (<code>claude-api</code>), the ability to generate real office documents from a chat, and the loop for authoring your own skills. Three token-savers are flagged along the way: prompt caching, structured tool output, and RAG-over-stuffing. Cards marked "Live" are what we do together; "Self-study" cards give the depth at your own pace.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: PROMPT + API FOUNDATION ============ -->
+  <section class="section" id="prompt-api">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers Prompt Engineering Interactive Tutorial + API Fundamentals</span>
+      <h2>The prompt + API foundation <span class="tag concept">7 min live</span></h2>
+    </div>
+    <p class="lede">Everything an AI app does starts with one API call carrying one prompt. Two skills own this layer: <strong>prompt-master</strong> for how you construct the prompt, and <strong>claude-api</strong> for everything about the call itself - model ids, pricing, parameters, streaming, tool use, MCP, prompt caching, token counting. If you only remember one skill from this session, remember that <code>claude-api</code> is where the literal token-cost knowledge lives, so you never answer pricing or limits from memory.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Prompt caching: a stable prefix is billed once then reused cheaply across calls">
+        <style>
+          .pcW { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .pcI { font: 700 14px Inter, sans-serif; fill: #211712; }
+          .pcT { font: 700 16px Inter, sans-serif; fill: #211712; }
+          .pcX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .pcN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+        </style>
+        <text class="pcT" x="20" y="30">Same stable prefix, three calls</text>
+        <text class="pcX" x="20" y="52">System rules + big context = the prefix. Question = the small tail.</text>
+        <rect x="20" y="68" width="230" height="34" rx="6" fill="#7A3520"/>
+        <text class="pcW" x="40" y="90">Call 1 · write cache</text>
+        <rect x="260" y="68" width="70" height="34" rx="6" fill="#E4A886"/>
+        <text class="pcI" x="278" y="90">+ Q1</text>
+        <rect x="20" y="112" width="230" height="34" rx="6" fill="#CC785C"/>
+        <text class="pcI" x="40" y="134">Call 2 · cache hit</text>
+        <rect x="260" y="112" width="70" height="34" rx="6" fill="#E4A886"/>
+        <text class="pcI" x="278" y="134">+ Q2</text>
+        <rect x="20" y="156" width="230" height="34" rx="6" fill="#CC785C"/>
+        <text class="pcI" x="40" y="178">Call 3 · cache hit</text>
+        <rect x="260" y="156" width="70" height="34" rx="6" fill="#E4A886"/>
+        <text class="pcI" x="278" y="178">+ Q3</text>
+        <text class="pcX" x="350" y="90">full price once</text>
+        <text class="pcX" x="350" y="134">prefix billed at a fraction</text>
+        <text class="pcX" x="350" y="178">prefix billed at a fraction</text>
+        <rect x="600" y="68" width="260" height="122" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <text class="pcI" x="620" y="98" style="font:700 13px Inter;fill:#7A3520">The saving</text>
+        <text class="pcX" x="620" y="120">Reused prefix is not</text>
+        <text class="pcX" x="620" y="138">reprocessed at full cost.</text>
+        <text class="pcX" x="620" y="156">Big fixed context becomes</text>
+        <text class="pcX" x="620" y="174">nearly free after call one.</text>
+        <rect x="20" y="216" width="840" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="230" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="pcN" x="58" y="242">Token-saver: put the stable, expensive part first and let caching reuse it across calls.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - prompt caching reuses a stable prefix so big context is billed once</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>prompt-master - construct, don't improvise<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>prompt-master</strong> gives you the construction patterns instead of a blank box: role and task up front, context and examples in the middle, output format pinned at the end, and the reasoning space the model needs to get it right. Reach for it whenever a prompt is going into production or being reused - a one-off chat message doesn't need it, but anything a skill or app will send a thousand times does.</p>
+        <ul>
+          <li><strong>Structure</strong> - clear task, relevant context, concrete examples, explicit output shape.</li>
+          <li><strong>When</strong> - production prompts, system prompts, anything reused or evaluated.</li>
+          <li><strong>Token effect</strong> - a precise prompt gets it right on the first call, killing the retry-and-rephrase loop that quietly doubles cost.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Use prompt-master to turn this rough ask into a production-grade prompt: [paste a rough instruction]. Show the structured version and name what each block is doing.</div>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The rephrase tax.</strong> A support bot with a vague prompt answered off-topic one time in five, and each miss meant a re-ask. A structured prompt-master rewrite cut the miss rate sharply - fewer calls, lower bill, same model. The prompt, not the model, was the cost.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>claude-api - the reference skill for real numbers<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>claude-api</strong> is the skill you open <em>before</em> answering anything about the model itself. It carries the knowledge that changes month to month and must not be guessed:</p>
+        <table class="clean">
+          <thead><tr><th>What it covers</th><th>Why you reach for it</th></tr></thead>
+          <tbody>
+            <tr><td>Model ids + pricing</td><td>Pick the right model; quote real per-token cost</td></tr>
+            <tr><td>Params + streaming</td><td>Temperature, max tokens, stream vs batch</td></tr>
+            <tr><td>Tool use + MCP</td><td>Wire external tools and data into a call</td></tr>
+            <tr><td>Prompt caching</td><td>The prefix-reuse saving from the diagram above</td></tr>
+            <tr><td>Token counting</td><td>Measure a request's cost before you send it</td></tr>
+          </tbody>
+        </table>
+        <p>Reach for it whenever the task names Claude, Opus, Sonnet, Haiku, the SDK, pricing, or limits. The rule is simple: <strong>never answer model facts from memory</strong> - open the reference, because the numbers move.</p>
+        <div class="callout tip">
+          <strong>Why this is the token skill</strong>
+          Token counting and pricing live here, so this is literally where "minimum token consumption" gets measured. You can't optimize a cost you can't see, and this skill is how you see it.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Anatomy of a strong API call<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>System prompt</strong> - stable rules and role. Put it first so caching can reuse it.</li>
+          <li><strong>Context block</strong> - the documents or data, also cacheable if stable.</li>
+          <li><strong>Messages</strong> - the actual turn, the small variable tail.</li>
+          <li><strong>Tools</strong> - definitions the model may call; results return as structured data, not prose.</li>
+          <li><strong>Params</strong> - max tokens caps the output cost; streaming changes delivery, not price.</li>
+        </ul>
+        <p>Order matters for cost: stable-and-expensive first, variable-and-small last. That single layout choice is what makes prompt caching pay off.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: OFFICE WORK ============ -->
+  <section class="section" id="office-work">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers Tool Use + Real World Prompting</span>
+      <h2>Make Claude do office work <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">A huge share of real work is a document: a Word report, a PowerPoint deck, an Excel model, a PDF to read. The <strong>anthropic-skills</strong> family gives Claude first-class handling of all four, and dedicated MCP servers add live app control. The move here is picking the right content type and letting the matching skill own the file format.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Table mapping each content type to the skill that creates and reads it">
+        <style>
+          .owH { font: 700 14px Inter, sans-serif; fill: #FFFFFF; }
+          .owT { font: 700 13px Inter, sans-serif; fill: #211712; }
+          .owX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .owN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+        </style>
+        <rect x="20" y="24" width="180" height="34" rx="6" fill="#7A3520"/>
+        <text class="owH" x="40" y="46">You want...</text>
+        <rect x="210" y="24" width="230" height="34" rx="6" fill="#7A3520"/>
+        <text class="owH" x="230" y="46">Skill</text>
+        <rect x="450" y="24" width="410" height="34" rx="6" fill="#7A3520"/>
+        <text class="owH" x="470" y="46">What it does</text>
+        <rect x="20" y="64" width="180" height="34" rx="6" fill="#F5DAC8"/>
+        <text class="owT" x="40" y="86">A Word report</text>
+        <rect x="210" y="64" width="230" height="34" rx="6" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="owT" x="230" y="86">anthropic-skills:docx</text>
+        <text class="owX" x="470" y="86">create + read .docx, formatting</text>
+        <rect x="20" y="104" width="180" height="34" rx="6" fill="#F5DAC8"/>
+        <text class="owT" x="40" y="126">A slide deck</text>
+        <rect x="210" y="104" width="230" height="34" rx="6" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="owT" x="230" y="126">anthropic-skills:pptx</text>
+        <text class="owX" x="470" y="126">create + read .pptx, layouts, notes</text>
+        <rect x="20" y="144" width="180" height="34" rx="6" fill="#F5DAC8"/>
+        <text class="owT" x="40" y="166">A spreadsheet</text>
+        <rect x="210" y="144" width="230" height="34" rx="6" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="owT" x="230" y="166">anthropic-skills:xlsx</text>
+        <text class="owX" x="470" y="166">create + read .xlsx, formulas</text>
+        <rect x="20" y="184" width="180" height="34" rx="6" fill="#F5DAC8"/>
+        <text class="owT" x="40" y="206">Read a PDF</text>
+        <rect x="210" y="184" width="230" height="34" rx="6" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="owT" x="230" y="206">anthropic-skills:pdf</text>
+        <text class="owX" x="470" y="206">parse + fill + split PDF</text>
+        <rect x="20" y="224" width="180" height="34" rx="6" fill="#F5DAC8"/>
+        <text class="owT" x="40" y="246">Drive the app</text>
+        <rect x="210" y="224" width="230" height="34" rx="6" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="owT" x="230" y="246">PowerPoint / Word MCP</text>
+        <text class="owX" x="470" y="246">live create/edit/export via server</text>
+        <rect x="20" y="272" width="840" height="34" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="281" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="owN" x="58" y="293">Match the content type to its skill; notebooklm turns docs into an audio/study brief.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - one skill per office content type, plus MCP for live app control</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The document skills: docx, pptx, xlsx, pdf<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Each of these is triggered the moment its file type is involved - as input, output, or both. You don't describe a format; you name the deliverable and the skill handles the machinery.</p>
+        <ul>
+          <li><strong>docx</strong> - generate a formatted Word report, or read one to summarize.</li>
+          <li><strong>pptx</strong> - build a deck with real layouts and speaker notes, or extract slide text.</li>
+          <li><strong>xlsx</strong> - create a spreadsheet with formulas, or read a model to analyze it.</li>
+          <li><strong>pdf</strong> - parse, fill, merge, or split PDFs.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Take these five bullet findings and produce a two-page Word report with a title, an executive summary, and a findings table: [paste five bullets].</div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The PowerPoint and Word MCP servers<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>When the skill format isn't enough - you want Claude to open, edit, and export a live file through the actual application - the <strong>PowerPoint MCP</strong> and <strong>Word MCP</strong> servers expose that as tools: add a slide, set a title, insert an image, export a PDF; create a document, format text, replace text, save.</p>
+        <p>Rule of thumb: reach for the <em>skill</em> to author a file from content, and the <em>MCP server</em> when you need step-by-step control of the app itself. Both return structured results, not prose narration, which keeps the token cost of each step small.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>A weekly board deck used to be a manual copy-paste from a doc into slides. Wired through the PowerPoint MCP, the numbers flow from the source file into the template in one pass - the human reviews, doesn't rebuild.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>notebooklm - turn a corpus into a study brief<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>notebooklm</strong> takes a pile of source documents and turns them into a grounded, navigable brief - useful when you're onboarding to a topic and want a synthesized read rather than raw files in your context. It's the "understand this stack of docs" companion to the format skills above, and it keeps the heavy reading out of your main window.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: SKILLS THAT BUILD SKILLS ============ -->
+  <section class="section" id="skills-that-build">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers Prompt Evaluations + skill authoring</span>
+      <h2>Skills that build skills + live artifacts <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">The most leveraged thing you can build with Claude is a new skill - a reusable job that then loads only when it fires. <strong>skill-creator</strong> and <strong>writing-skills</strong> teach the discipline of authoring one, and <strong>artifact-capabilities</strong> takes a published page from a static snapshot to something that reads live data, holds shared state, or updates itself.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three levels from a static artifact to one with runtime capabilities">
+        <style>
+          .saH { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .saI { font: 700 14px Inter, sans-serif; fill: #211712; }
+          .saT { font: 700 16px Inter, sans-serif; fill: #211712; }
+          .saX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .saN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+        </style>
+        <defs>
+          <marker id="saAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <text class="saT" x="20" y="32">Static page, then +capabilities</text>
+        <rect x="20" y="52" width="240" height="86" rx="12" fill="#7A3520"/>
+        <text class="saH" x="42" y="82">Level 1 · static</text>
+        <text class="saX" x="42" y="104" fill="#F0C9B3">fixed HTML, no live data</text>
+        <text class="saX" x="42" y="124" fill="#F0C9B3">ships instantly, cheapest</text>
+        <rect x="320" y="52" width="240" height="86" rx="12" fill="#B5502E"/>
+        <text class="saH" x="342" y="82">Level 2 · reads live</text>
+        <text class="saX" x="342" y="104" fill="#F5DAC8">pulls fresh / connected data</text>
+        <text class="saX" x="342" y="124" fill="#F5DAC8">stays current on its own</text>
+        <rect x="620" y="52" width="240" height="86" rx="12" fill="#CC785C"/>
+        <text class="saI" x="642" y="82">Level 3 · self-updates</text>
+        <text class="saX" x="642" y="104">holds shared state</text>
+        <text class="saX" x="642" y="124">republishes itself</text>
+        <path d="M260,95 L318,95" stroke="#C9BCB2" stroke-width="2.5" fill="none" marker-end="url(#saAh)"/>
+        <path d="M560,95 L618,95" stroke="#C9BCB2" stroke-width="2.5" fill="none" marker-end="url(#saAh)"/>
+        <text class="saX" x="20" y="176">skill-creator scaffolds + evals a new skill; writing-skills is the authoring discipline.</text>
+        <text class="saX" x="20" y="198">artifact-capabilities is what unlocks Levels 2 and 3 on a published page.</text>
+        <rect x="20" y="222" width="840" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="236" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="saN" x="58" y="248">Token-saver: a good skill description means it fires only when needed, never loading otherwise.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - static artifact up to one that reads live data and self-updates</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>skill-creator - and why the description is everything<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>anthropic-skills:skill-creator</strong> creates, edits, and evaluates skills. It scaffolds the folder and <code>SKILL.md</code>, but its most important job is <strong>optimizing the description</strong> - because the description is the trigger. A skill with a vague description never fires; a skill with a description packed with the words a matching task would contain fires reliably.</p>
+        <ul>
+          <li><strong>Create</strong> - scaffold name, description, body, and bundled files.</li>
+          <li><strong>Tune the trigger</strong> - the description is what Claude reads to decide whether to open the skill, so it is where you spend your effort.</li>
+          <li><strong>Eval</strong> - test that the skill fires on the right prompts and not the wrong ones.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The trigger is the product</strong>
+          A brilliant skill body is worthless if the description never matches real tasks. skill-creator's description optimization is the single highest-value step in authoring - it decides whether the skill is ever used.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>writing-skills - the authoring discipline<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>superpowers:writing-skills</strong> is the craft layer on top of scaffolding: how to write a skill that is tight, unambiguous, and progressive-disclosure friendly. Keep the always-loaded part small, push detail into reference files the body points to, and write instructions the way you'd brief a capable colleague.</p>
+        <ul>
+          <li><strong>Small front, deep back</strong> - name and description stay tiny; heavy reference lives in bundled files loaded only when a step needs them.</li>
+          <li><strong>One job per skill</strong> - a skill that tries to do everything triggers on nothing cleanly.</li>
+          <li><strong>Token effect</strong> - disciplined authoring is what makes 50 installed skills cost almost nothing until one fires.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>artifact-capabilities - live, stateful, self-updating pages<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A published artifact is normally a static snapshot. <strong>artifact-capabilities</strong> declares the runtime behavior a page is granted so it can do more:</p>
+        <ul>
+          <li><strong>Read live or connected data</strong> - the page shows fresh numbers, not a frozen copy.</li>
+          <li><strong>Hold shared state</strong> - viewers see the same evolving data.</li>
+          <li><strong>Self-update</strong> - the page can republish itself.</li>
+        </ul>
+        <p>Load this skill's roster before declaring any capability - it tells you what's available and how to call it. The default is still static (cheapest and instant); you add capabilities only when the page genuinely needs to stay live.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 4: TOKEN DISCIPLINE ============ -->
+  <section class="section" id="token-discipline">
+    <div class="section-kicker">
+      <span class="klabel">Part 4 · the cost model for AI apps</span>
+      <h2>Token discipline for AI apps <span class="tag concept">3 min live</span></h2>
+    </div>
+    <p class="lede">At app scale a small per-call waste multiplies into a real bill. Three moves from this session are the levers you pull, and each one is a concrete answer to "what is the smallest context that gets this right?"</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three token levers for AI apps: prompt caching, structured tool output, and RAG over corpus stuffing">
+        <style>
+          .tdH { font: 700 14px Inter, sans-serif; fill: #FFFFFF; }
+          .tdI { font: 700 14px Inter, sans-serif; fill: #211712; }
+          .tdX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .tdN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+        </style>
+        <rect x="20" y="26" width="270" height="120" rx="12" fill="#7A3520"/>
+        <text class="tdH" x="40" y="54">1 · Prompt caching</text>
+        <text class="tdX" x="40" y="80" fill="#F0C9B3">Reuse a stable prefix</text>
+        <text class="tdX" x="40" y="100" fill="#F0C9B3">across many calls.</text>
+        <text class="tdX" x="40" y="126" fill="#F0C9B3">Big fixed context billed once.</text>
+        <rect x="305" y="26" width="270" height="120" rx="12" fill="#B5502E"/>
+        <text class="tdH" x="325" y="54">2 · Structured tool output</text>
+        <text class="tdX" x="325" y="80" fill="#F5DAC8">Tools return JSON,</text>
+        <text class="tdX" x="325" y="100" fill="#F5DAC8">not paragraphs of prose.</text>
+        <text class="tdX" x="325" y="126" fill="#F5DAC8">Compact, parseable, cheap.</text>
+        <rect x="590" y="26" width="270" height="120" rx="12" fill="#CC785C"/>
+        <text class="tdI" x="610" y="54">3 · RAG, not stuffing</text>
+        <text class="tdX" x="610" y="80">Retrieve the few relevant</text>
+        <text class="tdX" x="610" y="100">chunks, not the whole corpus.</text>
+        <text class="tdX" x="610" y="126">Context stays small + on-topic.</text>
+        <rect x="20" y="164" width="840" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="178" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="tdN" x="58" y="190">All three: pay for the smallest context that still gets the answer right.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - three token levers every AI app should pull</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The three levers, spelled out<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Prompt caching</strong> - place the stable, expensive context first so it is billed once and reused. This is the reuse move from Session 1, made concrete at the API level.</li>
+          <li><strong>Structured tool output</strong> - define tools that return JSON. A tool that returns clean fields costs far less than one that narrates a paragraph, and it's easier to act on.</li>
+          <li><strong>RAG over stuffing</strong> - retrieve the handful of relevant chunks for a question instead of loading the entire corpus into every call. The corpus lives in a store; only the relevant slice enters the window.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The AI-app reframe</strong>
+          Don't ask "how big a model do I need?" Ask "what is the smallest context that gets this call right, and how do I stop paying for it twice?" Caching, structured output, and RAG are the three answers.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why stuffing the corpus is the classic trap<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>It's tempting to paste an entire knowledge base into the prompt "so the model has everything". You pay for all of it on every call, the model's attention is diluted across mostly-irrelevant text, and answers get worse, not better. RAG flips it: a retrieval step finds the few chunks that actually bear on the question, and only those enter the window. Smaller context, sharper answer, lower bill - the token-saving and the quality win point the same direction.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 3</span>
+      <h2>Write a prompt, then measure it <span class="tag demo">★ 6 min · follow along</span></h2>
+    </div>
+    <p class="lede">Construction plus measurement is the whole discipline. Use prompt-master to build a prompt, then run a tiny eval so you have a number, not a vibe.</p>
+    <div class="prompt-box good"><span class="label">★ The build-then-measure trigger</span>Use prompt-master to write a production prompt for this task: [describe the task].
+
+Then set up a tiny Prompt Evaluations run: give me 3 test inputs, the expected behaviour for each, and a pass/fail check. Report which passed.</div>
+    <div class="steps">
+      <div class="step"><p>Pick a prompt you'll reuse - a classifier, a summarizer, a formatter.</p></div>
+      <div class="step"><p>Build it with prompt-master; note the structure it imposes.</p></div>
+      <div class="step"><p>Write three test inputs with expected outputs and run the eval.</p></div>
+      <div class="step"><p>Tweak the prompt, re-run, and watch the pass rate move - now you're engineering, not guessing.</p></div>
+    </div>
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p>A team argued for a week about two prompt phrasings. A ten-input eval settled it in minutes and showed both were beaten by a third nobody had tried. The measurement, not the debate, found the answer.</p>
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 3</span>
+      <h2>Generate a real office document <span class="tag demo">★ 7 min · build your own</span></h2>
+    </div>
+    <p class="lede">Go from chat to a file a colleague can open. Use pptx or docx to produce a genuine deliverable, not a description of one.</p>
+    <div class="steps">
+      <div class="step"><p>Pick something you'd normally build by hand - a short deck or a one-page report.</p></div>
+      <div class="step"><p>Give Claude the content as bullets plus the structure you want.</p></div>
+      <div class="step"><p>Invoke the matching skill (pptx or docx) and let it produce the file.</p></div>
+      <div class="step"><p>Open it in the real app. Note what's already right and what you'd refine in a second pass.</p></div>
+    </div>
+    <div class="prompt-box good"><span class="label">Office-doc prompt</span>Using anthropic-skills:pptx, build a 5-slide deck from this outline: title slide, problem, our approach, results table, next steps. Content: [paste your bullets]. Add speaker notes on the results slide.</div>
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p>The fastest way to feel the leverage is to hand over a weekly report you already write. The first generated draft is rarely final, but starting from 80% and editing beats starting from a blank file every time.</p>
+    </div>
+  </section>
+
+  <!-- ============ DEMO 3 ============ -->
+  <section class="section" id="demo-3">
+    <div class="section-kicker">
+      <span class="klabel">Demo 3 of 3</span>
+      <h2>Scaffold a skill and tune its trigger <span class="tag demo">★ 5 min · build your own</span></h2>
+    </div>
+    <p class="lede">Create a real skill with skill-creator, then do the one step that decides whether it ever fires: tune the description.</p>
+    <div class="steps">
+      <div class="step"><p>Pick a job you've explained more than twice - it's a skill waiting to exist.</p></div>
+      <div class="step"><p>Run skill-creator to scaffold the folder, name, and body.</p></div>
+      <div class="step"><p>Rewrite the description packed with the words a matching task would contain.</p></div>
+      <div class="step"><p>Test-trigger it: prompt in the skill's territory and confirm it fires; prompt outside and confirm it doesn't.</p></div>
+    </div>
+    <div class="prompt-box good"><span class="label">★ Try it now</span>Use skill-creator to scaffold a skill for this recurring job: [describe the job]. Then optimize the description so it triggers on real tasks - show me the before and after description and explain what you changed and why.</div>
+  </section>
+
+  <!-- ============ TRY IT YOURSELF ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-60 min total</span></h2>
+    </div>
+    <ul>
+      <li>Take one prompt you reuse and rebuild it with prompt-master, then measure it with a 3-input eval. Keep the number.</li>
+      <li>Open <code>claude-api</code> and find the current price of the model you use most - practice never quoting from memory.</li>
+      <li>Generate one real office document (docx or pptx) from bullets you already have, then edit it to final.</li>
+      <li>Scaffold one skill with skill-creator for a job you repeat, and spend most of your time on the description.</li>
+      <li>Identify one place in your work that stuffs a whole document into a prompt, and sketch how RAG or caching would shrink it.</li>
+      <li><strong>Leads:</strong> have your team each bring one prompt they measured before and after. The eval numbers are the training.</li>
+    </ul>
+  </section>
+
+  <!-- ============ OFFICIAL COURSES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official resources covered</h2>
+    </div>
+    <p class="lede">This session teaches the working content of Anthropic's prompt and API material - construction, measurement, tool use, and cost. What stays exclusive to the originals: the interactive tutorial's live exercises, graded notebooks, and any certificates.</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Prompt Engineering Interactive Tutorial (anthropics/prompt-eng-interactive-tutorial)</span><span class="note">Part 1: prompt construction patterns via prompt-master</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">anthropics/courses: API Fundamentals, Real World Prompting, Prompt Evaluations, Tool Use</span><span class="note">Parts 1-4 + Demo 1: the call, structured tools, measuring prompts</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">AI Engineering with Claude (Udacity)</span><span class="note">Part 4: caching + cost model at app scale; full SDK build left to source</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · What does prompt caching actually save you?</p>
+      <button class="qopt" type="button">A · It makes the model reason faster</button>
+      <button class="qopt" type="button">B · A stable prefix is billed once, then reused cheaply across calls</button>
+      <button class="qopt" type="button">C · It shrinks the model to a smaller version</button>
+      <p class="qwhy">Put the stable, expensive context first; caching reuses it so big fixed context isn't reprocessed at full cost on every call.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · When authoring a skill with skill-creator, the highest-value step is...</p>
+      <button class="qopt" type="button">A · Making the body as long as possible</button>
+      <button class="qopt" type="button">B · Adding as many bundled files as you can</button>
+      <button class="qopt" type="button">C · Tuning the description - it's the trigger that decides if the skill ever fires</button>
+      <p class="qwhy">Claude reads the description to decide whether to open a skill. A vague description means the skill never fires, no matter how good the body is.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · For a question over a big knowledge base, the token-efficient move is...</p>
+      <button class="qopt" type="button">A · RAG - retrieve the few relevant chunks instead of stuffing the whole corpus</button>
+      <button class="qopt" type="button">B · Paste the entire corpus so the model has everything</button>
+      <button class="qopt" type="button">C · Ask the model to guess from the file names</button>
+      <p class="qwhy">Stuffing pays for the whole corpus on every call and dilutes attention. RAG loads only the relevant slice - smaller context, sharper answer.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 4 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>prompt-master</b><span>Construction patterns for production prompts. When: reused or evaluated prompts. Right-first-time saves retries.</span></div>
+      <div class="cheat-item"><b>claude-api ★</b><span>The reference skill: model ids, pricing, params, streaming, tool use, MCP, caching, token counting. Never guess model facts.</span></div>
+      <div class="cheat-item"><b>docx / pptx / xlsx / pdf</b><span>anthropic-skills that create + read each office format. Triggered whenever the file type is involved.</span></div>
+      <div class="cheat-item"><b>PowerPoint + Word MCP</b><span>Live app control - add slide, set title, format, export. Use when you need step-by-step control of the app.</span></div>
+      <div class="cheat-item"><b>skill-creator</b><span>Create, edit, eval skills. The key step is optimizing the description - the trigger that decides if it fires.</span></div>
+      <div class="cheat-item"><b>writing-skills</b><span>Authoring discipline: small front, deep back, one job per skill. Keeps 50 skills nearly free until one fires.</span></div>
+      <div class="cheat-item"><b>artifact-capabilities</b><span>Take a published page from static to reading live data, holding shared state, or self-updating.</span></div>
+      <div class="cheat-item"><b>Three app levers ★</b><span>Prompt caching · structured tool output (JSON) · RAG over stuffing. Smallest context that gets it right.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Session 4 of 8 · learn-claude-skills-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="03-data-ds.html">← Prev: Data &amp; DS</a> &nbsp;·&nbsp; <a href="05-ai-domains.html">Next: AI in your domain →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

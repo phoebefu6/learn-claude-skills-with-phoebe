@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 6 · Content, viz &amp; comm - learn claude skills with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-claude-skills-with-phoebe</a> / Session 6 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Claude Skills with Phoebe · Session 6 of 8</div>
+    <h1>Content, viz &amp; <span class="accent">comm</span></h1>
+    <p class="sub">The skills that turn an idea into something people can see and share - charts, sketches, image prompts, decks, and polished writing - with one taste gate that raises craft without ever touching your brand.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Building</span>
+      <span class="chip audience">Creators + communicators</span>
+      <span class="chip audience">viz / comm / biz tracks</span>
+      <span class="chip time">45 min live + self-study depth</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-24 · Concepts (live cards)</span>
+      <span class="a3" style="flex:4">24-42 · Three demos</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Why this session exists</h2>
+    </div>
+    <p class="lede">Most of the value you create is invisible until you can show it. This session is the make-it-visible layer: the skills that turn a thought into a chart, a sketch, an image, a deck, or a clean piece of writing. Three tracks share it - <strong>viz</strong> (mind-mapping, dataviz, sketchnoting, visual-storytelling, ai-illustration), <strong>comm</strong> (communication, business-english, public-speaking, negotiation, facilitation, corporate-training, course-design), and <strong>biz</strong> (economics, finance, value-investing, marketing, personal-branding, solopreneur). The token thread running through all of it: the cheapest way to make something look great is to review it, not regenerate it - and a good image prompt is a few lines of text driving all the expensive pixels.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">token-saver skills marked ⚡</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A clear map of the visual + comms stack and when to reach for each skill, the habit of writing a compact image prompt instead of hand-tuning output, and the single most important mental model of the session: <strong>impeccable is a gate, not a rebuild</strong> - it raises craft inside your locked brand and never overrides your palette or fonts, which is exactly why it stays token-lean.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: VISUAL EXPLAINERS ============ -->
+  <section class="section" id="visual-explainers">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · viz track - dataviz + the sketch family</span>
+      <h2>Visual explainers on tap <span class="tag concept">7 min live</span></h2>
+    </div>
+    <p class="lede">Two kinds of visual live here. <strong>dataviz</strong> handles the rigorous one - charts, dashboards, stat tiles - as one accessible system. The <strong>sketch family</strong> handles the expressive one - cheatsheets, decision-tree posters, style-driven illustrations for a gallery. They share a pipeline: an idea gets a <em>style DNA</em>, then becomes a published visual.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pipeline from idea through style DNA to a published visual">
+        <style>
+          .vePipeW { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .vePipeI { font: 700 15px Inter, sans-serif; fill: #211712; }
+          .vePipeT { font: 700 15px Inter, sans-serif; fill: #211712; }
+          .vePipeX { font: 400 13px Inter, sans-serif; fill: #6E5D53; }
+          .vePipeN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+          .vePipeA { stroke: #C9BCB2; stroke-width: 2.5; fill: none; marker-end: url(#vePipeAh); }
+        </style>
+        <defs>
+          <marker id="vePipeAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <text class="vePipeT" x="20" y="34">One pipeline, every visual</text>
+        <rect x="20" y="54" width="230" height="60" rx="12" fill="#7A3520"/>
+        <text class="vePipeW" x="42" y="82">idea / topic</text>
+        <text class="vePipeX" x="42" y="102" fill="#F0C9B3">sketch-studio picks it</text>
+        <rect x="325" y="54" width="230" height="60" rx="12" fill="#B5502E"/>
+        <text class="vePipeW" x="347" y="82">style DNA</text>
+        <text class="vePipeX" x="347" y="102" fill="#F5DAC8">sketch-engine decodes</text>
+        <rect x="630" y="54" width="230" height="60" rx="12" fill="#CC785C"/>
+        <text class="vePipeI" x="652" y="82">published visual</text>
+        <text class="vePipeX" x="652" y="102">gallery / deck / post</text>
+        <line class="vePipeA" x1="250" y1="84" x2="323" y2="84"/>
+        <line class="vePipeA" x1="555" y1="84" x2="628" y2="84"/>
+        <rect x="20" y="150" width="840" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="164" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="vePipeN" x="58" y="176">A saved style DNA is reused across many visuals - decode once, wear it everywhere.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - idea to style DNA to a published visual, one reusable pipeline</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>dataviz - one chart system, not one-off plots<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Reach for <strong>dataviz</strong> before you write the first line of any chart, in any medium - an HTML artifact, matplotlib, Recharts, an SVG. It gives you a form heuristic (which chart for which question), an accessible color formula with a validator, and specs for stat tiles and dashboards so everything reads as one system.</p>
+        <ul>
+          <li><strong>When to reach for it</strong> - any chart, dashboard, KPI row, or "make this data look good" moment.</li>
+          <li><strong>Token effect</strong> - neutral to positive: it prevents the recolor-and-retry loop by getting encoding right the first time.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Before you build this chart, apply the dataviz rules: pick the chart form for the question I'm actually asking, choose an accessible palette, and tell me the one thing most people get wrong about this chart type.</div>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>A team shipped four dashboards where the same status meant a different color on each one. dataviz fixes that at the source: one fill per meaning, a legend, and colors that survive both light and dark mode - so the set reads as one product, not four.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The sketch family - five skills, one gallery<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The sketch skills turn a topic into an expressive visual and publish it. They divide the labor cleanly:</p>
+        <table class="clean">
+          <thead><tr><th>Skill</th><th>Its job</th></tr></thead>
+          <tbody>
+            <tr><td>sketch-studio</td><td>The gallery brain - strategy, the single idea pool, what to draw next</td></tr>
+            <tr><td>sketch-engine</td><td>Decodes an inspiration image into reusable style DNA</td></tr>
+            <tr><td>sketch-cheatsheet ⚡</td><td>Distills a topic into one design-forward page</td></tr>
+            <tr><td>sketch-decision-tree</td><td>Builds a "which X should I use" poster</td></tr>
+            <tr><td>daily-sketch-ideas</td><td>The daily make-and-publish ritual</td></tr>
+          </tbody>
+        </table>
+        <p>The split matters: <strong>sketch-studio</strong> decides <em>what</em>, <strong>sketch-engine</strong> decides the <em>look</em>, and the format skills decide the <em>shape</em>. You rarely invoke all five - you enter at the level that matches the task.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Concept before style - the wow bar<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Polished is not the same as wow. A visual earns its place when it says something words can't - a tension, a contrast, a "huh, I hadn't seen it that way." Nail the concept first; the style skin comes second. A beautiful render of a flat idea is still a flat idea.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: IMAGE + DESIGN, GATED ============ -->
+  <section class="section" id="image-design">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · viz track - ai-illustration + design supervision</span>
+      <h2>Image + design, gated for taste <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Generating images is the expensive part; describing them is cheap. So the leverage is in the prompt, and in a supervisor that shapes the request. Then everything visual passes one gate - <strong>impeccable</strong> - which raises craft <em>inside</em> your locked brand and never overrides it. A gate reviews; it does not rebuild, which is why it stays token-lean.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four lanes: prompt, generate, impeccable gate, ship">
+        <style>
+          .idLaneW { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .idLaneI { font: 700 15px Inter, sans-serif; fill: #211712; }
+          .idLaneX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .idLaneN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+          .idLaneA { stroke: #C9BCB2; stroke-width: 2.5; fill: none; marker-end: url(#idLaneAh); }
+        </style>
+        <defs>
+          <marker id="idLaneAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <rect x="20" y="40" width="185" height="58" rx="12" fill="#7A3520"/>
+        <text class="idLaneW" x="42" y="66">prompt</text>
+        <text class="idLaneX" x="42" y="86" fill="#F0C9B3">cheap text</text>
+        <rect x="240" y="40" width="185" height="58" rx="12" fill="#B5502E"/>
+        <text class="idLaneW" x="262" y="66">generate</text>
+        <text class="idLaneX" x="262" y="86" fill="#F5DAC8">the pricey step</text>
+        <rect x="460" y="40" width="185" height="58" rx="12" fill="#E3A008"/>
+        <text class="idLaneI" x="482" y="66">impeccable gate</text>
+        <text class="idLaneX" x="482" y="86">review, not rebuild</text>
+        <rect x="680" y="40" width="180" height="58" rx="12" fill="#CC785C"/>
+        <text class="idLaneI" x="702" y="66">ship</text>
+        <text class="idLaneX" x="702" y="86">on-brand output</text>
+        <line class="idLaneA" x1="205" y1="69" x2="238" y2="69"/>
+        <line class="idLaneA" x1="425" y1="69" x2="458" y2="69"/>
+        <line class="idLaneA" x1="645" y1="69" x2="678" y2="69"/>
+        <text class="idLaneX" x="460" y="128">gate can send it back with targeted fixes - it never repaints from scratch</text>
+        <rect x="20" y="158" width="840" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="172" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="idLaneN" x="58" y="184">The gate never overrides your palette or fonts - it lifts craft within the brand you locked.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - prompt, generate, then a taste gate that reviews rather than repaints</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>visual-image-prompt &amp; midjourney-cc-skill ⚡<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>These two write the request instead of hand-tuning the result:</p>
+        <ul>
+          <li><strong>visual-image-prompt</strong> - writes ready-to-run prompts for Nano Banana / GPT Image with model, size, and quality picks. Reach for it for blog covers, slide art, posters, product shots, storyboards.</li>
+          <li><strong>midjourney-cc-skill</strong> - Midjourney-specific: constructs prompts, chooses between <code>--sref</code> / <code>--oref</code> / style codes, scores output, debugs why a prompt missed.</li>
+          <li><strong>Token effect</strong> ⚡ - a prompt is a few lines of text that drives all the expensive generation. Getting the prompt right beats regenerating five times.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Write me a ready-to-run image prompt for [a slide hero / blog cover about ___]. Include the model, size, and quality you'd use, and one alternate direction if the first misses.</div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>phoebe-design-partner - the design supervisor<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>phoebe-design-partner</strong> is the front door for any design task - decks, dashboards, pages, posters, brand systems. It orchestrates the installed design skills and re-fits their output to an editorial-bold default with disciplined encoding and accessible color. You describe what you want to look good; it routes to the right specialist and holds the standard.</p>
+        <ul>
+          <li><strong>When to reach for it</strong> - "design this", "redesign this", "make it professional", or any screenshot/table you want to look good.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>A founder pasted a raw capability table and asked for "something board-ready." The supervisor picked the layout archetype, applied one fill per meaning with a legend, and handed back a slide that read in five seconds - without the founder naming a single design skill.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>impeccable - the anti-slop taste gate ⚡<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>impeccable</strong> (~15k★) is the final gate on anything visual. Two rules define it and they are the whole point:</p>
+        <ul>
+          <li><strong>It raises craft within a locked brand</strong> - spacing, hierarchy, alignment, the squint test - and <strong>never overrides your palette or fonts</strong>.</li>
+          <li><strong>It is a gate, not a rebuild</strong> ⚡ - it returns targeted fixes to what exists, so it reviews rather than regenerating. That is why it is token-lean even on a heavy page.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>Gate, not painter</strong>
+          If you want a different brand, that's a design decision you make - not something impeccable does behind your back. It makes <em>your</em> choices land better; it doesn't replace them.
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: DECKS + DOCS ============ -->
+  <section class="section" id="decks-docs">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · comm track - decks + written polish</span>
+      <h2>Decks + docs that land <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">The last mile of communication is a deck or a document, on-brand and clean. These skills split by artifact: what you're starting from decides which one fires.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Table mapping a starting artifact to the skill that finishes it">
+        <style>
+          .ddMapH { font: 700 14px Inter, sans-serif; fill: #FFFFFF; }
+          .ddMapT { font: 700 14px Inter, sans-serif; fill: #211712; }
+          .ddMapX { font: 400 13px Inter, sans-serif; fill: #6E5D53; }
+          .ddMapN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+        </style>
+        <rect x="20" y="24" width="410" height="34" rx="8" fill="#7A3520"/>
+        <text class="ddMapH" x="40" y="46">You are starting from</text>
+        <rect x="450" y="24" width="410" height="34" rx="8" fill="#B5502E"/>
+        <text class="ddMapH" x="470" y="46">Reach for</text>
+        <rect x="20" y="66" width="410" height="34" rx="8" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="ddMapT" x="40" y="88">any brand template + content</text>
+        <rect x="450" y="66" width="410" height="34" rx="8" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <text class="ddMapT" x="470" y="88">deck-partner</text>
+        <rect x="20" y="108" width="410" height="34" rx="8" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="ddMapT" x="40" y="130">Centience content</text>
+        <rect x="450" y="108" width="410" height="34" rx="8" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <text class="ddMapT" x="470" y="130">ct-deck-partner</text>
+        <rect x="20" y="150" width="410" height="34" rx="8" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="ddMapT" x="40" y="172">a generic .pptx need</text>
+        <rect x="450" y="150" width="410" height="34" rx="8" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <text class="ddMapT" x="470" y="172">elite-powerpoint-designer</text>
+        <rect x="20" y="192" width="410" height="34" rx="8" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="ddMapT" x="40" y="214">a markdown draft</text>
+        <rect x="450" y="192" width="410" height="34" rx="8" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <text class="ddMapT" x="470" y="214">proof</text>
+        <rect x="20" y="234" width="410" height="34" rx="8" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="ddMapT" x="40" y="256">text that reads AI-written</text>
+        <rect x="450" y="234" width="410" height="34" rx="8" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <text class="ddMapT" x="470" y="256">humanizer-zh</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - starting artifact on the left, the skill that finishes it on the right</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>deck skills - learn a brand once, generate on it<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>deck-partner</strong> - feed it any company's template once; it learns the brand (palette, fonts, logos, layouts) into a locked profile, then turns your content + slide idea into an on-brand .pptx.</li>
+          <li><strong>ct-deck-partner</strong> - the Centience-branded version, matched to the official template.</li>
+          <li><strong>elite-powerpoint-designer</strong> - a strong generic deck builder when there's no brand to match.</li>
+        </ul>
+        <p><strong>When to reach for which</strong>: named brand you'll reuse → deck-partner; Centience → ct-deck-partner; one-off with no brand → elite-powerpoint-designer.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>proof &amp; humanizer-zh - the writing gate<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>proof</strong> - polishes a markdown draft: tightens structure, fixes flow, catches the small errors. It's the written equivalent of impeccable - a gate on prose.</li>
+          <li><strong>humanizer-zh</strong> - strips the tells that make writing read as AI-generated: the hedging, the throat-clearing, the over-balanced "on one hand / on the other." Leaves your voice.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Run this draft through a humanizing pass: remove the AI-writing tells - hedging, filler transitions, over-symmetry - and keep my actual voice and every fact. Show me what you cut.</div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why "gate" beats "generator" for docs<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Asking a model to rewrite a doc from scratch spends tokens on everything, including the parts that were already fine. A gate reads what you have and returns edits - far cheaper, and it keeps your voice instead of flattening it into a generic one. proof and humanizer-zh both work this way on purpose.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 4: COMMS + BIZ ============ -->
+  <section class="section" id="comms-biz">
+    <div class="section-kicker">
+      <span class="klabel">Part 4 · comm + biz tracks</span>
+      <h2>Comms + biz <span class="tag concept">3 min live</span></h2>
+    </div>
+    <p class="lede">The biz and comm tracks lean on skills that capture inspiration, sharpen persuasion, and turn what you know into something teachable. The token angle runs through all of it: compact text artifacts (prompts, cheatsheets) do the heavy lifting, and gates review rather than regenerate.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>beautiful-stuff &amp; marketing copywriting<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>beautiful-stuff</strong> - the muse layer. Capture anything that made you say "wow" into a private wiki, and get one daily spark of something to try. It beats perfectionism by making you ship one small thing a day, and it feeds the sketch pipeline.</li>
+          <li><strong>marketing-skills:copywriting</strong> - persuasion craft for landing pages, offers, and posts. Part of a large marketing pack (ads, SEO, launch, pricing) you pull from per task.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Turning expertise into teaching<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>course-builder</strong> and <strong>corporate-training</strong> take what you know and shape it into sessions others can learn from - the exact pipeline that produced this course. The forcing function is real: building a course makes you learn the topic properly, and the artifact doubles as a magnet for an audience or clients. The token discipline holds here too - image prompts and one-page cheatsheets are compact text, and the taste gate reviews the output instead of regenerating it.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 3</span>
+      <h2>Write a ready-to-run image prompt <span class="tag demo">★ 6 min · follow along</span></h2>
+    </div>
+    <p class="lede">Feel how a few lines of text drive all the expensive generation. This is the cheap-text-drives-pixels move, done rather than described.</p>
+    <div class="prompt-box good"><span class="label">★ visual-image-prompt trigger</span>Using visual-image-prompt, write a ready-to-run prompt for this: [a hero image / cover / poster for ___].
+
+Give me the model, size, and quality to use, the full prompt text, and one alternate direction. Don't generate - just hand me the prompt I can paste.</div>
+    <div class="steps">
+      <div class="step"><p>Pick one image you actually need this week - a cover, a slide hero, a poster.</p></div>
+      <div class="step"><p>Run the trigger. Notice the prompt is a few compact lines, not a paragraph of hedging.</p></div>
+      <div class="step"><p>Paste it into your generator. If it misses, tweak the prompt - not the settings - and note how fast that loop is.</p></div>
+      <div class="step"><p>Save the prompt shape. It becomes your reusable template for that kind of image.</p></div>
+    </div>
+    <div class="callout tip">
+      <strong>Why this is a token move</strong>
+      The prompt is cheap text. Generation is the expensive step. Investing in the prompt means fewer regenerations - the same reason a good grill beats a rebuild.
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 3</span>
+      <h2>Run impeccable as a gate <span class="tag demo">★ 7 min · build your own</span></h2>
+    </div>
+    <p class="lede">Watch impeccable return targeted fixes to a page you already have - not a from-scratch rebuild. This is the difference between a gate and a generator, made visible.</p>
+    <div class="steps">
+      <div class="step"><p>Take an existing page or component you built - one that works but feels a little off.</p></div>
+      <div class="step"><p>Invoke <code>impeccable</code> on it. Note that it asks about your brand, then holds it fixed.</p></div>
+      <div class="step"><p>Read the output as a punch list: spacing here, hierarchy there, alignment there - each a targeted fix.</p></div>
+      <div class="step"><p>Confirm what it did <strong>not</strong> touch: your palette and fonts are unchanged. That's the gate working as designed.</p></div>
+    </div>
+    <div class="prompt-box good"><span class="label">Gate prompt</span>Run impeccable on this page as a review gate. Keep my palette and fonts exactly as they are. Return a punch list of targeted fixes - spacing, hierarchy, alignment, the squint test - not a redesign.</div>
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p>Every session in this course, including this one, passes through impeccable before it ships. It never changed the clay palette or the type - it caught the cramped SVG label and the heading that broke the scan. Review, not repaint.</p>
+    </div>
+  </section>
+
+  <!-- ============ DEMO 3 ============ -->
+  <section class="section" id="demo-3">
+    <div class="section-kicker">
+      <span class="klabel">Demo 3 of 3</span>
+      <h2>Distill a topic to one page <span class="tag demo">★ 5 min · build your own</span></h2>
+    </div>
+    <p class="lede">Use <code>sketch-cheatsheet</code> to turn something you know into a single design-forward page - the most compact, most shareable artifact in the whole session.</p>
+    <div class="steps">
+      <div class="step"><p>Pick a topic you could explain in a meeting - a metric, a framework, a workflow.</p></div>
+      <div class="step"><p>Invoke <code>sketch-cheatsheet</code> on it. It researches, then distills to one page wearing a style-DNA skin.</p></div>
+      <div class="step"><p>At the approval gate, cut anything that isn't essential. One page forces the priority call.</p></div>
+      <div class="step"><p>Export the PNG. Notice it's now a shareable asset - a post, a handout, a slide - from one compact source.</p></div>
+    </div>
+    <div class="prompt-box good"><span class="label">★ Try it now</span>Build me a one-page cheatsheet on [topic]. Distill it to the few things that actually matter, wear a clean style, and give me one hero visual. Ask me before you finalize the layout.</div>
+  </section>
+
+  <!-- ============ TRY IT YOURSELF ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-60 min total</span></h2>
+    </div>
+    <ul>
+      <li>Write three image prompts with visual-image-prompt for things you actually need. Generate once each and note how few regenerations you needed.</li>
+      <li>Run impeccable on one existing page. Write down what it fixed and confirm your palette and fonts were untouched.</li>
+      <li>Build one sketch-cheatsheet on a topic you know. Share it and watch whether one page travels further than a paragraph.</li>
+      <li>Take one AI-sounding draft through humanizer-zh. List the three tells it removed so you can catch them yourself next time.</li>
+      <li><strong>Leads:</strong> have your team each bring one before/after visual - raw vs gated. The delta from the taste gate is the training.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCE MATERIAL ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Where these skills come from</h2>
+    </div>
+    <p class="lede">This session draws on Phoebe's own visual + design skill family and the taste layer wired into all of it. Deck skills are covered at the concept level; the brand-learning depth lives in the skills themselves.</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Sketch + design skill family (sketch-studio, engine, cheatsheet, dataviz)</span><span class="note">Parts 1-2: the visual-explainer pipeline and image prompting</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">impeccable taste engine (~15k★)</span><span class="note">Part 2 + Demo 2: the anti-slop gate, review not rebuild</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Deck skills (deck-partner, ct-deck-partner, elite-powerpoint-designer)</span><span class="note">Part 3: covered at concept level; brand-learning depth in the skills</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · You run impeccable on a page. What will it never do?</p>
+      <button class="qopt" type="button">A · Fix cramped spacing or weak hierarchy</button>
+      <button class="qopt" type="button">B · Override your locked palette or fonts</button>
+      <button class="qopt" type="button">C · Return a punch list of targeted fixes</button>
+      <p class="qwhy">impeccable is a gate that raises craft within your brand. It never overrides palette or fonts - that's a design decision you own.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · Why is writing a good image prompt a token-saving move?</p>
+      <button class="qopt" type="button">A · Prompts are automatically cached</button>
+      <button class="qopt" type="button">B · It skips the generation step entirely</button>
+      <button class="qopt" type="button">C · A prompt is cheap text that drives the expensive generation - fewer retries</button>
+      <p class="qwhy">Generation is the pricey part. Investing in a compact prompt means fewer regenerations, the same logic as grill-before-build.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · What does humanizer-zh do to a draft?</p>
+      <button class="qopt" type="button">A · Removes the tells that make writing read as AI-generated</button>
+      <button class="qopt" type="button">B · Translates it into Mandarin</button>
+      <button class="qopt" type="button">C · Generates a fresh draft from scratch</button>
+      <p class="qwhy">It strips hedging, filler transitions, and over-symmetry while keeping your voice and facts - a gate on prose, not a generator.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 6 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>dataviz</b><span>Before any chart. One fill per meaning + legend + accessible color. Prevents the recolor loop.</span></div>
+      <div class="cheat-item"><b>Sketch family</b><span>studio = what · engine = look · cheatsheet/tree = shape. Enter at the level you need.</span></div>
+      <div class="cheat-item"><b>midjourney / visual-image-prompt ⚡</b><span>Write the prompt, don't hand-tune output. Cheap text drives the pricey pixels.</span></div>
+      <div class="cheat-item"><b>phoebe-design-partner</b><span>Front door for any design task. Routes to specialists, holds the standard.</span></div>
+      <div class="cheat-item"><b>impeccable ⚡</b><span>The taste gate. Raises craft in your brand; never overrides palette/fonts. Reviews, not rebuilds.</span></div>
+      <div class="cheat-item"><b>deck-partner</b><span>Learn a brand template once → generate on-brand .pptx. ct- for Centience, elite- for generic.</span></div>
+      <div class="cheat-item"><b>proof</b><span>Gate on a markdown draft - structure, flow, small errors. The prose equivalent of impeccable.</span></div>
+      <div class="cheat-item"><b>humanizer-zh</b><span>Strips AI-writing tells - hedging, filler, over-symmetry. Keeps your voice and facts.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Session 6 of 8 · learn-claude-skills-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="05-ai-domains.html">← Prev: AI in your domain</a> &nbsp;·&nbsp; <a href="07-lead-ops-edge.html">Next: Lead, ops &amp; edge →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

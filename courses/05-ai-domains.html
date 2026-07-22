@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 5 · AI in your domain - learn claude skills with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-claude-skills-with-phoebe</a> / Session 5 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Claude Skills with Phoebe · Session 5 of 8</div>
+    <h1>AI in your <span class="accent">domain</span></h1>
+    <p class="sub">The biggest bucket in the hub: one skill stack retargeted per business function. Marketing, content, design, analysis, HR, research - and the reuse move that lets one research pass feed a whole week of outputs.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Building</span>
+      <span class="chip audience">Every function</span>
+      <span class="chip audience">aidm track (12 courses)</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-24 · Concepts (live cards)</span>
+      <span class="a3" style="flex:4">24-42 · Three demos</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>One stack, retargeted per function</h2>
+    </div>
+    <p class="lede">The <code>aidm</code> bucket - AI for a domain - is the largest in the hub, spanning data-analysis, data-science, management, marketing, media, design, HR, finance, education, sports, research, and attribution. It looks like twelve different toolkits. It isn't. It's <strong>one skill stack pointed at different work</strong>: a shelf of specialists you pull from, a multiplexer that turns one idea into every channel, a few domain experts, and a research front-end that reads once and serves everyone. This session teaches the retargeting move, and for each skill names what it does, when to reach for it, and its token effect.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">Marketing pack + content engine covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A mental model of the marketing-skills shelf (pull one skill per task, not the whole pack), the one-idea-to-four-channels multiplexer, the domain specialists for design / analysis / HR, and deep-research as a shared front-end. The recurring token-saver this session: do the research once and reuse it across many outputs. Cards marked "Live" are what we do together; "Self-study" cards give depth at your own pace.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: MARKETING PACK ============ -->
+  <section class="section" id="marketing-pack">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · the marketing-skills pack (~34k★)</span>
+      <h2>The marketing-skills pack <span class="tag concept">7 min live</span></h2>
+    </div>
+    <p class="lede">The <strong>marketing-skills</strong> pack is roughly 50 skills - and the mistake is treating it as one thing. It's a <strong>shelf</strong>: you pull the single skill that matches the task at hand and leave the rest on disk. content-strategy for a plan, copywriting for the words, seo-audit to fix a page, pricing to set a number. Because of progressive disclosure, the 49 you don't use cost you nothing.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hub and spokes: the marketing-skills pack with a few named specialist spokes">
+        <style>
+          .mpH { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .mpT { font: 700 13px Inter, sans-serif; fill: #211712; }
+          .mpX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .mpN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+        </style>
+        <line x1="440" y1="130" x2="180" y2="60" stroke="#C9BCB2" stroke-width="2"/>
+        <line x1="440" y1="130" x2="700" y2="60" stroke="#C9BCB2" stroke-width="2"/>
+        <line x1="440" y1="130" x2="130" y2="150" stroke="#C9BCB2" stroke-width="2"/>
+        <line x1="440" y1="130" x2="750" y2="150" stroke="#C9BCB2" stroke-width="2"/>
+        <line x1="440" y1="130" x2="250" y2="220" stroke="#C9BCB2" stroke-width="2"/>
+        <line x1="440" y1="130" x2="630" y2="220" stroke="#C9BCB2" stroke-width="2"/>
+        <circle cx="440" cy="130" r="58" fill="#B5502E"/>
+        <text class="mpH" x="440" y="126" text-anchor="middle">marketing</text>
+        <text class="mpH" x="440" y="146" text-anchor="middle">-skills ~50</text>
+        <rect x="110" y="42" width="150" height="34" rx="14" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="mpT" x="185" y="64" text-anchor="middle">content-strategy</text>
+        <rect x="625" y="42" width="150" height="34" rx="14" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="mpT" x="700" y="64" text-anchor="middle">copywriting</text>
+        <rect x="60" y="133" width="140" height="34" rx="14" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="mpT" x="130" y="155" text-anchor="middle">seo-audit</text>
+        <rect x="685" y="133" width="130" height="34" rx="14" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="mpT" x="750" y="155" text-anchor="middle">pricing</text>
+        <rect x="180" y="203" width="140" height="34" rx="14" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="mpT" x="250" y="225" text-anchor="middle">launch</text>
+        <rect x="560" y="203" width="140" height="34" rx="14" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="mpT" x="630" y="225" text-anchor="middle">cold-email</text>
+        <rect x="20" y="258" width="840" height="30" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="266" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="mpN" x="58" y="278">Pull one spoke per task; the other 49 stay on disk and cost nothing.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the marketing pack is a shelf, not a single skill</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>A shelf you pull one skill from<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The pack covers most of the marketing lifecycle. You don't run "marketing-skills"; you run the one that fits:</p>
+        <table class="clean">
+          <thead><tr><th>You're doing...</th><th>Reach for</th></tr></thead>
+          <tbody>
+            <tr><td>Planning the quarter's content</td><td>content-strategy</td></tr>
+            <tr><td>Writing the actual words</td><td>copywriting</td></tr>
+            <tr><td>Fixing a page that won't rank</td><td>seo-audit, ai-seo</td></tr>
+            <tr><td>Setting or testing a price</td><td>pricing, offers</td></tr>
+            <tr><td>Shipping a launch or ads</td><td>launch, ads, emails, cold-email</td></tr>
+            <tr><td>Understanding the market</td><td>customer-research, competitors, analytics</td></tr>
+          </tbody>
+        </table>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>I have a landing page that isn't converting. Use the seo-audit skill on this URL and give me the three highest-impact fixes ranked by effort: [paste URL or the page copy].</div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Why "shelf" is the right mental model<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Treating the pack as one giant skill would either bloat every task with 50 skills' worth of instruction, or force you to know which of 50 to name before you start. The shelf model fixes both: each skill has its own trigger, so the right one surfaces when your task matches, and only its body loads.</p>
+        <ul>
+          <li><strong>When</strong> - any marketing task, from strategy to a single email subject line.</li>
+          <li><strong>Token effect</strong> - progressive disclosure means installing all 50 is nearly free; you pay only for the one that fires.</li>
+          <li><strong>Habit</strong> - describe the task, let the matching skill surface, rather than memorizing the catalogue.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>Don't name the pack, name the job</strong>
+          Say what you're trying to do ("audit this page for SEO", "price this tier"). The right shelf skill fires on the job description - you don't need to have the catalogue memorized.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The full shelf at a glance<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Beyond the headline skills, the pack reaches into: analytics, cro, ab-testing, onboarding, churn-prevention, referrals, pricing, offers, paywalls, ad-creative, product-marketing, public-relations, competitor-profiling, lead-magnets, programmatic-seo, schema, site-architecture, sms, social, and more. You will never use all of them in one week - and that's the point. The shelf is broad so that whatever function you're in, the specialist already exists and fires on demand.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: ONE IDEA EVERY CHANNEL ============ -->
+  <section class="section" id="one-idea">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · the content engine</span>
+      <h2>One idea, every channel <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">The reuse move in its clearest form: research an idea once, publish it everywhere - each output fitted to its platform, not copy-pasted. <strong>content-multiplexer</strong> takes one topic and produces LinkedIn, Instagram, X, and a newsletter draft, each platform-native. The <strong>li-top-voice-engine</strong> and its day sub-skills run the same idea through a structured weekly cadence.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One idea fans out into four platform-native outputs from a single research pass">
+        <style>
+          .oiH { font: 700 14px Inter, sans-serif; fill: #FFFFFF; }
+          .oiI { font: 700 13px Inter, sans-serif; fill: #211712; }
+          .oiX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .oiN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+        </style>
+        <defs>
+          <marker id="oiAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <rect x="20" y="90" width="180" height="70" rx="12" fill="#7A3520"/>
+        <text class="oiH" x="110" y="120" text-anchor="middle">1 idea</text>
+        <text class="oiX" x="110" y="142" text-anchor="middle" fill="#F0C9B3">one research pass</text>
+        <path d="M200,110 L300,60" stroke="#C9BCB2" stroke-width="2.5" fill="none" marker-end="url(#oiAh)"/>
+        <path d="M200,120 L300,113" stroke="#C9BCB2" stroke-width="2.5" fill="none" marker-end="url(#oiAh)"/>
+        <path d="M200,140 L300,166" stroke="#C9BCB2" stroke-width="2.5" fill="none" marker-end="url(#oiAh)"/>
+        <path d="M200,150 L300,219" stroke="#C9BCB2" stroke-width="2.5" fill="none" marker-end="url(#oiAh)"/>
+        <rect x="310" y="34" width="250" height="42" rx="10" fill="#B5502E"/>
+        <text class="oiH" x="330" y="60">LinkedIn · long-form POV</text>
+        <rect x="310" y="88" width="250" height="42" rx="10" fill="#CC785C"/>
+        <text class="oiI" x="330" y="114">Instagram · carousel</text>
+        <rect x="310" y="142" width="250" height="42" rx="10" fill="#B5502E"/>
+        <text class="oiH" x="330" y="168">X · thread + hook</text>
+        <rect x="310" y="196" width="250" height="42" rx="10" fill="#CC785C"/>
+        <text class="oiI" x="330" y="222">Newsletter · deep cut</text>
+        <rect x="600" y="88" width="260" height="88" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <text class="oiI" x="620" y="116" style="font:700 13px Inter;fill:#7A3520">The reuse move</text>
+        <text class="oiX" x="620" y="138">Research + core idea paid</text>
+        <text class="oiX" x="620" y="156">once, feeds all four outputs.</text>
+        <rect x="20" y="196" width="270" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="210" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="oiN" x="58" y="222">Each output platform-native</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - one research pass fans into four platform-native outputs</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>content-multiplexer - one topic, four drafts<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>content-multiplexer</strong> extracts the single core idea from a topic, then writes for each platform in that platform's own voice, format, and length. A LinkedIn post is not an Instagram caption with the hashtags swapped - the multiplexer knows the difference.</p>
+        <ul>
+          <li><strong>When</strong> - you have one insight and want it live across your channels this week.</li>
+          <li><strong>What you give it</strong> - a topic, optionally a chart, screenshot, or day-theme.</li>
+          <li><strong>Token effect</strong> - the expensive part (finding and shaping the idea) happens once; the four drafts reuse it rather than re-researching four times.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Use content-multiplexer on this one insight and give me a LinkedIn post, an Instagram carousel outline, an X thread, and a newsletter section - each native to its platform: [paste your insight].</div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>li-top-voice-engine and its day sub-skills<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The <strong>li-top-voice-engine</strong> is the master brain for a LinkedIn presence; it routes production to per-day sub-skills so each day has a repeatable format:</p>
+        <table class="clean">
+          <thead><tr><th>Sub-skill</th><th>Its job</th></tr></thead>
+          <tbody>
+            <tr><td>li-mon-pick</td><td>Monday "AI in the wild" case study</td></tr>
+            <tr><td>li-wed-decode</td><td>Wednesday data-term decode carousel</td></tr>
+            <tr><td>li-fri-cdaio</td><td>Friday leadership / adoption post</td></tr>
+            <tr><td>li-daily-digest</td><td>Daily AI news digest with a POV</td></tr>
+            <tr><td>li-comment-master</td><td>Organic comments + daily goal tracking</td></tr>
+          </tbody>
+        </table>
+        <p>Same architecture as the Core Stack: one engine, specialist sub-skills that fire on their day. The engine holds strategy; the sub-skills hold format.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why one research pass is the reuse token-move<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The costly part of content isn't the writing - it's the finding, verifying, and shaping of the idea. If you research separately for each platform, you pay that cost four times over and risk four slightly different versions of the truth. Multiplexing pays it once and fans the result out. That's the "reuse it" move from Session 1 applied to content: stable, expensive work done once and reused across many cheap outputs.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: DOMAIN SPECIALISTS ============ -->
+  <section class="section" id="specialists">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · specialists for specific functions</span>
+      <h2>Domain specialists <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Beyond marketing, a handful of skills own a whole function each. <strong>phoebe-design-partner</strong> is the visual brain for any team's output, <strong>phoebe-data-schema-to-insights</strong> owns the analysis and DS domain, and <strong>resume-builder-harvard</strong> plus the <strong>proficiently</strong> pack cover HR, recruiting, and career.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Table mapping each business function to its specialist skill">
+        <style>
+          .dsH { font: 700 14px Inter, sans-serif; fill: #FFFFFF; }
+          .dsT { font: 700 13px Inter, sans-serif; fill: #211712; }
+          .dsX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .dsN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+        </style>
+        <rect x="20" y="24" width="200" height="34" rx="6" fill="#7A3520"/>
+        <text class="dsH" x="40" y="46">Function</text>
+        <rect x="230" y="24" width="270" height="34" rx="6" fill="#7A3520"/>
+        <text class="dsH" x="250" y="46">Specialist skill</text>
+        <rect x="510" y="24" width="350" height="34" rx="6" fill="#7A3520"/>
+        <text class="dsH" x="530" y="46">What it owns</text>
+        <rect x="20" y="64" width="200" height="40" rx="6" fill="#F5DAC8"/>
+        <text class="dsT" x="40" y="89">Design (any team)</text>
+        <rect x="230" y="64" width="270" height="40" rx="6" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="dsT" x="250" y="89">phoebe-design-partner</text>
+        <text class="dsX" x="530" y="89">decks, UI, pages, brand systems</text>
+        <rect x="20" y="110" width="200" height="40" rx="6" fill="#F5DAC8"/>
+        <text class="dsT" x="40" y="135">Analysis / DS</text>
+        <rect x="230" y="110" width="270" height="40" rx="6" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="dsT" x="250" y="135">schema-to-insights</text>
+        <text class="dsX" x="530" y="135">schema to contract to insight</text>
+        <rect x="20" y="156" width="200" height="40" rx="6" fill="#F5DAC8"/>
+        <text class="dsT" x="40" y="181">HR / career</text>
+        <rect x="230" y="156" width="270" height="40" rx="6" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="dsT" x="250" y="181">resume-harvard + proficiently</text>
+        <text class="dsX" x="530" y="181">resumes, tailoring, job search</text>
+        <rect x="20" y="204" width="840" height="34" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="212" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="dsN" x="58" y="224">One specialist per function beats a generalist prompt - the craft is already built in.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - each business function has a specialist skill that already knows the craft</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>phoebe-design-partner - visual work for any function<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>phoebe-design-partner</strong> is the supervisor for every visual artifact - decks, dashboards, matrices, web pages, landing pages, posters. Whatever function you're in, when the output needs to look right, this is the skill, and it routes through the taste and anti-slop gate before anything ships.</p>
+        <ul>
+          <li><strong>When</strong> - any "design this", "make it look professional", "recolor", "build a screen".</li>
+          <li><strong>Token effect</strong> - it encodes the design discipline once, so you don't re-explain palette, encoding, and layout rules on every visual task.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Use phoebe-design-partner to turn this rough table into a clean, professional one-page matrix I could put in front of an exec: [paste the table].</div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>schema-to-insights and the career pack<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>phoebe-data-schema-to-insights</strong> - the analysis/DS specialist: it goes from a raw schema to a data contract to an offline insight, so an analytics question isn't answered from a blank prompt but from a disciplined pipeline.</li>
+          <li><strong>resume-builder-harvard</strong> - creates, reviews, and tailors resumes and CVs, including ATS optimization and tailoring to a specific job description.</li>
+          <li><strong>proficiently</strong> pack - the wider HR/recruiting/career shelf: job search, tailoring, cover letters, network scanning.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>A hiring manager and a candidate can use the same career pack from opposite ends - one to write a role-tailored JD-matched resume, the other to screen against it. Same skill shelf, two functions, retargeted.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The retargeting principle<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Notice what's happening across Parts 1-3: the same small set of moves - a shelf of specialists, a multiplexer, a design gate, a research front-end - covers marketing, content, design, analysis, and HR. You don't learn a new toolkit per domain; you point the same toolkit at new work. That's why the <code>aidm</code> bucket has twelve courses but one architecture, and why learning the pattern once pays across every function you'll ever sit in.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 4: RESEARCH ONCE ============ -->
+  <section class="section" id="research-once">
+    <div class="section-kicker">
+      <span class="klabel">Part 4 · the shared research front-end</span>
+      <h2>Research once, apply everywhere <span class="tag concept">3 min live</span></h2>
+    </div>
+    <p class="lede">Finance, education, research, and sports domains all share one need: a trustworthy read of a fast-moving question. <strong>deep-research</strong> is the shared front-end - a subagent fans out across sources, adversarially verifies claims, and returns a cited brief, so the reading happens off your main context and comes back compressed.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A deep-research subagent reads many sources and returns a small cited brief">
+        <style>
+          .roH { font: 700 14px Inter, sans-serif; fill: #FFFFFF; }
+          .roI { font: 700 13px Inter, sans-serif; fill: #211712; }
+          .roX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .roN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+        </style>
+        <defs>
+          <marker id="roAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <rect x="20" y="40" width="150" height="30" rx="8" fill="#E4A886"/>
+        <text class="roI" x="40" y="60">source A</text>
+        <rect x="20" y="80" width="150" height="30" rx="8" fill="#E4A886"/>
+        <text class="roI" x="40" y="100">source B</text>
+        <rect x="20" y="120" width="150" height="30" rx="8" fill="#E4A886"/>
+        <text class="roI" x="40" y="140">source C</text>
+        <rect x="20" y="160" width="150" height="30" rx="8" fill="#E4A886"/>
+        <text class="roI" x="40" y="180">source D</text>
+        <path d="M170,55 L280,105" stroke="#C9BCB2" stroke-width="2" fill="none" marker-end="url(#roAh)"/>
+        <path d="M170,95 L280,110" stroke="#C9BCB2" stroke-width="2" fill="none" marker-end="url(#roAh)"/>
+        <path d="M170,135 L280,120" stroke="#C9BCB2" stroke-width="2" fill="none" marker-end="url(#roAh)"/>
+        <path d="M170,175 L280,125" stroke="#C9BCB2" stroke-width="2" fill="none" marker-end="url(#roAh)"/>
+        <rect x="290" y="80" width="200" height="70" rx="12" fill="#7A3520"/>
+        <text class="roH" x="390" y="108" text-anchor="middle">deep-research</text>
+        <text class="roX" x="390" y="130" text-anchor="middle" fill="#F0C9B3">subagent, own budget</text>
+        <path d="M490,115 L590,115" stroke="#C9BCB2" stroke-width="2.5" fill="none" marker-end="url(#roAh)"/>
+        <rect x="600" y="82" width="260" height="66" rx="12" fill="#CC785C"/>
+        <text class="roI" x="620" y="110">cited brief only</text>
+        <text class="roX" x="620" y="132">verified, small, on-topic</text>
+        <rect x="20" y="200" width="840" height="34" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="208" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="roN" x="58" y="220">Token-saver: reading is offloaded and compressed - your main window gets the brief, not the sources.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - deep-research reads many sources and returns one cited brief</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>deep-research as a shared front-end<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>deep-research</strong> is the same skill whether the question is a finance thesis, a curriculum reference, an academic literature scan, or a sports-analytics query. It fans out searches, fetches and cross-checks sources, and returns a synthesized, cited report.</p>
+        <ul>
+          <li><strong>When</strong> - any multi-source question where you need to trust the answer and cite it.</li>
+          <li><strong>How it stays cheap</strong> - a subagent does the reading in its own budget and hands back only the brief.</li>
+          <li><strong>Token effect</strong> - it offloads the heavy reading and compresses the result, so your main context holds the conclusion, not the raw pages.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>Ask a sharp question first</strong>
+          deep-research pays off most when the question is specific. If it's fuzzy ("what should I know about X"), narrow it first - scope, timeframe, what decision it feeds - so the brief comes back usable, not sprawling.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Offload + compress, together<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>deep-research is where two Session 1 moves stack: <strong>offload</strong> (a subagent with its own budget does the reading) and <strong>compress</strong> (it returns a brief, not the sources). That combination is why one deep-research call can answer a question that would blow your whole context window if you tried to read every source inline. The cited brief is small enough to then feed content-multiplexer, a design-partner deck, or a decision - the research done once, applied everywhere.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 3</span>
+      <h2>One insight into four platform drafts <span class="tag demo">★ 6 min · follow along</span></h2>
+    </div>
+    <p class="lede">Feel the reuse move directly. Take a single insight and watch content-multiplexer turn it into four native drafts from one shaping pass.</p>
+    <div class="prompt-box good"><span class="label">★ The multiplex trigger</span>Use content-multiplexer on this insight: [paste one insight or finding].
+
+Give me a LinkedIn post, an Instagram carousel outline, an X thread, and a newsletter section. Make each native to its platform - not the same text reformatted.</div>
+    <div class="steps">
+      <div class="step"><p>Pick one insight you'd normally post to just one platform.</p></div>
+      <div class="step"><p>Run the multiplex trigger and read all four drafts.</p></div>
+      <div class="step"><p>Note how the hook, length, and tone differ per platform - that's the native fit.</p></div>
+      <div class="step"><p>Compare the effort to writing four from scratch. The idea was shaped once.</p></div>
+    </div>
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p>A single case-study finding, multiplexed, filled a whole week's calendar across four channels - and because the core idea was verified once, every version told the same true story.</p>
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 3</span>
+      <h2>Run one marketing-skill on a real case <span class="tag demo">★ 7 min · build your own</span></h2>
+    </div>
+    <p class="lede">Prove the shelf model. Pull exactly one skill from the marketing pack and run it end-to-end on something real.</p>
+    <div class="steps">
+      <div class="step"><p>Pick a real task: a price to set, a page to audit, an offer to sharpen.</p></div>
+      <div class="step"><p>Describe the task - don't name the whole pack, name the job.</p></div>
+      <div class="step"><p>Let the matching skill (pricing, seo-audit, offers) surface and run it.</p></div>
+      <div class="step"><p>Note that only that one skill's body loaded - the other 49 stayed on disk.</p></div>
+    </div>
+    <div class="prompt-box good"><span class="label">Single-skill prompt</span>Use the pricing skill to set a three-tier price for this product, with a one-line rationale per tier and the psychological anchor each tier uses: [describe the product, costs, and target customer].</div>
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p>The temptation is to reach for "the marketing pack" as one big tool. Reaching for one skill instead keeps the task focused and the context small - and the answer is sharper for it.</p>
+    </div>
+  </section>
+
+  <!-- ============ DEMO 3 ============ -->
+  <section class="section" id="demo-3">
+    <div class="section-kicker">
+      <span class="klabel">Demo 3 of 3</span>
+      <h2>Deep-research a domain question <span class="tag demo">★ 5 min · build your own</span></h2>
+    </div>
+    <p class="lede">Get a cited brief without flooding your context. Ask deep-research a real domain question and let a subagent do the reading.</p>
+    <div class="steps">
+      <div class="step"><p>Pick a specific question from your domain - finance, education, sports, research.</p></div>
+      <div class="step"><p>Sharpen it: scope, timeframe, and the decision it feeds.</p></div>
+      <div class="step"><p>Run deep-research and let the subagent fan out and verify.</p></div>
+      <div class="step"><p>Read the cited brief - note your main context never held the raw sources.</p></div>
+    </div>
+    <div class="prompt-box good"><span class="label">★ Try it now</span>Use deep-research to answer this, and return only a cited brief - keep the raw sources out of our main conversation: [specific domain question, with scope and timeframe]. Give me the answer, the 3-5 key sources, and any point where sources disagreed.</div>
+  </section>
+
+  <!-- ============ TRY IT YOURSELF ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-60 min total</span></h2>
+    </div>
+    <ul>
+      <li>Multiplex one real insight into four platform drafts. Notice how much of the work was shaping the idea vs writing the copy.</li>
+      <li>Run three different marketing-skills on three real tasks - describe the job each time, don't name the pack.</li>
+      <li>Use phoebe-design-partner on one ugly table or slide you actually have, and keep the before/after.</li>
+      <li>Deep-research one sharp domain question and get a cited brief. Then feed that brief into one other skill.</li>
+      <li>Write down one function you're not in and name which of today's skills would still serve it - that's the retargeting muscle.</li>
+      <li><strong>Leads:</strong> have each team member run the same insight through the multiplexer. Compare outputs - the shared research, the platform-native differences.</li>
+    </ul>
+  </section>
+
+  <!-- ============ OFFICIAL COURSES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Sources covered</h2>
+    </div>
+    <p class="lede">This session teaches the working practice of applying AI per function: the marketing shelf, the content engine, the specialists, and the research front-end. What stays with the originals: the full skill catalogues and Phoebe's private content databases.</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The marketing-skills pack (~34k★)</span><span class="note">Part 1 + Demo 2: ~50 skills as a shelf you pull one from per task</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Phoebe's LinkedIn + content engine</span><span class="note">Part 2 + Demo 1: content-multiplexer and the li-top-voice day sub-skills</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">deep-research</span><span class="note">Part 4 + Demo 3: shared cited-brief front-end; internal harness left to source</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · Why is "research the idea once, publish everywhere" a token move, not just a productivity tip?</p>
+      <button class="qopt" type="button">A · It uses a bigger model</button>
+      <button class="qopt" type="button">B · It skips research entirely</button>
+      <button class="qopt" type="button">C · The expensive shaping is paid once and reused across many cheap outputs</button>
+      <p class="qwhy">Reuse: the costly part is finding and verifying the idea. Multiplexing pays that once and fans it out, instead of researching separately per platform.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · The right way to think about the marketing-skills pack is...</p>
+      <button class="qopt" type="button">A · A shelf you pull one matching skill from per task</button>
+      <button class="qopt" type="button">B · One giant skill you always run whole</button>
+      <button class="qopt" type="button">C · A model you have to fine-tune first</button>
+      <p class="qwhy">It's ~50 skills, each with its own trigger. Progressive disclosure means the 49 you don't use cost nothing - you pay only for the one that fires.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">3 · How does deep-research keep a big multi-source question cheap?</p>
+      <button class="qopt" type="button">A · It reads everything into your main chat</button>
+      <button class="qopt" type="button">B · A subagent offloads the reading and returns a compressed cited brief</button>
+      <button class="qopt" type="button">C · It only ever reads one source</button>
+      <p class="qwhy">Offload plus compress: the subagent reads in its own budget and hands back the brief, so your main window holds the conclusion, not the raw pages.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 5 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>marketing-skills pack</b><span>~50 skills as a shelf. Pull one per task; name the job, not the pack. 49 unused cost nothing.</span></div>
+      <div class="cheat-item"><b>content-multiplexer ★</b><span>One topic to LinkedIn + Instagram + X + newsletter, each native. Idea shaped once, reused four ways.</span></div>
+      <div class="cheat-item"><b>li-top-voice-engine</b><span>Master brain + day sub-skills (mon-pick, wed-decode, fri-cdaio, daily-digest, comment-master).</span></div>
+      <div class="cheat-item"><b>phoebe-design-partner</b><span>Visual brain for any function - decks, UI, pages, matrices. Craft + anti-slop gate built in.</span></div>
+      <div class="cheat-item"><b>schema-to-insights</b><span>Analysis/DS specialist: schema to contract to insight, not a blank-prompt answer.</span></div>
+      <div class="cheat-item"><b>resume / proficiently</b><span>HR / recruiting / career shelf: resumes, ATS tailoring, job search, cover letters.</span></div>
+      <div class="cheat-item"><b>deep-research ★</b><span>Shared cited-brief front-end for finance/education/research/sports. Offloads + compresses reading.</span></div>
+      <div class="cheat-item"><b>Retargeting principle</b><span>One stack, pointed at new work. Twelve aidm courses, one architecture. Learn the pattern once.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Session 5 of 8 · learn-claude-skills-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="04-ai-agents.html">← Prev: AI &amp; agents</a> &nbsp;·&nbsp; <a href="06-content-viz-comm.html">Next: Content, viz &amp; comm →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

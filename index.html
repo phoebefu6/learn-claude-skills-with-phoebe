@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>learn claude skills with phoebe - the token-lean skill stack</title>
+<link rel="stylesheet" href="assets/style.css?v=1">
+<style>
+  .stats-row { display: flex; gap: 2.4rem; margin-top: 1.5rem; flex-wrap: wrap; }
+  .stat b { display: block; font-size: 2.1rem; font-weight: 800; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .72rem; opacity: .85; text-transform: uppercase; letter-spacing: .09em; font-weight: 600; }
+
+  .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .course-card {
+    border: 1px solid var(--hairline);
+    border-top: 4px solid var(--diff, var(--indigo));
+    border-radius: var(--radius);
+    padding: 1.2rem 1.3rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    text-decoration: none;
+    color: var(--ink);
+    background: #fff;
+    transition: box-shadow .15s ease, border-color .15s ease, transform .15s ease;
+    position: relative;
+  }
+  .course-card:hover { border-color: var(--indigo-soft); border-top-color: var(--diff, var(--indigo)); box-shadow: 0 8px 28px rgba(122,53,32,.14); transform: translateY(-3px); }
+  .course-card .cicon { font-size: 1.7rem; line-height: 1; }
+  .course-card .cnum { font-size: .72rem; font-weight: 700; color: var(--indigo); text-transform: uppercase; letter-spacing: .1em; }
+  .course-card h3 { font-size: 1.05rem; font-weight: 800; line-height: 1.3; }
+  .course-card p { font-size: .85rem; color: var(--muted); flex: 1; }
+  .course-card .meta { display: flex; gap: .4rem; flex-wrap: wrap; }
+
+  .diff-legend { display: flex; gap: 1rem; margin-top: 1.6rem; font-size: .74rem; color: var(--muted); font-weight: 600; flex-wrap: wrap; }
+  .diff-legend i { display: inline-block; width: .85rem; height: .35rem; border-radius: 999px; margin-right: .35rem; vertical-align: middle; }
+
+  .paths { margin-top: 2.6rem; }
+  .paths h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: .3rem; }
+  .paths .plede { color: var(--muted); font-size: .92rem; margin-bottom: .8rem; }
+  .path { display: flex; gap: .55rem; align-items: center; padding: .75rem 0; border-bottom: .5px solid var(--hairline); flex-wrap: wrap; }
+  .path:last-child { border-bottom: none; }
+  .path b { min-width: 15.5rem; font-size: .9rem; }
+  .path .pstep { background: var(--indigo-50); color: var(--indigo); border-radius: 999px; padding: .16rem .68rem; font-weight: 700; font-size: .8rem; text-decoration: none; transition: all .12s ease; }
+  .path .pstep:hover { background: var(--indigo); color: #fff; }
+  .path .parr { color: var(--faint); font-weight: 700; }
+
+  .mm-section { margin-top: 1.6rem; }
+  .mm-section h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: .2rem; }
+  .mm-section .mm-lede { color: var(--muted); font-size: .92rem; margin-bottom: .4rem; }
+  .mm-wrap { border: 1px solid var(--hairline); border-radius: var(--radius); background: linear-gradient(180deg,#fff, #FBF5F1); padding: .6rem; overflow-x: auto; }
+  .mm-svg { width: 100%; height: auto; display: block; max-width: 60rem; margin: 0 auto; min-width: 34rem; }
+  .mm-link { cursor: pointer; text-decoration: none; }
+  .mm-node rect { transition: opacity .15s ease, filter .15s ease; }
+  .mm-node text { pointer-events: none; }
+  .mm-link:hover .mm-node rect { filter: brightness(1.06); }
+  .mm-edge { transition: opacity .15s ease; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Claude Skills with Phoebe</div>
+    <h1>The Claude skills that <span class="accent">10x your workflow</span> - on a token budget</h1>
+    <p class="sub">The highest-leverage skills - grill-me, superpowers, impeccable, and the data + design skills - organised across all 17 of Phoebe's course tracks. Eight sessions teach you to pick the right skill for the job and wire progressive disclosure so your workflow gets drastically better while spending far fewer tokens.</p>
+    <div class="stats-row">
+      <div class="stat"><b data-count="8">8</b><span>sessions</span></div>
+      <div class="stat"><b data-count="17">17</b><span>course tracks</span></div>
+      <div class="stat"><b data-count="170">170</b><span>skill picks mapped</span></div>
+      <div class="stat"><b data-count="8">8</b><span>core skills</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+
+  <section class="section">
+    <div class="course-grid">
+      <a class="course-card" href="courses/01-core-stack.html" style="--diff:#34D399">
+        <span class="cicon">🧰</span>
+        <span class="cnum">Session 1 · easiest</span>
+        <h3>The Core Stack &amp; token economics</h3>
+        <p>What a skill is, progressive disclosure, and the 8 skills every track inherits.</p>
+        <span class="meta"><span class="pill amber">▶ Start here</span><span class="pill light">All tracks</span></span>
+      </a>
+      <a class="course-card" href="courses/02-build-ship.html" style="--diff:#FBBF24">
+        <span class="cicon">🔧</span>
+        <span class="cnum">Session 2 · building</span>
+        <h3>Build &amp; ship</h3>
+        <p>TDD, debugging, git worktrees, cavecrew, and deploy - the prog / deng / sys / docs tracks.</p>
+        <span class="meta"><span class="pill light">prog · deng · sys · docs</span></span>
+      </a>
+      <a class="course-card" href="courses/03-data-ds.html" style="--diff:#FBBF24">
+        <span class="cicon">📊</span>
+        <span class="cnum">Session 3 · building</span>
+        <h3>Data &amp; DS</h3>
+        <p>Schema-to-insights, the data-skill factory, dataviz, and profiling - the data / ds tracks.</p>
+        <span class="meta"><span class="pill light">data · ds</span></span>
+      </a>
+      <a class="course-card" href="courses/04-ai-agents.html" style="--diff:#FB923C">
+        <span class="cicon">🤖</span>
+        <span class="cnum">Session 4 · advancing</span>
+        <h3>AI &amp; agents</h3>
+        <p>Prompt + API + caching, office docs, skill-creator, and artifacts - the ai / aiap tracks.</p>
+        <span class="meta"><span class="pill light">ai · aiap</span></span>
+      </a>
+      <a class="course-card" href="courses/05-ai-domains.html" style="--diff:#FBBF24">
+        <span class="cicon">🎯</span>
+        <span class="cnum">Session 5 · building</span>
+        <h3>AI in your domain</h3>
+        <p>marketing-skills, content-multiplexer, design-partner, and deep-research across the aidm x12 tracks.</p>
+        <span class="meta"><span class="pill light">aidm x12</span></span>
+      </a>
+      <a class="course-card" href="courses/06-content-viz-comm.html" style="--diff:#FBBF24">
+        <span class="cicon">🎨</span>
+        <span class="cnum">Session 6 · building</span>
+        <h3>Content, viz &amp; comm</h3>
+        <p>The sketch family, the impeccable gate, decks, and humanizer - the viz / comm / biz tracks.</p>
+        <span class="meta"><span class="pill light">viz · comm · biz</span></span>
+      </a>
+      <a class="course-card" href="courses/07-lead-ops-edge.html" style="--diff:#34D399">
+        <span class="cicon">🧭</span>
+        <span class="cnum">Session 7 · easiest</span>
+        <h3>Lead, ops &amp; edge</h3>
+        <p>mentor-room, hooks + schedule, and the safe edge tracks - lead / gov / emrg / prod / move.</p>
+        <span class="meta"><span class="pill light">lead · gov · emrg · prod · move</span></span>
+      </a>
+      <a class="course-card" href="courses/08-build-your-own-skill.html" style="--diff:#F87171">
+        <span class="cicon">🏗️</span>
+        <span class="cnum">Session 8 · capstone</span>
+        <h3>Build your own skill</h3>
+        <p>skill-creator, a token-lean SKILL.md, and the budget playbook that keeps every skill cheap.</p>
+        <span class="meta"><span class="pill light">Capstone</span></span>
+      </a>
+      <a class="course-card" href="00-matrix.html" style="--diff:#E3A008">
+        <span class="cicon">📚</span>
+        <span class="cnum">Reference</span>
+        <h3>The 17x10 matrix</h3>
+        <p>The top 10 skills for all 17 tracks, on one browsable page.</p>
+        <span class="meta"><span class="pill light">Browse all picks</span></span>
+      </a>
+    </div>
+    <div class="diff-legend">
+      <span><i style="background:#34D399"></i>easiest</span>
+      <span><i style="background:#FBBF24"></i>building</span>
+      <span><i style="background:#FB923C"></i>advancing</span>
+      <span><i style="background:#F87171"></i>capstone</span>
+    </div>
+
+    <div class="paths">
+      <h2>Choose your path 🗺️</h2>
+      <p class="plede">Everyone starts at Session 1 for the Core Stack. After that, follow the journey that fits your role.</p>
+      <div class="path"><b>🎨 Creator / KOL path</b>
+        <a class="pstep" href="courses/01-core-stack.html">1</a><span class="parr">→</span>
+        <a class="pstep" href="courses/06-content-viz-comm.html">6</a><span class="parr">→</span>
+        <a class="pstep" href="courses/05-ai-domains.html">5</a><span class="parr">→</span>
+        <a class="pstep" href="courses/08-build-your-own-skill.html">8</a>
+      </div>
+      <div class="path"><b>👥 Team onboarding path</b>
+        <a class="pstep" href="courses/01-core-stack.html">1</a><span class="parr">→</span>
+        <a class="pstep" href="courses/02-build-ship.html">2</a><span class="parr">→</span>
+        <a class="pstep" href="courses/04-ai-agents.html">4</a><span class="parr">→</span>
+        <a class="pstep" href="courses/07-lead-ops-edge.html">7</a>
+      </div>
+      <div class="path"><b>🧭 Full journey</b>
+        <a class="pstep" href="courses/01-core-stack.html">1</a><span class="parr">→</span>
+        <a class="pstep" href="courses/02-build-ship.html">2</a><span class="parr">→</span>
+        <a class="pstep" href="courses/03-data-ds.html">3</a><span class="parr">→</span>
+        <a class="pstep" href="courses/04-ai-agents.html">4</a><span class="parr">→</span>
+        <a class="pstep" href="courses/05-ai-domains.html">5</a><span class="parr">→</span>
+        <a class="pstep" href="courses/06-content-viz-comm.html">6</a><span class="parr">→</span>
+        <a class="pstep" href="courses/07-lead-ops-edge.html">7</a><span class="parr">→</span>
+        <a class="pstep" href="courses/08-build-your-own-skill.html">8</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section mm-section">
+    <h2>The knowledge map 🧠</h2>
+    <p class="mm-lede">The whole stack at a glance - hover a session to spotlight its concepts, click any node to jump in.</p>
+    <div class="mm-wrap"><div id="mindmap"></div></div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>learn-claude-skills-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a> · siblings: <a href="https://phoebefu6.github.io/learn-claude-with-phoebe/">learn-claude</a> · <a href="https://phoebefu6.github.io/learn-prompt-engineering-with-phoebe/">learn-prompt-engineering</a> · <a href="https://phoebefu6.github.io/learn-mcp-with-phoebe/">learn-mcp</a></span>
+  </footer>
+</main>
+
+<script>
+window.MINDMAP_DATA = {
+  title: "Claude Skills\nwith Phoebe",
+  centerColor: "#7A3520",
+  sessions: [
+    { label: "Core Stack", href: "courses/01-core-stack.html", color: "#34D399",
+      concepts: [
+        { label: "SKILL.md + disclosure", href: "courses/01-core-stack.html" },
+        { label: "Token economy", href: "courses/01-core-stack.html" },
+        { label: "The Core 8", href: "courses/01-core-stack.html" } ] },
+    { label: "Build & ship", href: "courses/02-build-ship.html", color: "#FBBF24",
+      concepts: [
+        { label: "TDD + debugging", href: "courses/02-build-ship.html" },
+        { label: "Git worktrees", href: "courses/02-build-ship.html" },
+        { label: "cavecrew + review", href: "courses/02-build-ship.html" } ] },
+    { label: "Data & DS", href: "courses/03-data-ds.html", color: "#FBBF24",
+      concepts: [
+        { label: "Schema to insight", href: "courses/03-data-ds.html" },
+        { label: "Data-skill factory", href: "courses/03-data-ds.html" },
+        { label: "dataviz + profiling", href: "courses/03-data-ds.html" } ] },
+    { label: "AI & agents", href: "courses/04-ai-agents.html", color: "#FB923C",
+      concepts: [
+        { label: "Prompt + caching", href: "courses/04-ai-agents.html" },
+        { label: "Office docs", href: "courses/04-ai-agents.html" },
+        { label: "skill-creator", href: "courses/04-ai-agents.html" } ] },
+    { label: "AI domains", href: "courses/05-ai-domains.html", color: "#FBBF24",
+      concepts: [
+        { label: "marketing-skills", href: "courses/05-ai-domains.html" },
+        { label: "content-multiplexer", href: "courses/05-ai-domains.html" },
+        { label: "deep-research", href: "courses/05-ai-domains.html" } ] },
+    { label: "Content & viz", href: "courses/06-content-viz-comm.html", color: "#FBBF24",
+      concepts: [
+        { label: "Sketch family", href: "courses/06-content-viz-comm.html" },
+        { label: "impeccable gate", href: "courses/06-content-viz-comm.html" },
+        { label: "decks + humanizer", href: "courses/06-content-viz-comm.html" } ] },
+    { label: "Lead & ops", href: "courses/07-lead-ops-edge.html", color: "#34D399",
+      concepts: [
+        { label: "mentor-room", href: "courses/07-lead-ops-edge.html" },
+        { label: "hooks + schedule", href: "courses/07-lead-ops-edge.html" },
+        { label: "safe edge tracks", href: "courses/07-lead-ops-edge.html" } ] },
+    { label: "Own skill", href: "courses/08-build-your-own-skill.html", color: "#F87171",
+      concepts: [
+        { label: "skill-creator", href: "courses/08-build-your-own-skill.html" },
+        { label: "token-lean SKILL.md", href: "courses/08-build-your-own-skill.html" },
+        { label: "budget playbook", href: "courses/08-build-your-own-skill.html" } ] }
+  ]
+};
+</script>
+<script src="assets/mindmap.js?v=1"></script>
+<script src="assets/app.js?v=1"></script>
+</body>
+</html>

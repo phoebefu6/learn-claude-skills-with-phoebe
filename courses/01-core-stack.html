@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 1 · The Core Stack &amp; token economics - learn claude skills with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-claude-skills-with-phoebe</a> / Session 1 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Claude Skills with Phoebe · Session 1 of 8</div>
+    <h1>The Core Stack &amp; <span class="accent">token economics</span></h1>
+    <p class="sub">What a skill actually is, why progressive disclosure makes Claude faster AND cheaper, and the 8 skills that change every workflow - the stack every other session builds on.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Easiest</span>
+      <span class="chip audience">All tracks</span>
+      <span class="chip audience">Team-friendly</span>
+      <span class="chip audience">KOL opener</span>
+      <span class="chip time">45 min live + self-study depth</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-24 · Concepts (live cards)</span>
+      <span class="a3" style="flex:4">24-42 · Three demos</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Why this session exists</h2>
+    </div>
+    <p class="lede">Most people use Claude like a very good chat box. The people who get 10x out of it use <strong>skills</strong>: reusable instruction packs Claude loads only when a task needs them. Skills do two things at once - they make a workflow drastically better, and they spend <em>fewer</em> tokens doing it, because a skill's detail stays on disk until the moment it fires. This session teaches the mechanic behind that, the token budget it protects, and the 8 skills that form the core stack for all 17 tracks in this course.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">3 official Anthropic courses covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A precise mental model of what a skill is and how progressive disclosure saves tokens, a way to read your context window as a budget, the Core 8 skills and exactly when each one fires, and three habits you run the same day: grill-first, offload-to-subagent, and invoke-a-skill. Cards marked "Live" are what we do together; "Self-study" cards give the full depth at your own pace.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: WHAT A SKILL IS ============ -->
+  <section class="section" id="what-is-a-skill">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers "Agent Skills with Anthropic" + "Introduction to Agent Skills"</span>
+      <h2>What a skill actually is <span class="tag concept">7 min live</span></h2>
+    </div>
+    <p class="lede">A skill is a folder with a <code>SKILL.md</code> file: a name, a one-line description, and a body of instructions - plus optional scripts and reference files. Instead of re-explaining a workflow every time, you package it once, and Claude applies it automatically when a task matches. The genius is <strong>progressive disclosure</strong>: Claude reads the cheap part always, and the expensive part only when it commits to the job.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Progressive disclosure: three levels of a skill loaded on demand">
+        <style>
+          .pdT { font: 700 17px Inter, sans-serif; fill: #211712; }
+          .pdW { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .pdX { font: 400 13px Inter, sans-serif; fill: #6E5D53; }
+          .pdC { font: 700 13px Inter, sans-serif; fill: #7A3520; }
+          .pdN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+        </style>
+        <rect x="20" y="30" width="250" height="70" rx="12" fill="#7A3520"/>
+        <text class="pdW" x="40" y="60">1 · name + description</text>
+        <text class="pdX" x="40" y="82" fill="#F0C9B3">always loaded · ~tiny</text>
+        <rect x="315" y="30" width="250" height="70" rx="12" fill="#B5502E"/>
+        <text class="pdW" x="335" y="60">2 · SKILL.md body</text>
+        <text class="pdX" x="335" y="82" fill="#F5DAC8">loaded when it fires</text>
+        <rect x="610" y="30" width="250" height="70" rx="12" fill="#CC785C"/>
+        <text class="pdW" x="630" y="60">3 · scripts + files</text>
+        <text class="pdT" x="630" y="82" style="font:400 13px Inter;fill:#211712">loaded only if needed</text>
+        <path d="M270,65 L312,65" stroke="#C9BCB2" stroke-width="2" marker-end="url(#pdAh)"/>
+        <path d="M565,65 L607,65" stroke="#C9BCB2" stroke-width="2" marker-end="url(#pdAh)"/>
+        <defs>
+          <marker id="pdAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <text class="pdC" x="20" y="150">Claude scans every skill's line 1-2 for pennies.</text>
+        <text class="pdC" x="20" y="172">It pays for the body only after deciding this skill fits.</text>
+        <text class="pdC" x="20" y="194">Big reference files stay on disk until a step reaches for them.</text>
+        <rect x="20" y="228" width="840" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="242" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="pdN" x="58" y="254">Net effect: 100 skills installed cost almost nothing until one is actually used.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - progressive disclosure, the token trick at the heart of skills</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The anatomy of a SKILL.md<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Every skill is just markdown with a little front matter. The two lines that matter most are <strong>name</strong> and <strong>description</strong> - they are all Claude reads to decide whether to open a skill, so they double as the trigger.</p>
+        <ul>
+          <li><strong>name</strong> - what to invoke (<code>grilling</code>, <code>impeccable</code>, <code>course-builder</code>).</li>
+          <li><strong>description</strong> - "use when..." phrasing packed with the words a matching task would contain. A vague description means the skill never fires.</li>
+          <li><strong>body</strong> - the actual instructions, checklists, and rules, loaded only when triggered.</li>
+          <li><strong>bundled files</strong> - references, templates, scripts the body points to, loaded only when a step needs them.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Explain the difference between a skill and just pasting instructions into chat. In your answer, cover: what gets reused, what gets loaded when, and why 50 installed skills don't slow Claude down.</div>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The re-explaining tax.</strong> A team kept pasting their 400-word report format into every chat - paying for it every single time. Packaged as one skill, Claude now applies the format on the phrase "weekly report", and the 400 words load once, only when relevant. Same output, a fraction of the tokens, zero copy-paste.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Where skills live: Claude.ai, Code, API, the SDK<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The same skill format runs across the whole Claude surface - this is why learning it once pays everywhere:</p>
+        <table class="clean">
+          <thead><tr><th>Surface</th><th>How skills show up</th></tr></thead>
+          <tbody>
+            <tr><td>Claude.ai</td><td>Uploaded skills + built-in ones; fire automatically on matching tasks</td></tr>
+            <tr><td>Claude Code (this course's home)</td><td><code>~/.claude/skills/</code> folders; invoke by name or auto-trigger</td></tr>
+            <tr><td>Claude API</td><td>Skills passed to the model; combine with tool use</td></tr>
+            <tr><td>Agent SDK</td><td>Skills + subagents + MCP compose into production agents</td></tr>
+          </tbody>
+        </table>
+        <p>Skills also compose with <strong>MCP</strong> (external tools/data) and <strong>subagents</strong> (fresh-context helpers) - the combination is where complex workflows come from, and it recurs in every later session.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Skill vs Project vs prompt - when to use which<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Prompt</strong> - a one-off. Great for a task you won't repeat.</li>
+          <li><strong>Project / CLAUDE.md</strong> - standing context for a workspace ("we are a retail company, our stack is X"). Loaded for every conversation there.</li>
+          <li><strong>Skill</strong> - a repeatable <em>job</em> with its own trigger, portable across projects and surfaces, loaded only when it fires.</li>
+        </ul>
+        <p>Rule of thumb: if you have explained the same how-to more than twice, it wants to be a skill. Session 8 turns one of your own repeated jobs into a skill live.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: THE TOKEN ECONOMY ============ -->
+  <section class="section" id="token-economy">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers "AI Engineering with Claude" context strategies</span>
+      <h2>The token economy of a session <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Every conversation has a fixed context window - think of it as the working memory <em>and</em> the meter. Everything competes for that space: system rules, your files, skill bodies, and the growing back-and-forth. Once you can see the budget, "minimum token consumption" stops being a slogan and becomes a set of moves.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The context window as a budget bar with four claimants, and a subagent offloading its own budget">
+        <style>
+          .teW { font: 600 13px Inter, sans-serif; fill: #FFFFFF; }
+          .teI { font: 600 13px Inter, sans-serif; fill: #211712; }
+          .teT { font: 700 15px Inter, sans-serif; fill: #211712; }
+          .teX { font: 400 13px Inter, sans-serif; fill: #6E5D53; }
+          .teN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+        </style>
+        <text class="teT" x="20" y="34">One context window = one budget</text>
+        <rect x="20" y="48" width="180" height="40" fill="#7A3520"/>
+        <text class="teW" x="42" y="73">system + tools</text>
+        <rect x="200" y="48" width="200" height="40" fill="#B5502E"/>
+        <text class="teW" x="255" y="73">your files</text>
+        <rect x="400" y="48" width="170" height="40" fill="#CC785C"/>
+        <text class="teI" x="430" y="73">skill bodies</text>
+        <rect x="570" y="48" width="290" height="40" fill="#E4A886"/>
+        <text class="teI" x="620" y="73">the growing conversation</text>
+        <text class="teX" x="20" y="112">As the chat grows, the last band eats the rest - answers get shallow, cost climbs.</text>
+        <rect x="20" y="140" width="400" height="46" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <text class="teI" x="40" y="162" style="font:700 13px Inter;fill:#7A3520">Subagent = its own separate budget</text>
+        <text class="teX" x="40" y="180">does the heavy reading, returns only the answer</text>
+        <path d="M420,163 L470,163" stroke="#C9BCB2" stroke-width="2" marker-end="url(#teAh)"/>
+        <defs>
+          <marker id="teAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <text class="teX" x="480" y="167">your main budget stays lean</text>
+        <rect x="20" y="204" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="teN" x="44" y="216">Cheapest token is the one you never load. Skills, subagents, and compression all do this.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - your context window is a budget four things compete for</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>What actually eats your context<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Four claimants, in the order they usually balloon:</p>
+        <ul>
+          <li><strong>The conversation itself</strong> - long threads carry every earlier turn forward. The #1 silent cost.</li>
+          <li><strong>Dumped files</strong> - pasting a 300-page PDF to ask one question pays for all 300 pages.</li>
+          <li><strong>Verbose output</strong> - Claude narrating its whole plan every turn.</li>
+          <li><strong>Tool results</strong> - a raw search or big file read lands in full unless something summarizes it.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The one-line reframe</strong>
+          Don't ask "how do I prompt this?" Ask "what is the smallest amount of context that lets Claude get this right?" Every Core Stack skill is an answer to that question.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The five token-saving moves<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Everything in this course reduces to five moves. Memorize these; the Core 8 skills automate them.</p>
+        <table class="clean">
+          <thead><tr><th>Move</th><th>What it does</th><th>Skill that does it</th></tr></thead>
+          <tbody>
+            <tr><td>Don't load it</td><td>Keep detail on disk until needed</td><td>skills (progressive disclosure)</td></tr>
+            <tr><td>Offload it</td><td>Send heavy work to a fresh-context helper</td><td>subagents, Explore</td></tr>
+            <tr><td>Compress it</td><td>Return conclusions, not raw dumps</td><td>caveman, deep-research</td></tr>
+            <tr><td>Get it right once</td><td>Avoid the rework loop entirely</td><td>grilling, verification</td></tr>
+            <tr><td>Reuse it</td><td>Cache stable context across calls</td><td>Projects, prompt caching (S4)</td></tr>
+          </tbody>
+        </table>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Here is a task I keep doing: [describe one recurring task]. Which of the five token-saving moves apply, and what is the smallest context that would let you do it well?</div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why rework is the biggest token sink of all<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The most expensive tokens are the ones you spend building the wrong thing. A build that goes three rounds because the goal was fuzzy costs far more than the thirty seconds of questions that would have pinned it down. This is why <strong>grilling</strong> sits first in the Core Stack: getting it right once is the single largest saving available, and it is free.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: THE CORE 8 ============ -->
+  <section class="section" id="core-eight">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · the stack every later session builds on</span>
+      <h2>The Core 8 skills <span class="tag concept">8 min live</span></h2>
+    </div>
+    <p class="lede">Eight skills that apply no matter which of the 17 tracks you're working in. They map onto four phases of any real task - plan, offload, compress, ship - and each one is a token-saving move made automatic.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Core 8 skills mapped to four workflow phases: plan, offload, compress, ship">
+        <style>
+          .c8H { font: 700 16px Inter, sans-serif; fill: #FFFFFF; }
+          .c8T { font: 600 13px Inter, sans-serif; fill: #211712; }
+          .c8X { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .c8N { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+          .c8A { stroke: #C9BCB2; stroke-width: 2.5; fill: none; marker-end: url(#c8Ah); }
+        </style>
+        <defs>
+          <marker id="c8Ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <rect x="20" y="20" width="190" height="34" rx="8" fill="#7A3520"/>
+        <text class="c8H" x="90" y="43">1 · PLAN</text>
+        <rect x="230" y="20" width="190" height="34" rx="8" fill="#B5502E"/>
+        <text class="c8H" x="290" y="43">2 · OFFLOAD</text>
+        <rect x="440" y="20" width="190" height="34" rx="8" fill="#CC785C"/>
+        <text class="c8H" x="495" y="43">3 · COMPRESS</text>
+        <rect x="650" y="20" width="210" height="34" rx="8" fill="#7A3520"/>
+        <text class="c8H" x="725" y="43">4 · SHIP</text>
+        <line class="c8A" x1="210" y1="37" x2="228" y2="37"/>
+        <line class="c8A" x1="420" y1="37" x2="438" y2="37"/>
+        <line class="c8A" x1="630" y1="37" x2="648" y2="37"/>
+        <rect x="20" y="70" width="190" height="30" rx="14" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="c8T" x="40" y="90">grilling</text>
+        <rect x="20" y="106" width="190" height="30" rx="14" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="c8T" x="40" y="126">brainstorming</text>
+        <rect x="20" y="142" width="190" height="30" rx="14" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="c8T" x="40" y="162">using-superpowers</text>
+        <rect x="230" y="70" width="190" height="30" rx="14" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="c8T" x="250" y="90">subagent-driven-dev</text>
+        <rect x="230" y="106" width="190" height="30" rx="14" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="c8T" x="250" y="126">Explore / deep-research</text>
+        <rect x="440" y="70" width="190" height="30" rx="14" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="c8T" x="460" y="90">caveman-compress</text>
+        <rect x="440" y="106" width="190" height="30" rx="14" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="c8T" x="460" y="126">cavecrew-investigator</text>
+        <rect x="650" y="70" width="210" height="30" rx="14" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="c8T" x="670" y="90">verification-before-completion</text>
+        <rect x="650" y="106" width="210" height="30" rx="14" fill="#FFFFFF" stroke="#ECE3DB"/>
+        <text class="c8T" x="670" y="126">impeccable</text>
+        <text class="c8X" x="20" y="196">plan right, once</text>
+        <text class="c8X" x="230" y="196">send weight elsewhere</text>
+        <text class="c8X" x="440" y="196">conclusions, not dumps</text>
+        <text class="c8X" x="650" y="196">no false "done"</text>
+        <rect x="20" y="228" width="840" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="242" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="c8N" x="58" y="254">Same eight run whether you're writing SQL, a carousel, a governance memo, or a yoga plan.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the Core 8 across plan, offload, compress, ship</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>PLAN - grilling, brainstorming, using-superpowers<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>grilling</strong> (a.k.a. grill-me) - stress-tests your plan with hard questions before a line is built. Kills the rework loop, which is the biggest token sink there is. Trigger it on any "let's build X".</li>
+          <li><strong>brainstorming</strong> (superpowers) - shapes a fuzzy idea into a clear spec before plan mode. Grill and brainstorm are the "get it right once" move.</li>
+          <li><strong>using-superpowers</strong> - the router: it forces "is there a skill for this?" <em>before</em> acting, so you use the specialist instead of improvising. Prevents the most common waste - reinventing a job a skill already does.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>This very course started with a grill: audience, spine, learn-first, name - four questions, answered before any HTML existed. That is why there was no rebuild. Thirty seconds of grilling saved a session's worth of tokens.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>OFFLOAD - subagents &amp; Explore / deep-research<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The highest-leverage token move on any big task: don't do the heavy reading in your main thread - send it to a helper with its own budget that returns only the conclusion.</p>
+        <ul>
+          <li><strong>subagent-driven-development</strong> / <strong>dispatching-parallel-agents</strong> - fan work out to fresh-context agents. Your main context stays lean; agents can even run in parallel.</li>
+          <li><strong>Explore</strong> - read-only search agent for "where is X / how is Y done" across many files. Returns the answer, not the file dumps.</li>
+          <li><strong>deep-research</strong> - multi-source web research with adversarial verification, returned as a cited summary.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Use a subagent to answer this without loading it all into our main chat: [a question that needs reading many files or pages]. Return just the conclusion and the 3 sources you used.</div>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>Mapping a 40-file codebase inline can burn your whole window before you've learned anything. One Explore agent reads the excerpts and hands back a file:line map - the main thread spends a fraction of the tokens and keeps room to actually work.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>COMPRESS - caveman &amp; cavecrew<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>caveman-compress</strong> - strips articles, filler, and pleasantries from output while keeping every technical fact and all code intact. Terse by default (this whole session was built in caveman mode).</li>
+          <li><strong>cavecrew-investigator</strong> - a read-only code locator whose output is compressed so the main thread eats roughly 60% fewer tokens than a vanilla search.</li>
+          <li><strong>cavecrew-reviewer</strong> - one line per finding, severity-tagged, no praise, no padding.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>When NOT to compress</strong>
+          Caveman auto-drops for security warnings, irreversible-action confirmations, and multi-step instructions where fragment order could be misread. Compression is for volume, never for clarity where a mistake is costly.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>SHIP - verification-before-completion &amp; impeccable<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>verification-before-completion</strong> (superpowers) - blocks the false "done". It forces a real check - tests run, links resolve, the thing actually works - before anyone says finished. Rework caught here is far cheaper than rework caught by your audience.</li>
+          <li><strong>impeccable</strong> (~15k★) - the taste + anti-slop gate on anything visual. It raises craft within a locked brand; it never overrides your palette or fonts. Every design/deck/page output passes through it.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>"Looks done" and "is done" are different claims. A page that renders in your editor can still 404 its stylesheet in the browser. Verification is the habit that turns "should work" into "I watched it work" - and it protects your name the way diligence protected nobody in the Avianca case.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 4: THE WORKFLOW LOOP ============ -->
+  <section class="section" id="workflow-loop">
+    <div class="section-kicker">
+      <span class="klabel">Part 4 · how the stack fires in a real task</span>
+      <h2>The stack in motion <span class="tag concept">3 min live</span></h2>
+    </div>
+    <p class="lede">The Core 8 aren't a menu you pick from - they fire in sequence on almost every real task. Here's the loop you'll see in every later session.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The workflow loop: grill, route, offload, build, compress, verify, then ship or loop back">
+        <style>
+          .wlW { font: 700 14px Inter, sans-serif; fill: #FFFFFF; }
+          .wlI { font: 700 14px Inter, sans-serif; fill: #211712; }
+          .wlX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .wlA { stroke: #C9BCB2; stroke-width: 2.5; fill: none; marker-end: url(#wlAh); }
+        </style>
+        <defs>
+          <marker id="wlAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <rect x="20" y="40" width="150" height="46" rx="10" fill="#7A3520"/>
+        <text class="wlW" x="55" y="68">Grill</text>
+        <rect x="200" y="40" width="150" height="46" rx="10" fill="#B5502E"/>
+        <text class="wlW" x="222" y="68">Route + offload</text>
+        <rect x="380" y="40" width="150" height="46" rx="10" fill="#CC785C"/>
+        <text class="wlI" x="425" y="68">Build</text>
+        <rect x="560" y="40" width="150" height="46" rx="10" fill="#7A3520"/>
+        <text class="wlW" x="600" y="68">Verify</text>
+        <rect x="740" y="40" width="120" height="46" rx="10" fill="#E3A008"/>
+        <text class="wlI" x="785" y="68">Ship</text>
+        <line class="wlA" x1="170" y1="63" x2="198" y2="63"/>
+        <line class="wlA" x1="350" y1="63" x2="378" y2="63"/>
+        <line class="wlA" x1="530" y1="63" x2="558" y2="63"/>
+        <line class="wlA" x1="710" y1="63" x2="738" y2="63"/>
+        <path class="wlA" d="M635,88 C635,140 425,140 425,90"/>
+        <text class="wlX" x="470" y="135">fails? specific fix, loop back - never "try again"</text>
+        <text class="wlX" x="20" y="180">grilling + brainstorming</text>
+        <text class="wlX" x="200" y="180">using-superpowers + subagents</text>
+        <text class="wlX" x="560" y="180">verification + impeccable</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - grill, route, offload, build, verify, ship (loop on failure)</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Reading the skill list in your session<span class="mini">1 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>In Claude Code, available skills are listed for you with one-line descriptions. Two habits make them pay off:</p>
+        <ul>
+          <li><strong>Scan before starting</strong> - "is one of these the specialist for this?" is the <code>using-superpowers</code> reflex.</li>
+          <li><strong>Invoke by name</strong> - type the skill or use <code>/name</code>. The body loads then, not before.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 3</span>
+      <h2>Grill-first on a real task <span class="tag demo">★ 6 min · follow along</span></h2>
+    </div>
+    <p class="lede">The cheapest token you ever spend is a question asked before building. Run the grill on a task from your actual week and watch how much rework it removes.</p>
+    <div class="prompt-box good"><span class="label">★ The grill trigger</span>Before you build anything, grill me on this: [describe the thing you want - a script, a deck, a report, a plan].
+
+Ask me the 3-5 hardest questions whose answers would change what you build - audience, scope, format, the constraint I haven't mentioned. Do not start until I've answered.</div>
+    <div class="steps">
+      <div class="step"><p>Pick a real task you were about to hand Claude cold.</p></div>
+      <div class="step"><p>Run the grill trigger. Answer honestly - notice which question you hadn't thought about.</p></div>
+      <div class="step"><p>Let it build only after the questions are answered. Compare mentally to the version you'd have gotten from a one-line ask.</p></div>
+      <div class="step"><p>Save the good questions - they become your own reusable grill for that kind of task.</p></div>
+    </div>
+    <div class="callout tip">
+      <strong>Why this is a token move</strong>
+      A three-round rebuild costs many times what five questions cost. Grill-first is "get it right once" - the largest free saving in the whole stack.
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 3</span>
+      <h2>Offload to a subagent <span class="tag demo">★ 7 min · build your own</span></h2>
+    </div>
+    <p class="lede">Feel the difference between reading everything yourself and sending a helper to do it. This is the offload move, done rather than described.</p>
+    <div class="steps">
+      <div class="step"><p>Find a question that needs reading a lot - a folder of files, several web pages, a long doc.</p></div>
+      <div class="step"><p>Ask Claude to answer it <strong>inline</strong> first. Watch the context fill with raw material.</p></div>
+      <div class="step"><p>Now start fresh and use the subagent prompt below. The helper reads; you get the conclusion.</p></div>
+      <div class="step"><p>Notice the main thread stayed lean - room left to actually act on the answer.</p></div>
+    </div>
+    <div class="prompt-box good"><span class="label">Subagent offload prompt</span>Dispatch a subagent to investigate this and report back only the conclusion plus a short evidence list - keep the raw material out of our main conversation:
+
+[the question - e.g. "which files define our auth flow and what calls them", or "compare these 4 vendor docs on pricing"]
+
+Return: a 5-bullet answer and the sources/files used. No full dumps.</div>
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p>Building this course, Sessions 2-8 were written by parallel subagents, each reading Session 1 as the template and returning finished pages. The main thread never held all eight in memory at once - that's the offload move at course scale.</p>
+    </div>
+  </section>
+
+  <!-- ============ DEMO 3 ============ -->
+  <section class="section" id="demo-3">
+    <div class="section-kicker">
+      <span class="klabel">Demo 3 of 3</span>
+      <h2>Install and fire your first skill <span class="tag demo">★ 5 min · build your own</span></h2>
+    </div>
+    <p class="lede">Go from reading about skills to running one. We use <code>grilling</code> or <code>impeccable</code> - both are in the Core Stack and both pay off immediately.</p>
+    <div class="steps">
+      <div class="step"><p>In Claude Code, run <code>/grilling</code> (or invoke <code>impeccable</code> on a page you're designing).</p></div>
+      <div class="step"><p>Watch the skill announce itself and change how Claude works - it now follows the skill's checklist, not its default.</p></div>
+      <div class="step"><p>Notice progressive disclosure in action: the skill's full body only loaded when you invoked it.</p></div>
+      <div class="step"><p>Pick one recurring job of your own and note it - it's your Session 8 skill candidate.</p></div>
+    </div>
+    <div class="prompt-box good"><span class="label">★ Try it now</span>List the skills available to you right now with a one-line "use it when" for each. Then tell me which single skill would most improve how we've been working in this conversation, and why.</div>
+  </section>
+
+  <!-- ============ TRY IT YOURSELF ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-60 min total</span></h2>
+    </div>
+    <ul>
+      <li>Run the grill trigger on three real tasks before building them. Keep the questions that mattered.</li>
+      <li>Do one heavy-reading task twice - once inline, once via a subagent - and note the difference in how much room you had left.</li>
+      <li>Invoke two skills from your available list you've never used. Write one line each on when you'd reach for them.</li>
+      <li>Audit one long conversation: what could have been a skill, a subagent, or a compressed result? Write down the three biggest token sinks.</li>
+      <li><strong>Leads:</strong> ask your team to each bring one before/after - a task done cold vs done with the Core Stack. The delta is the training.</li>
+      <li>Optional, for the certificate: the official courses below are free - this page covers their working content, but certificates come from Anthropic.</li>
+    </ul>
+  </section>
+
+  <!-- ============ OFFICIAL COURSES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official courses covered</h2>
+    </div>
+    <p class="lede">This session teaches the working content of Anthropic's skills + context material - the mechanic, the token model, and the practice. What stays exclusive to the originals: video walkthroughs, hands-on graded labs, and certificates.</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Agent Skills with Anthropic (DeepLearning.AI)</span><span class="note">Part 1: SKILL.md anatomy, progressive disclosure, skills across surfaces</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Introduction to Agent Skills (Anthropic Academy)</span><span class="note">Part 1 + Demo 3: build, configure, invoke skills in Claude Code</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">AI Engineering with Claude (Udacity)</span><span class="note">Part 2: context strategies that keep sessions affordable; SDK internals left to source</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · Why don't 100 installed skills slow Claude down or cost much?</p>
+      <button class="qopt" type="button">A · Claude ignores most of them</button>
+      <button class="qopt" type="button">B · They're compressed into one file</button>
+      <button class="qopt" type="button">C · Progressive disclosure - only name + description load until a skill fires</button>
+      <p class="qwhy">That's the whole trick: the cheap line-1-2 is always read; the expensive body loads only when the skill is actually used.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">2 · You need to map a 40-file codebase. The most token-efficient move is...</p>
+      <button class="qopt" type="button">A · Paste all 40 files into the chat</button>
+      <button class="qopt" type="button">B · Send an Explore/subagent to read them and return a file:line map</button>
+      <button class="qopt" type="button">C · Ask Claude to guess from the file names</button>
+      <p class="qwhy">Offload: the helper spends its own budget on the heavy reading and returns only the conclusion, keeping your main context lean.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · Which is the single biggest token sink?</p>
+      <button class="qopt" type="button">A · Rework - building the wrong thing because the goal was fuzzy</button>
+      <button class="qopt" type="button">B · Using too many emojis</button>
+      <button class="qopt" type="button">C · Installing extra skills</button>
+      <p class="qwhy">That's why grilling is first in the stack. "Get it right once" is the largest free saving there is.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 1 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>What a skill is</b><span>Folder + SKILL.md (name, description, body, files). Reused, portable, loaded on demand.</span></div>
+      <div class="cheat-item"><b>Progressive disclosure</b><span>Name+description always; body when it fires; files only if a step needs them.</span></div>
+      <div class="cheat-item"><b>Context = budget</b><span>System + files + skill bodies + conversation compete for one window. The chat is the silent hog.</span></div>
+      <div class="cheat-item"><b>Five token moves</b><span>Don't load · offload · compress · get it right once · reuse.</span></div>
+      <div class="cheat-item"><b>PLAN</b><span>grilling · brainstorming · using-superpowers. Right once beats fast-then-redo.</span></div>
+      <div class="cheat-item"><b>OFFLOAD</b><span>subagents · Explore · deep-research. Helper's budget, not yours; return conclusions.</span></div>
+      <div class="cheat-item"><b>COMPRESS</b><span>caveman-compress · cavecrew (~60% less). Not for security or step order.</span></div>
+      <div class="cheat-item"><b>SHIP</b><span>verification-before-completion · impeccable. No false "done"; taste gate on visuals.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Session 1 of 8 · learn-claude-skills-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="../index.html">← All sessions</a> &nbsp;·&nbsp; <a href="02-build-ship.html">Next: Build &amp; ship →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

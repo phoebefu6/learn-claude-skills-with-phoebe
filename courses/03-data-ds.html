@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 3 · Data &amp; DS - learn claude skills with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-claude-skills-with-phoebe</a> / Session 3 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Claude Skills with Phoebe · Session 3 of 8</div>
+    <h1>Data &amp; <span class="accent">DS</span></h1>
+    <p class="sub">The skills that carry you from a raw schema to a trustworthy insight: a schema-to-contract pipeline, a factory that builds data skills across the CDAIO roadmap, one accessible chart system, and profiling that summarizes a dataset instead of dumping raw rows into your window.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Building</span>
+      <span class="chip audience">Data + DS practitioners</span>
+      <span class="chip audience">data / ds tracks</span>
+      <span class="chip time">45 min live + self-study depth</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-24 · Concepts (live cards)</span>
+      <span class="a3" style="flex:4">24-42 · Three demos</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Why this session exists</h2>
+    </div>
+    <p class="lede">Data work has a signature token trap: the raw data itself. Paste a million-row table to ask one question and you pay for every row. This session teaches the skills that keep data work lean and trustworthy - a pipeline from schema to contract to insight, a factory that turns any data workflow into a reusable skill, one accessible chart system, and profiling tools that summarize a dataset once so raw rows never fill your context. It's the practitioner layer for the data and ds tracks.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">Phoebe's data skill library + DS best practice</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A schema-to-insight pipeline you can point at any table, a mental map of the 4-layer CDAIO ladder your data skills sit on, one accessible chart system with a palette validator, and the single most important data token move: let a profiler summarize a dataset once - a subagent can run the EDA and return only the profile - instead of streaming raw rows into your window. Cards marked "Live" are what we do together; "Self-study" cards give the full depth at your own pace.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: SCHEMA TO INSIGHT ============ -->
+  <section class="section" id="schema-to-insight">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · from a table you were handed to something you trust</span>
+      <h2>Schema to insight <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">The fastest way to a wrong answer is to query a table you don't understand. The schema-to-insights pipeline slows down for one step - turning a schema into an explicit data contract - and that contract is what makes every insight after it trustworthy.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pipeline from schema to data contract to offline insight, via the biz-360-scan">
+        <style>
+          .s1bT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .s1bI { font: 700 15px Inter, sans-serif; fill: #211712; }
+          .s1bX { font: 400 13px Inter, sans-serif; fill: #6E5D53; }
+          .s1bC { font: 700 13px Inter, sans-serif; fill: #7A3520; }
+          .s1bN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+          .s1bA { stroke: #C9BCB2; stroke-width: 2.5; fill: none; marker-end: url(#s1bAh); }
+        </style>
+        <defs>
+          <marker id="s1bAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <rect x="20" y="40" width="230" height="66" rx="12" fill="#7A3520"/>
+        <text class="s1bT" x="50" y="70">1 · SCHEMA</text>
+        <text class="s1bT" x="40" y="92" style="font:400 12px Inter" fill="#F0C9B3">tables, types, keys</text>
+        <rect x="325" y="40" width="230" height="66" rx="12" fill="#B5502E"/>
+        <text class="s1bT" x="355" y="70">2 · DATA CONTRACT</text>
+        <text class="s1bT" x="345" y="92" style="font:400 12px Inter" fill="#F5DAC8">meanings, rules, owners</text>
+        <rect x="630" y="40" width="230" height="66" rx="12" fill="#CC785C"/>
+        <text class="s1bI" x="660" y="70">3 · OFFLINE INSIGHT</text>
+        <text class="s1bI" x="650" y="92" style="font:400 12px Inter">trustworthy findings</text>
+        <line class="s1bA" x1="250" y1="73" x2="323" y2="73"/>
+        <line class="s1bA" x1="555" y1="73" x2="628" y2="73"/>
+        <text class="s1bX" x="325" y="132">the biz-360-scan runs across these steps</text>
+        <text class="s1bC" x="20" y="180">A contract turns "column names" into shared, checkable meaning.</text>
+        <text class="s1bC" x="20" y="202">Insight built on a contract survives review; insight built on guesses doesn't.</text>
+        <rect x="20" y="228" width="840" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="242" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="s1bN" x="58" y="254">The contract is the offline artifact - built once, reused by every query after it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - schema to data contract to offline insight, via the biz-360-scan</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>phoebe-data-schema-to-insights - the pipeline<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The <code>phoebe-data-schema-to-insights</code> skill takes a schema and walks it to insight: it reads the structure, writes an explicit data contract, then produces offline insights against that contract - the biz-360-scan.</p>
+        <ul>
+          <li><strong>What it does</strong> - schema &rarr; data contract &rarr; offline insights, as one repeatable flow.</li>
+          <li><strong>When to reach for it</strong> - the moment you're handed an unfamiliar dataset or asked "what's interesting in here".</li>
+          <li><strong>Token effect</strong> - <em>saves tokens.</em> The contract is built once and reused; every later question references it instead of re-deriving the meaning of each column from raw rows.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Here's a schema: [paste your CREATE TABLE statements or column list]. Use phoebe-data-schema-to-insights to write a data contract - meaning, rules, and owner per key field - then propose 3 offline insights I could pull from it. Don't query raw rows yet.</div>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The "revenue" that wasn't.</strong> Two teams reported different revenue because one counted refunds and one didn't - the column was named the same. A data contract writes that rule down once, so the number means the same thing everywhere and nobody rebuilds the report after the mismatch surfaces.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>What belongs in a data contract<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Meaning</strong> - what each field actually represents, in business terms, not just its type.</li>
+          <li><strong>Rules</strong> - valid ranges, nullability, units, and the edge cases (does revenue include tax?).</li>
+          <li><strong>Owner</strong> - who to ask when the rule is unclear or the data looks wrong.</li>
+          <li><strong>Freshness</strong> - how current the data is and how often it updates.</li>
+        </ul>
+        <p>A contract is the offline artifact that makes data self-serve. Written once, it stops every downstream analyst from re-guessing the same column - which is both a trust win and a token win.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: THE DATA-SKILL FACTORY ============ -->
+  <section class="section" id="skill-factory">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · turn a workflow into a reusable, showcased skill</span>
+      <h2>The data-skill factory <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Any data workflow you repeat wants to be a skill. The factory designs and builds how-to-X-using-python skills across a four-layer roadmap, emitting real artifacts - and the public shelf is where the good ones live.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The 4-layer CDAIO ladder: Infrastructure, Data Analytics, Data Science, Gen AI">
+        <style>
+          .s2bT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .s2bI { font: 700 15px Inter, sans-serif; fill: #211712; }
+          .s2bX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .s2bN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+        </style>
+        <rect x="140" y="30" width="600" height="40" rx="10" fill="#7A3520"/>
+        <text class="s2bT" x="160" y="55">Layer 4 · Gen AI</text>
+        <text class="s2bT" x="470" y="55" style="font:400 12px Inter" fill="#F0C9B3">agents, RAG, LLM apps</text>
+        <rect x="110" y="80" width="660" height="40" rx="10" fill="#B5502E"/>
+        <text class="s2bT" x="130" y="105">Layer 3 · Data Science</text>
+        <text class="s2bT" x="470" y="105" style="font:400 12px Inter" fill="#F5DAC8">models, stats, experiments</text>
+        <rect x="80" y="130" width="720" height="40" rx="10" fill="#CC785C"/>
+        <text class="s2bI" x="100" y="155">Layer 2 · Data Analytics</text>
+        <text class="s2bI" x="470" y="155" style="font:400 12px Inter">SQL, BI, EDA, reporting</text>
+        <rect x="50" y="180" width="780" height="40" rx="10" fill="#E4A886"/>
+        <text class="s2bI" x="70" y="205">Layer 1 · Infrastructure</text>
+        <text class="s2bI" x="470" y="205" style="font:400 12px Inter">schema, warehouse, pipelines</text>
+        <text class="s2bX" x="50" y="248">Each skill emits: python + charts · ERD / DDL · exec scorecard · runnable agent</text>
+        <rect x="50" y="260" width="780" height="30" rx="8" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="64" y="268" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="s2bN" x="88" y="280">Build lower layers first - insight needs infrastructure under it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the 4-layer CDAIO ladder, infrastructure up to Gen AI</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>skill-build-partner - the factory<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The <code>skill-build-partner</code> skill designs and builds how-to-X-using-python skills across the four-layer CDAIO roadmap: Infrastructure, Data Analytics, Data Science, and Gen AI. It runs a fixed pipeline and emits real, executed artifacts.</p>
+        <ul>
+          <li><strong>What it does</strong> - takes a data workflow and produces a runnable skill plus four artifact types: python + charts, an ERD / DDL / contract, an HTML exec scorecard, and a runnable agent.</li>
+          <li><strong>When to reach for it</strong> - any data or DS workflow you've now done more than twice and want reusable and showcase-ready.</li>
+          <li><strong>Token effect</strong> - <em>saves tokens.</em> The workflow is packaged once and loaded on demand, so you stop re-explaining the same EDA or forecasting recipe every session.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>I keep doing this data workflow: [describe it]. Use skill-build-partner to place it on the CDAIO ladder, then sketch the skill: what python + charts it emits, what the contract/DDL looks like, and what the exec scorecard would show.</div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>phoebe-data-skills - the public shelf<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><code>phoebe-data-skills</code> is the public showcase repo where finished data skills live, each with a visual step-by-step page. The factory builds; the shelf publishes.</p>
+        <ul>
+          <li><strong>What it does</strong> - hosts installable data skills and their walkthrough pages as a curated data/AI showcase.</li>
+          <li><strong>When to reach for it</strong> - when a skill is polished, de-identified, and worth showing to your audience or clients.</li>
+          <li><strong>Token effect</strong> - reuse at the ecosystem level: a shared shelf means a team installs a skill instead of each person rebuilding it.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>A forecasting recipe you built once becomes a page a colleague reads and a skill they install. The second person spends zero tokens rediscovering what the first already solved - reuse across people, not just across sessions.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: SEE IT RIGHT ============ -->
+  <section class="section" id="see-it-right">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · one visual system + the right tool per job</span>
+      <h2>See it right <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Data you can't see clearly is data you can't trust. One chart system keeps every visual on the same accessible footing, and a small set of data-infra tools each own a specific job - ERDs, catalog, profiling, quality.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Table mapping each data task to the right infrastructure tool">
+        <style>
+          .s3bH { font: 700 14px Inter, sans-serif; fill: #FFFFFF; }
+          .s3bT { font: 700 14px Inter, sans-serif; fill: #211712; }
+          .s3bX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .s3bN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+        </style>
+        <rect x="20" y="24" width="360" height="40" rx="8" fill="#7A3520"/>
+        <text class="s3bH" x="150" y="49">Task</text>
+        <rect x="390" y="24" width="470" height="40" rx="8" fill="#B5502E"/>
+        <text class="s3bH" x="560" y="49">Tool</text>
+        <rect x="20" y="72" width="360" height="40" rx="8" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <text class="s3bT" x="38" y="97">draw an ERD</text>
+        <rect x="390" y="72" width="470" height="40" rx="8" fill="#F5DAC8"/>
+        <text class="s3bT" x="408" y="97">DrawDB</text>
+        <rect x="20" y="120" width="360" height="40" rx="8" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <text class="s3bT" x="38" y="145">catalog + lineage</text>
+        <rect x="390" y="120" width="470" height="40" rx="8" fill="#F5DAC8"/>
+        <text class="s3bT" x="408" y="145">OpenMetadata + DataHub</text>
+        <rect x="20" y="168" width="360" height="40" rx="8" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <text class="s3bT" x="38" y="193">auto EDA / profile</text>
+        <rect x="390" y="168" width="470" height="40" rx="8" fill="#F5DAC8"/>
+        <text class="s3bT" x="408" y="193">ydata-profiling</text>
+        <rect x="20" y="216" width="360" height="40" rx="8" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <text class="s3bT" x="38" y="241">data quality checks</text>
+        <rect x="390" y="216" width="470" height="40" rx="8" fill="#F5DAC8"/>
+        <text class="s3bT" x="408" y="241">Great Expectations</text>
+        <rect x="20" y="266" width="840" height="24" rx="6" fill="none"/>
+        <rect x="20" y="264" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="s3bN" x="44" y="276">core-workspace-skills carries the how-to for each of these tools.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - each data task mapped to the infrastructure tool that owns it</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>dataviz - one accessible chart system<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The <code>dataviz</code> skill makes every chart read as one system: a form heuristic that picks the right chart type, accessible categorical and sequential palettes, and a validator that checks your colors before you ship.</p>
+        <ul>
+          <li><strong>What it does</strong> - chart-form heuristic + accessible palettes + a runnable color validator, in one visual system.</li>
+          <li><strong>When to reach for it</strong> - before writing the first line of any chart, in any library or medium.</li>
+          <li><strong>Token effect</strong> - <em>prevents rework.</em> Getting the encoding and palette right the first time avoids the "make it readable / fix the colors / now do dark mode" rebuild loop.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>I want to show [describe your data + the message]. Use dataviz: pick the chart form, choose an accessible palette, and run the palette validator before you render. Tell me why that form fits the message.</div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>core-workspace-skills - the data-infra tool how-tos<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><code>core-workspace-skills</code> carries the working how-to for the installed data-infra tools, so you use the right one per job instead of forcing everything through one:</p>
+        <table class="clean">
+          <thead><tr><th>Tool</th><th>What it owns</th></tr></thead>
+          <tbody>
+            <tr><td>DrawDB</td><td>Entity-relationship diagrams from your schema</td></tr>
+            <tr><td>OpenMetadata + DataHub</td><td>Data catalog and lineage - what exists, where it came from</td></tr>
+            <tr><td>ydata-profiling</td><td>Automatic EDA - one profile report per dataset</td></tr>
+            <tr><td>Great Expectations</td><td>Data quality checks that fail loudly when data drifts</td></tr>
+          </tbody>
+        </table>
+        <p>Each tool returns a summary artifact - a diagram, a catalog entry, a profile, a test result - not a raw data dump. That framing is what keeps the token bill low.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 4: WORK THE NOTEBOOK ============ -->
+  <section class="section" id="notebook">
+    <div class="section-kicker">
+      <span class="klabel">Part 4 · edit in place, keep the window lean</span>
+      <h2>Work the notebook, keep context lean <span class="tag concept">4 min live</span></h2>
+    </div>
+    <p class="lede">The final data move is the biggest token saver of the session: never stream raw rows when a summary will do. Edit notebook cells in place, turn sheets into visuals, and let a profiler compress a dataset once so a subagent can do the EDA and hand back only the profile.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>NotebookEdit - edit Jupyter cells in place<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><code>NotebookEdit</code> edits a specific Jupyter cell directly, rather than rewriting or reprinting the whole notebook into the conversation.</p>
+        <ul>
+          <li><strong>What it does</strong> - replaces, inserts, or deletes a single notebook cell in place.</li>
+          <li><strong>When to reach for it</strong> - iterating on an analysis notebook cell by cell.</li>
+          <li><strong>Token effect</strong> - <em>saves tokens.</em> You touch one cell instead of round-tripping the entire notebook through context on every edit.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>app-script-partner - a Sheet into a visual tab<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><code>app-script-partner</code> turns a Google Sheet into a styled visual tab via a paste-and-run Apps Script - matrices, RAG status, roadmaps, scorecards - built in place.</p>
+        <ul>
+          <li><strong>What it does</strong> - reads a sheet's layout and writes an Apps Script that builds a clean styled tab from it.</li>
+          <li><strong>When to reach for it</strong> - when a stakeholder lives in Sheets and you want a dashboard where their data already is.</li>
+          <li><strong>Token effect</strong> - the script does the rendering inside Sheets, so the raw grid never has to live in your context to produce the visual.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The data token move, stated plainly</strong>
+          Profiling tools summarize a dataset once. A subagent can run the EDA and return only the profile - so the raw rows do their work in the subagent's budget and never touch your main window. This is the single biggest lever in data work.
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 3</span>
+      <h2>Schema to contract to insight <span class="tag demo">★ 6 min · follow along</span></h2>
+    </div>
+    <p class="lede">Point the pipeline at a schema and watch it produce a data contract first, then an offline insight built on top of it - trust before answers.</p>
+    <div class="prompt-box good"><span class="label">★ The pipeline trigger</span>Use phoebe-data-schema-to-insights on this schema: [paste it].
+
+Step 1: write a data contract - for each key field give meaning, rules/units, and the owner to ask.
+Step 2: from that contract, propose one offline insight with the exact logic. Don't touch raw rows to build the contract.</div>
+    <div class="steps">
+      <div class="step"><p>Feed in a schema - CREATE TABLE statements or a column list is enough.</p></div>
+      <div class="step"><p>Read the contract critically: which column's meaning surprised you?</p></div>
+      <div class="step"><p>Check the proposed insight against the contract's rules - does it respect them (refunds, units, nulls)?</p></div>
+      <div class="step"><p>Save the contract - it's the reusable artifact every later query references.</p></div>
+    </div>
+    <div class="callout tip">
+      <strong>Why this is a token move</strong>
+      The contract is built once and reused. Every future question points at it instead of re-deriving each column's meaning from raw rows - reuse, not rework.
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 3</span>
+      <h2>Profile a dataset so rows never fill context <span class="tag demo">★ 7 min · build your own</span></h2>
+    </div>
+    <p class="lede">Feel the biggest data token move directly: instead of pasting a dataset, let a profiler summarize it once - ideally inside a subagent - and work from the profile.</p>
+    <div class="steps">
+      <div class="step"><p>Take a dataset you'd normally paste to explore. Notice how many rows that would be.</p></div>
+      <div class="step"><p>Run ydata-profiling on it to produce one profile report - distributions, missingness, correlations.</p></div>
+      <div class="step"><p>Add Great Expectations checks for the rules that matter (ranges, non-null keys). Let failures surface loudly.</p></div>
+      <div class="step"><p>Work from the profile and the check results. The raw rows never entered your main window.</p></div>
+    </div>
+    <div class="prompt-box good"><span class="label">Profile-not-dump prompt</span>Dispatch a subagent to run ydata-profiling on [dataset] and set up Great Expectations checks for [the rules that matter].
+
+Return only: the profile summary (distributions, missingness, top correlations) and which checks passed or failed. Keep the raw rows out of our main conversation.</div>
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p>A 2M-row export pasted to ask "is this clean?" can blow the whole window before you learn anything. One profile report - run by a subagent, returned as a summary - answers it in a fraction of the tokens, and the checks tell you exactly where it's dirty.</p>
+    </div>
+  </section>
+
+  <!-- ============ DEMO 3 ============ -->
+  <section class="section" id="demo-3">
+    <div class="section-kicker">
+      <span class="klabel">Demo 3 of 3</span>
+      <h2>Build one accessible chart <span class="tag demo">★ 5 min · build your own</span></h2>
+    </div>
+    <p class="lede">Go from data to a chart that reads as part of one system - right form, accessible palette, validated colors - before you render a single pixel.</p>
+    <div class="steps">
+      <div class="step"><p>State the message first: what should the reader conclude in five seconds?</p></div>
+      <div class="step"><p>Let dataviz pick the chart form from the message, not from habit.</p></div>
+      <div class="step"><p>Choose a categorical or sequential palette and run the validator - it flags colors that fail in light or dark.</p></div>
+      <div class="step"><p>Render, then check: legible, one meaning per color, works in both themes.</p></div>
+    </div>
+    <div class="prompt-box good"><span class="label">One-chart prompt</span>Message: [what the reader should conclude]. Data: [describe it].
+
+Use dataviz: pick the chart form and justify it, choose an accessible palette, and run the palette validator BEFORE rendering. Show me the validator result, then the chart.</div>
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p>A red/green status chart looks fine until a colorblind exec can't tell pass from fail. The palette validator catches that at design time - not after the chart is already in the board deck and needs rebuilding.</p>
+    </div>
+  </section>
+
+  <!-- ============ TRY IT YOURSELF ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-60 min total</span></h2>
+    </div>
+    <ul>
+      <li>Write a data contract for one table you use daily. Note which column's real meaning you'd have gotten wrong.</li>
+      <li>Profile one dataset with ydata-profiling instead of pasting it. Compare the tokens used to a raw-row exploration.</li>
+      <li>Add three Great Expectations checks to a pipeline you own and watch one of them catch bad data.</li>
+      <li>Rebuild one chart with dataviz - run the palette validator and confirm it works in both light and dark.</li>
+      <li>Take one repeated data workflow to skill-build-partner and place it on the CDAIO ladder.</li>
+      <li><strong>Leads:</strong> have the team contract-document your five most-used tables. Shared meaning is the fastest data-quality win there is.</li>
+    </ul>
+  </section>
+
+  <!-- ============ OFFICIAL COURSES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>What this session draws on</h2>
+    </div>
+    <p class="lede">This session teaches the working content of Phoebe's own data skill library plus standard data-science workflow practice - the schema-to-insight discipline, the CDAIO ladder, and profile-not-dump. What stays in the source: the full skill internals and the deeper statistical methods behind each ds track.</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Phoebe's data skill library (phoebe-data-skills + factory)</span><span class="note">Parts 1-4: schema-to-insights, skill-build-partner, dataviz, the infra tool how-tos</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">General data-science workflow best practice</span><span class="note">Parts 2-3: the CDAIO ladder and profiling discipline; deeper DS method left to the ds tracks</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · Why do profiling summaries save tokens versus pasting raw rows?</p>
+      <button class="qopt" type="button">A · They compress the numbers into fewer digits</button>
+      <button class="qopt" type="button">B · A profiler summarizes the dataset once - a subagent can return only the profile, so raw rows never fill your window</button>
+      <button class="qopt" type="button">C · They delete the dataset after reading it</button>
+      <p class="qwhy">The raw rows do their work in the profiler's (or subagent's) budget and only the summary - distributions, missingness, correlations - lands in your main context.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · What are the four layers of the CDAIO ladder, bottom to top?</p>
+      <button class="qopt" type="button">A · Charts, Tables, Models, Agents</button>
+      <button class="qopt" type="button">B · Raw, Clean, Curated, Published</button>
+      <button class="qopt" type="button">C · Infrastructure, Data Analytics, Data Science, Gen AI</button>
+      <p class="qwhy">skill-build-partner places each skill on this ladder - you build the lower layers first because insight needs infrastructure under it.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · What does the dataviz skill give you?</p>
+      <button class="qopt" type="button">A · One accessible chart system - form heuristic, accessible palettes, and a color validator</button>
+      <button class="qopt" type="button">B · A faster database driver</button>
+      <button class="qopt" type="button">C · A way to skip making charts entirely</button>
+      <p class="qwhy">dataviz keeps every chart on one system so it's legible and consistent in light and dark, and prevents the rebuild loop of fixing colors after the fact.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 3 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>data-schema-to-insights</b><span>Schema &rarr; data contract &rarr; offline insight (biz-360-scan). Contract built once, reused.</span></div>
+      <div class="cheat-item"><b>skill-build-partner</b><span>Factory for how-to-X-using-python skills on the 4-layer CDAIO ladder. Emits python, DDL, scorecard, agent.</span></div>
+      <div class="cheat-item"><b>dataviz</b><span>One accessible chart system: form heuristic + palettes + validator. Prevents the color rebuild loop.</span></div>
+      <div class="cheat-item"><b>core-workspace-skills tools</b><span>DrawDB (ERD) · OpenMetadata + DataHub (catalog/lineage) · ydata-profiling (EDA) · Great Expectations (quality).</span></div>
+      <div class="cheat-item"><b>NotebookEdit</b><span>Edit one Jupyter cell in place, not the whole notebook. Saves tokens per iteration.</span></div>
+      <div class="cheat-item"><b>app-script-partner</b><span>Turn a Google Sheet into a styled visual tab via Apps Script - rendered in place.</span></div>
+      <div class="cheat-item"><b>The data token move</b><span>Profile summarizes once; a subagent runs EDA and returns only the profile. Raw rows never fill context.</span></div>
+      <div class="cheat-item"><b>Contract = trust + reuse</b><span>Meaning, rules, owner, freshness. Stops every analyst re-guessing the same column.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Session 3 of 8 · learn-claude-skills-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="02-build-ship.html">← Prev: Build &amp; ship</a> &nbsp;·&nbsp; <a href="04-ai-agents.html">Next: AI &amp; agents →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

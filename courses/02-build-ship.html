@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 2 · Build &amp; ship - learn claude skills with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-claude-skills-with-phoebe</a> / Session 2 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Claude Skills with Phoebe · Session 2 of 8</div>
+    <h1>Build &amp; <span class="accent">ship</span></h1>
+    <p class="sub">The skills that turn Claude into a disciplined engineer: write the failing test first, hunt root causes not symptoms, isolate every task in its own worktree, review with a compressed crew, then actually ship and watch it work.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Building</span>
+      <span class="chip audience">Engineers + builders</span>
+      <span class="chip audience">prog / deng / sys / docs tracks</span>
+      <span class="chip time">45 min live + self-study depth</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-24 · Concepts (live cards)</span>
+      <span class="a3" style="flex:4">24-42 · Three demos</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Why this session exists</h2>
+    </div>
+    <p class="lede">Session 1 gave you the Core Stack and the token model. This session puts it to work on real code. Building with Claude goes wrong in the same few ways every time: fuzzy goals, symptom-patching, tangled context from doing three things at once, and a "looks done" that was never actually run. Each of those has a skill that fixes it - and every fix is also a token move, because the cheapest code is the code you don't have to rewrite. This is the builder's discipline layer for the prog, deng, sys, and docs tracks.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">2 official coding courses covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A debugging discipline that finds root cause instead of patching symptoms, worktree parallelism that keeps every task's context clean, and a review-then-verify habit that catches the false "done" - all of it token-lean, because a crew that returns one line per finding and a test that fails first both prevent the rework that burns the most tokens. Cards marked "Live" are what we do together; "Self-study" cards give the full depth at your own pace.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: THE BUILD LOOP ============ -->
+  <section class="section" id="build-loop">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · the discipline that stops rework before it starts</span>
+      <h2>The build-loop skills <span class="tag concept">7 min live</span></h2>
+    </div>
+    <p class="lede">Three superpowers skills form the spine of every build: write the failing test first, debug by root cause, then execute a written plan. They feel slower for thirty seconds and save you three rebuild rounds - which is exactly where the tokens hide.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The test-driven loop: write a failing red test, write green code to pass it, refactor, then repeat">
+        <style>
+          .s1aT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .s1aI { font: 700 15px Inter, sans-serif; fill: #211712; }
+          .s1aX { font: 400 13px Inter, sans-serif; fill: #6E5D53; }
+          .s1aC { font: 700 13px Inter, sans-serif; fill: #7A3520; }
+          .s1aN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+          .s1aA { stroke: #C9BCB2; stroke-width: 2.5; fill: none; marker-end: url(#s1aAh); }
+        </style>
+        <defs>
+          <marker id="s1aAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <rect x="20" y="30" width="180" height="60" rx="12" fill="#F87171"/>
+        <text class="s1aT" x="50" y="58">1 · RED</text>
+        <text class="s1aT" x="40" y="78" style="font:400 12px Inter">write failing test</text>
+        <rect x="255" y="30" width="180" height="60" rx="12" fill="#34D399"/>
+        <text class="s1aI" x="285" y="58">2 · GREEN</text>
+        <text class="s1aI" x="275" y="78" style="font:400 12px Inter">code until it passes</text>
+        <rect x="490" y="30" width="180" height="60" rx="12" fill="#CC785C"/>
+        <text class="s1aT" x="520" y="58">3 · REFACTOR</text>
+        <text class="s1aI" x="510" y="78" style="font:400 12px Inter">clean, tests still green</text>
+        <rect x="725" y="30" width="135" height="60" rx="12" fill="#7A3520"/>
+        <text class="s1aT" x="760" y="58">4 · REPEAT</text>
+        <text class="s1aT" x="745" y="78" style="font:400 12px Inter" fill="#F0C9B3">next behavior</text>
+        <line class="s1aA" x1="200" y1="60" x2="253" y2="60"/>
+        <line class="s1aA" x1="435" y1="60" x2="488" y2="60"/>
+        <line class="s1aA" x1="670" y1="60" x2="723" y2="60"/>
+        <path class="s1aA" d="M792,90 C792,150 110,150 110,92"/>
+        <text class="s1aX" x="360" y="145">each loop adds one proven behavior - never a guess</text>
+        <text class="s1aC" x="20" y="200">The failing test defines "done" before any code exists.</text>
+        <text class="s1aC" x="20" y="222">Green means the behavior is proven, not hoped for.</text>
+        <rect x="20" y="248" width="840" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="262" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="s1aN" x="58" y="274">Test-first prevents rework - the biggest token sink - by pinning the target before you build.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the red / green / refactor loop that defines done before you build</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>test-driven-development - write the failing test first<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The <code>superpowers:test-driven-development</code> skill enforces one order: test, then code. You describe the behavior you want, Claude writes a test that fails because the behavior doesn't exist yet, then writes only enough code to make it pass.</p>
+        <ul>
+          <li><strong>What it does</strong> - forces a failing test before a line of implementation, then codes to green, then refactors.</li>
+          <li><strong>When to reach for it</strong> - any function or feature with a clear right answer. Bug fixes especially: the reproduction is your first failing test.</li>
+          <li><strong>Token effect</strong> - <em>saves tokens.</em> A test pins the target so Claude builds the right thing once, instead of three rounds of "not quite - try again".</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Use test-driven development on this: [describe a small function]. Write the failing test FIRST, show me it fails, then write only enough code to pass. Do not write the implementation before the test.</div>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The "almost right" trap.</strong> Asked cold for a date parser, Claude ships something that works on the examples and quietly breaks on leap years. Written test-first, the edge cases are tests before they're bugs - and you never pay the tokens to rebuild after a user finds them.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>systematic-debugging - root cause, not symptom<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><code>superpowers:systematic-debugging</code> stops the patch-and-pray loop. Instead of changing lines until the error goes away, it walks a fixed path: reproduce, isolate, find root cause, fix, verify.</p>
+        <ul>
+          <li><strong>What it does</strong> - a disciplined reproduce &rarr; isolate &rarr; root-cause &rarr; fix &rarr; verify sequence.</li>
+          <li><strong>When to reach for it</strong> - any bug that isn't a one-second typo, and every bug that "came back".</li>
+          <li><strong>Token effect</strong> - <em>prevents rework.</em> Symptom-patching creates new bugs and burns rounds; one root-cause fix ends the thread.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The tell of symptom-patching</strong>
+          If the fix is "add a null check here" and nobody can say why the value was null, you patched a symptom. Systematic-debugging refuses to declare victory until the root cause is named.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>writing-plans then executing-plans<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>For anything bigger than a single edit, the pair <code>superpowers:writing-plans</code> and <code>superpowers:executing-plans</code> separates thinking from doing. First you agree a written plan; then Claude executes it step by step without re-litigating the design mid-build.</p>
+        <ul>
+          <li><strong>writing-plans</strong> - turns a shaped idea into an ordered, checkable plan. Pairs with grilling and brainstorming from Session 1.</li>
+          <li><strong>executing-plans</strong> - works the plan one step at a time, checking off as it goes, so a long build stays on rails.</li>
+          <li><strong>Token effect</strong> - <em>saves tokens.</em> The plan is the shared source of truth, so the conversation stops re-explaining itself every turn.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>A five-file refactor done conversationally drifts - by file three Claude has forgotten a decision from file one. Written as a plan first, each step carries its own definition of done, and a subagent can even execute steps in parallel.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: CONTEXT ISOLATION ============ -->
+  <section class="section" id="context-isolation">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · one task, one branch, one clean context</span>
+      <h2>Context isolation <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">When two tasks share one working directory and one conversation, their context bleeds together - Claude confuses which change belongs to which goal, and your window fills with two problems at once. Worktrees fix this at the git level.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A trunk branch with three worktrees branching off, each an isolated context for one task">
+        <style>
+          .s2aT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .s2aI { font: 700 14px Inter, sans-serif; fill: #211712; }
+          .s2aX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .s2aN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+          .s2aA { stroke: #C9BCB2; stroke-width: 2.5; fill: none; marker-end: url(#s2aAh); }
+        </style>
+        <defs>
+          <marker id="s2aAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#C9BCB2" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <rect x="20" y="118" width="170" height="44" rx="10" fill="#7A3520"/>
+        <text class="s2aT" x="70" y="145">main trunk</text>
+        <line class="s2aA" x1="190" y1="128" x2="300" y2="60"/>
+        <line class="s2aA" x1="190" y1="140" x2="300" y2="140"/>
+        <line class="s2aA" x1="190" y1="152" x2="300" y2="220"/>
+        <rect x="305" y="34" width="290" height="52" rx="10" fill="#B5502E"/>
+        <text class="s2aT" x="325" y="56">worktree A · feature-auth</text>
+        <text class="s2aT" x="325" y="76" style="font:400 12px Inter" fill="#F5DAC8">own branch · own context</text>
+        <rect x="305" y="114" width="290" height="52" rx="10" fill="#CC785C"/>
+        <text class="s2aI" x="325" y="136">worktree B · fix-parser-bug</text>
+        <text class="s2aI" x="325" y="156" style="font:400 12px Inter">own branch · own context</text>
+        <rect x="305" y="194" width="290" height="52" rx="10" fill="#E4A886"/>
+        <text class="s2aI" x="325" y="216">worktree C · docs-update</text>
+        <text class="s2aI" x="325" y="236" style="font:400 12px Inter">own branch · own context</text>
+        <text class="s2aX" x="620" y="64">no cross-contamination</text>
+        <text class="s2aX" x="620" y="144">work them in parallel</text>
+        <text class="s2aX" x="620" y="224">merge back when done</text>
+        <rect x="620" y="248" width="240" height="0" fill="none"/>
+        <rect x="20" y="248" width="840" height="0" fill="none"/>
+      </svg>
+      <figcaption>🔍 Click to zoom - three worktrees off one trunk, each an isolated context for one task</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>using-git-worktrees - a clean room per task<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><code>superpowers:using-git-worktrees</code> gives every task its own branch <em>and</em> its own checked-out directory. Task A and task B never touch the same files on disk, and each Claude session works one worktree, so the context stays about one problem.</p>
+        <ul>
+          <li><strong>What it does</strong> - creates a separate working directory per branch, so parallel tasks stay physically and mentally separate.</li>
+          <li><strong>When to reach for it</strong> - any time you have more than one thing in flight, or a risky experiment you want quarantined from main.</li>
+          <li><strong>Token effect</strong> - <em>saves context.</em> One clean context per task means Claude isn't paying to hold two unrelated problems in the same window, and it can't confuse them.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Set up a git worktree for a new task called "fix-parser-bug" on its own branch, so this work stays isolated from my main branch. Explain what got created and how I switch back.</div>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>Reviewing a teammate's PR while mid-feature usually means stashing, switching, un-stashing - and a context now muddled with two goals. A worktree lets you open the PR in a second directory, review it in a fresh session, and leave your feature untouched.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Worktrees vs branches vs stashing<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Branch switch</strong> - one directory, one context. Fine for strictly sequential work.</li>
+          <li><strong>Stash</strong> - a temporary shelf. Easy to forget, easy to lose, still one directory.</li>
+          <li><strong>Worktree</strong> - a real second directory on its own branch. Parallel, isolated, and it survives a crash because it's on disk.</li>
+        </ul>
+        <p>Rule of thumb: if two tasks would ever be "open at once" in your head, give each a worktree. The isolation is the point - for git and for Claude's context alike.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: REVIEW + LOCATE ============ -->
+  <section class="section" id="review-locate">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · read and review without draining the window</span>
+      <h2>Review + locate, compressed <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Understanding and reviewing code is where windows quietly drain - a vanilla search dumps whole files into your context. The caveman crew reads for you and returns compressed answers, and the superpowers review pair keeps quality high before you ship.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Table mapping each task to the right crew member: locate, review, edit">
+        <style>
+          .s3aH { font: 700 14px Inter, sans-serif; fill: #FFFFFF; }
+          .s3aT { font: 700 14px Inter, sans-serif; fill: #211712; }
+          .s3aX { font: 400 12px Inter, sans-serif; fill: #6E5D53; }
+          .s3aN { font: 600 14px Inter, sans-serif; fill: #3A2A00; }
+        </style>
+        <rect x="20" y="24" width="270" height="40" rx="8" fill="#7A3520"/>
+        <text class="s3aH" x="120" y="49">Your task</text>
+        <rect x="300" y="24" width="290" height="40" rx="8" fill="#B5502E"/>
+        <text class="s3aH" x="380" y="49">Crew member</text>
+        <rect x="600" y="24" width="260" height="40" rx="8" fill="#CC785C"/>
+        <text class="s3aT" x="660" y="49">Token effect</text>
+        <rect x="20" y="72" width="270" height="46" rx="8" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <text class="s3aT" x="38" y="100">"where is X used?"</text>
+        <rect x="300" y="72" width="290" height="46" rx="8" fill="#F5DAC8"/>
+        <text class="s3aT" x="318" y="100">cavecrew-investigator</text>
+        <rect x="600" y="72" width="260" height="46" rx="8" fill="#F0C9B3"/>
+        <text class="s3aT" x="618" y="100">~60% fewer tokens</text>
+        <rect x="20" y="126" width="270" height="46" rx="8" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <text class="s3aT" x="38" y="154">"is this any good?"</text>
+        <rect x="300" y="126" width="290" height="46" rx="8" fill="#F5DAC8"/>
+        <text class="s3aT" x="318" y="154">cavecrew-reviewer</text>
+        <rect x="600" y="126" width="260" height="46" rx="8" fill="#F0C9B3"/>
+        <text class="s3aT" x="618" y="154">one line per finding</text>
+        <rect x="20" y="180" width="270" height="46" rx="8" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <text class="s3aT" x="38" y="208">"make this edit"</text>
+        <rect x="300" y="180" width="290" height="46" rx="8" fill="#F5DAC8"/>
+        <text class="s3aT" x="318" y="208">cavecrew-builder</text>
+        <rect x="600" y="180" width="260" height="46" rx="8" fill="#F0C9B3"/>
+        <text class="s3aT" x="618" y="208">surgical 1-2 files</text>
+        <rect x="20" y="248" width="840" height="42" rx="10" fill="#FBF1EA" stroke="#ECE3DB"/>
+        <rect x="34" y="262" width="14" height="14" rx="3" fill="#E3A008"/>
+        <text class="s3aN" x="58" y="274">Read-only locators + terse reviewers = you understand the code without loading all of it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - task to crew member: locate, review, edit - each returns compressed</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>cavecrew-investigator - the read-only locator<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><code>caveman:cavecrew-investigator</code> is a read-only code locator. Ask it where something lives or how it's wired and it hands back a compressed file:line map instead of streaming whole files into your window.</p>
+        <ul>
+          <li><strong>What it does</strong> - finds and maps code, read-only, and reports in a compressed form.</li>
+          <li><strong>When to reach for it</strong> - "where is this defined / what calls it / how does this flow work" across an unfamiliar codebase.</li>
+          <li><strong>Token effect</strong> - <em>saves tokens.</em> Roughly 60% fewer than a vanilla search, because the raw files never land in your main context - only the map does.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now</span>Use cavecrew-investigator to map where the function [name] is defined and everything that calls it. Return a file:line map only - do not paste the file contents into our chat.</div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>cavecrew-reviewer &amp; cavecrew-builder<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>cavecrew-reviewer</strong> - reviews a diff and returns one line per finding, severity-tagged, no praise or padding. You scan issues in seconds, not paragraphs.</li>
+          <li><strong>cavecrew-builder</strong> - makes surgical, 1-2 file edits with a tight context. It does not wander the whole repo; it changes exactly what you asked.</li>
+        </ul>
+        <p><strong>Token effect:</strong> both are terse-by-default, so a review or an edit costs a fraction of the tokens a chatty pass would. The reviewer's severity tags also let you triage - fix the reds, skip the nits.</p>
+        <div class="callout tip">
+          <strong>Locator, reviewer, builder - a division of labor</strong>
+          Investigator understands, reviewer judges, builder changes. Keeping them separate means each runs with the minimum context for its job, and you never pay a "read everything" tax just to make a two-line edit.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>requesting- &amp; receiving-code-review, /review, /security-review<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The superpowers review pair and the built-in review skills raise quality before code leaves your hands:</p>
+        <ul>
+          <li><strong>superpowers:requesting-code-review</strong> - packages a change for review with the right context so the reviewer isn't guessing.</li>
+          <li><strong>superpowers:receiving-code-review</strong> - turns feedback into fixes without ego, one item at a time.</li>
+          <li><strong>/review</strong> - a general code-review pass over your changes for quality and simplification.</li>
+          <li><strong>/security-review</strong> - a focused pass for security issues - injection, secrets, unsafe input handling.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>A change that "works" can still leak a secret into logs. A quick <code>/security-review</code> before merge is far cheaper than the incident, the rotation, and the postmortem - the ultimate rework.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 4: SHIP IT ============ -->
+  <section class="section" id="ship-it">
+    <div class="section-kicker">
+      <span class="klabel">Part 4 · from working tree to live, then watch it work</span>
+      <h2>Ship it <span class="tag concept">4 min live</span></h2>
+    </div>
+    <p class="lede">Code that isn't shipped and seen running is a guess. The last mile is auditing and hardening a build, hosting it, launching the app to confirm the change, and treating docs and diagrams as code too.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>build-deploy-html - audit, inline, harden, host<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The <code>build-deploy-html</code> skill takes a Claude-built HTML page and gets it truly shippable: it audits the markup, inlines assets so nothing 404s, hardens it, then hosts it on GitHub Pages or Netlify Drop.</p>
+        <ul>
+          <li><strong>What it does</strong> - audit + inline + harden Claude HTML, then publish to Pages or Netlify.</li>
+          <li><strong>When to reach for it</strong> - any single-page site, course page, or dashboard you want live and durable.</li>
+          <li><strong>Token effect</strong> - <em>prevents rework.</em> Catching a broken asset link at build time is far cheaper than debugging a live page that renders locally but breaks hosted.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>run - launch the app and see it work<span class="mini">1 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The <code>run</code> skill launches your project's app so you actually watch the change work, rather than trusting that it should. This is verification made physical - the difference between "the tests pass" and "I clicked the button and it did the thing".</p>
+        <ul>
+          <li><strong>What it does</strong> - finds how to launch this project (CLI, server, browser) and drives it to show the change live.</li>
+          <li><strong>When to reach for it</strong> - after any change you could visually confirm - a UI tweak, a new endpoint, a fixed bug.</li>
+          <li><strong>Token effect</strong> - <em>prevents rework.</em> Seeing it work closes the loop before an audience finds the gap you missed.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The docs layer - diagrams as code<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The docs track ships text and diagrams the same disciplined way you ship code. Learn-markdown and learn-mermaid teach the formats; <code>dataviz</code> keeps any diagram or chart on one accessible visual system.</p>
+        <ul>
+          <li><strong>markdown</strong> - the lingua franca for READMEs, specs, and these very pages. Clean, diffable, reviewable.</li>
+          <li><strong>mermaid</strong> - diagrams written as text, so a flowchart lives in the repo and updates in a PR like any other code.</li>
+          <li><strong>dataviz</strong> - the form heuristic and accessible palettes that keep every diagram legible in light and dark.</li>
+        </ul>
+        <p>Diagrams-as-code means your architecture picture never drifts from reality, because it's reviewed alongside the change that moved it.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 3</span>
+      <h2>Systematic-debugging on a real bug <span class="tag demo">★ 6 min · follow along</span></h2>
+    </div>
+    <p class="lede">Take a bug you actually have and run the discipline: reproduce, isolate, root-cause, fix, verify. Watch how naming the root cause ends the thread instead of spawning the next symptom.</p>
+    <div class="prompt-box good"><span class="label">★ The debugging trigger</span>Use systematic-debugging on this bug: [paste the error + what you were doing].
+
+Walk the steps out loud: reproduce it, isolate where it starts, name the ROOT cause (not the symptom), propose the fix, then verify it's actually gone. Do not patch until you can tell me why it broke.</div>
+    <div class="steps">
+      <div class="step"><p>Reproduce it reliably - a bug you can't trigger on demand isn't fixed, it's hiding.</p></div>
+      <div class="step"><p>Isolate: narrow to the smallest input or code path that still breaks.</p></div>
+      <div class="step"><p>Name the root cause in one sentence. If you can't, you're still looking at a symptom.</p></div>
+      <div class="step"><p>Fix, then verify by re-running the reproduction. Green means done - not "the error message changed".</p></div>
+    </div>
+    <div class="callout tip">
+      <strong>Why this is a token move</strong>
+      Every symptom patch that misses spawns a new bug and another debugging round. One root-cause fix ends the whole chain - that's the rework you didn't pay for.
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 3</span>
+      <h2>Spin a worktree for a parallel task <span class="tag demo">★ 6 min · build your own</span></h2>
+    </div>
+    <p class="lede">Feel context isolation directly: start a second task in its own worktree while your first stays untouched, and notice the conversation stays about one thing at a time.</p>
+    <div class="steps">
+      <div class="step"><p>With a feature half-built, a "quick fix" request lands. Resist doing it in the same directory.</p></div>
+      <div class="step"><p>Use the prompt below to create a worktree for the fix on its own branch.</p></div>
+      <div class="step"><p>Work the fix in a fresh session - the context is only about the fix, not your feature.</p></div>
+      <div class="step"><p>Merge the fix, return to your feature worktree, and note nothing bled across.</p></div>
+    </div>
+    <div class="prompt-box good"><span class="label">Worktree isolation prompt</span>Create a git worktree named "hotfix-login" on a new branch off main, in a separate directory, so it's isolated from my current feature work.
+
+Tell me the directory it created and the commands to switch between this and my main worktree. Then let's work the hotfix here with a clean context.</div>
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p>Three parallel builds, three worktrees, three clean contexts - a subagent can drive each. The main thread never holds all three problems at once, which is the same offload move from Session 1, applied to git.</p>
+    </div>
+  </section>
+
+  <!-- ============ DEMO 3 ============ -->
+  <section class="section" id="demo-3">
+    <div class="section-kicker">
+      <span class="klabel">Demo 3 of 3</span>
+      <h2>Investigate, then edit surgically <span class="tag demo">★ 6 min · build your own</span></h2>
+    </div>
+    <p class="lede">Run the crew as a relay: cavecrew-investigator maps where a function lives and what calls it, then cavecrew-builder makes the smallest edit that does the job - all without dumping the codebase into your window.</p>
+    <div class="steps">
+      <div class="step"><p>Pick a function you want to change but don't fully know the blast radius of.</p></div>
+      <div class="step"><p>Send cavecrew-investigator to map its definition and callers. You get a file:line map, not file dumps.</p></div>
+      <div class="step"><p>Hand that map to cavecrew-builder with the exact change. It edits 1-2 files surgically.</p></div>
+      <div class="step"><p>Run <code>/review</code> on the diff, then <code>run</code> to watch the change work.</p></div>
+    </div>
+    <div class="prompt-box good"><span class="label">Locate-then-edit prompt</span>Step 1: use cavecrew-investigator to map where [function] is defined and every caller. Return a file:line map only.
+
+Step 2: with that map, use cavecrew-builder to [the change], touching the fewest files possible. Then show me the diff for review before anything else.</div>
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p>Renaming a widely-used helper the naive way loads dozens of files and burns the window. Investigator returns the caller list, builder edits only those lines - roughly 60% fewer tokens, and no unrelated files touched.</p>
+    </div>
+  </section>
+
+  <!-- ============ TRY IT YOURSELF ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-60 min total</span></h2>
+    </div>
+    <ul>
+      <li>Fix one real bug with systematic-debugging. Write down the root cause in a single sentence before you touch the code.</li>
+      <li>Build one small function test-first. Confirm the test fails before you write any implementation.</li>
+      <li>Create a worktree for your next parallel task and work it in a separate session. Note whether the context stayed cleaner.</li>
+      <li>Run cavecrew-investigator on an unfamiliar part of your codebase and compare how many tokens it used versus a normal search.</li>
+      <li>Ship one page with build-deploy-html and then <code>run</code> it - watch the change actually work in the browser.</li>
+      <li><strong>Leads:</strong> ask each engineer to bring one bug they fixed by symptom last month and re-diagnose the root cause. The gap is the lesson.</li>
+    </ul>
+  </section>
+
+  <!-- ============ OFFICIAL COURSES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official courses covered</h2>
+    </div>
+    <p class="lede">This session teaches the working content of Anthropic's agentic-coding material - the build loop, debugging discipline, and the review-then-ship habit. What stays exclusive to the originals: video walkthroughs, graded labs, and certificates.</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Claude Code: A Highly Agentic Coding Assistant (DeepLearning.AI)</span><span class="note">Parts 1-4: the build loop, worktrees, review, and shipping with Claude Code</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Claude Code: Software Engineering with GenAI Agents (Coursera)</span><span class="note">Parts 2-3: context isolation and agent-driven review; team workflow left to source</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · Why give each task its own git worktree?</p>
+      <button class="qopt" type="button">A · It runs the tests faster</button>
+      <button class="qopt" type="button">B · It isolates context - one branch, one directory, no cross-contamination</button>
+      <button class="qopt" type="button">C · It automatically deploys the change</button>
+      <p class="qwhy">A worktree keeps each task physically and mentally separate, so Claude's context stays about one problem and two goals never bleed together.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · What's the token advantage of cavecrew-investigator over a vanilla search?</p>
+      <button class="qopt" type="button">A · It writes the code for you too</button>
+      <button class="qopt" type="button">B · It's slower but more thorough</button>
+      <button class="qopt" type="button">C · ~60% fewer tokens - it returns a compressed map, not the raw files</button>
+      <p class="qwhy">The read-only locator hands back a file:line map instead of streaming whole files into your main context, saving roughly 60%.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · How do test-driven-development and root-cause debugging save tokens?</p>
+      <button class="qopt" type="button">A · They prevent rework - the biggest token sink - by getting it right once</button>
+      <button class="qopt" type="button">B · They compress the output text</button>
+      <button class="qopt" type="button">C · They skip writing tests to save time</button>
+      <p class="qwhy">A failing test pins the target and a named root cause ends the bug thread, so you don't pay for the rebuild rounds that fuzzy goals and symptom-patching cause.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 2 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>test-driven-development</b><span>Failing test first, then code to green, then refactor. Pins the target - saves rework tokens.</span></div>
+      <div class="cheat-item"><b>systematic-debugging</b><span>Reproduce, isolate, root-cause, fix, verify. Name the cause or it's still a symptom.</span></div>
+      <div class="cheat-item"><b>using-git-worktrees</b><span>One branch + directory per task. Isolated context, parallel work, no cross-contamination.</span></div>
+      <div class="cheat-item"><b>cavecrew trio</b><span>investigator (locate, ~60% less) · reviewer (one line/finding) · builder (surgical edits).</span></div>
+      <div class="cheat-item"><b>review / security-review</b><span>requesting- + receiving-code-review, plus /review and /security-review before merge.</span></div>
+      <div class="cheat-item"><b>build-deploy-html</b><span>Audit + inline + harden Claude HTML, then host on Pages or Netlify. Catches broken links early.</span></div>
+      <div class="cheat-item"><b>run</b><span>Launch the app and watch the change work. Verification made physical.</span></div>
+      <div class="cheat-item"><b>docs as code</b><span>markdown + mermaid + dataviz. Diagrams review alongside the change that moved them.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Session 2 of 8 · learn-claude-skills-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="01-core-stack.html">← Prev: The Core Stack</a> &nbsp;·&nbsp; <a href="03-data-ds.html">Next: Data &amp; DS →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>
